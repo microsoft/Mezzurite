@@ -334,3 +334,4 @@ ASALocalRun/
 */dist
 */dist-esm
 */browser
+package-lock.json
