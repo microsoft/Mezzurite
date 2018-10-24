@@ -11,14 +11,14 @@ export class MezzuriteObject {
     currentComponents: object;
     vltComponentLookup: object;
 
-    constructor() {
-        this.firstViewLoaded = false;
-        this.captureCycleStarted = false;
-        this.measures = [];
-        this.defaultLogs = [];
-        this.childElementNames = {};
-        this.slowestResource = {};
-        this.currentComponents = {};
-        this.vltComponentLookup = {};
+    constructor(obj: MezzuriteObject = new MezzuriteObject()) {
+        obj.firstViewLoaded = false;
+        obj.captureCycleStarted = false;
+        obj.measures = [];
+        obj.defaultLogs = [];
+        obj.childElementNames = {};
+        obj.slowestResource = {};
+        obj.currentComponents = {};
+        obj.vltComponentLookup = {};
     }
 }
