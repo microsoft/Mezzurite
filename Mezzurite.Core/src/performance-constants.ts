@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 const MezzuriteConstants = {
     captureCycleTimeout: 10000,
     idLength: 6,

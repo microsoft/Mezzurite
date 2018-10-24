@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import { MezzuriteConstants } from './performance-constants';
 import { MezzuriteUtils } from './performance-utils.service';
 
