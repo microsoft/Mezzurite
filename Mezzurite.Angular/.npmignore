@@ -1,0 +1,10 @@
+/*.ts
+*.config
+**/tsconfig.json
+**/webpack.config.js
+Mezzurite.Angular2.csproj
+node_modules
+obj
+bin
+*.csproj
+*.csproj.user
