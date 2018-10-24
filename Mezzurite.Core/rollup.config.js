@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript2'
+import uglify from 'rollup-plugin-uglify-es';
 import pkg from './package.json'
 
 export default [
@@ -20,6 +21,7 @@ export default [
         ],
       plugins: [
           typescript(),
+          uglify()
         ],
       },
       {
@@ -43,6 +45,7 @@ export default [
                 }
             }
           }),
+          uglify()
         ],
       }
 ]

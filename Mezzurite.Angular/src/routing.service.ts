@@ -21,8 +21,7 @@ export class RoutingService {
     endCounter: number = 0;
     pageWasUnloaded$: Subject<string>;
 
-    constructor(
-        private router: Router) {
+    constructor(private router: Router) {
             this.pageWasUnloaded$ = new Subject<string>();
             if (!(<any>window).mezzurite){
                 MezzuriteAngularUtils.createMezzuriteObject();

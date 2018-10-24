@@ -2,6 +2,8 @@
   "compilerOptions": {
     "module": "es6",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "declaration": true,
     "noImplicitAny": true,
     "outDir": "./dist-esm",
