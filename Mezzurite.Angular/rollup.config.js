@@ -27,7 +27,7 @@ export default [
       plugins: [
         json(),
         resolve(['.js', '.json']),
-          typescript(),
+        typescript()
         ],
       },
       {
@@ -53,6 +53,7 @@ export default [
                 }
             }
           }),
+          uglify()
         ],
       }
 ]
