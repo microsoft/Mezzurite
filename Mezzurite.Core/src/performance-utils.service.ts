@@ -11,9 +11,9 @@ export class MezzuriteUtils {
     constructor() { }
 
     static createMezzuriteObject(): void {
-        const obj = new MezzuriteObject();
-        (<any>window).mezzurite = obj;
+        (<any>window).mezzurite = new MezzuriteObject();
     };
+ 
 
     static testReset(): void{
         let obj = (<any>window).mezzurite;
