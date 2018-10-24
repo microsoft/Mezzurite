@@ -330,8 +330,10 @@ ASALocalRun/
 .mfractor/
 
 *.rpt2_cache
+package-lock.json
 
 */dist
 */dist-esm
 */browser
-package-lock.json
+
+.vscode

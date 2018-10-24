@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import {MezzuriteObject} from './performance-global';
 import {MezzuriteConstants} from './performance-constants';
 
