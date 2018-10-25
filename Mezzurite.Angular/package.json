@@ -1,15 +1,13 @@
 {
   "name": "@ms/mezzurite-angular",
   "version": "1.0.0",
-  "description": "Performance telemetry library for Angular 6",
-  "repository": "",
-  "readme": "http://aka.ms/mezzurite",
-  "scripts": {
-    "clean": "shx rm -rf _bundles lib lib-esm",
-    "build": "npm run clean && rollup -c"
-  },
-  "module": "./dist-esm/index.js",
   "main": "./dist/index.js",
+  "module": "./dist-esm/index.js",
+  "scripts": {
+    "clean": "shx rm -rf browser dist dist-esm",
+    "build": "npm run clean && node_modules\\.bin\\ngc -p tsconfig.aot.json && rollup -c && npm run post-clean",
+    "post-clean": "shx rm -rf aot"
+  },
   "dependencies": {
     "@types/jquery": "^2.0.46",
     "reflect-metadata": "^0.1.8"
@@ -23,7 +21,6 @@
     "@angular/platform-browser": "^6.1.9",
     "@angular/platform-browser-dynamic": "^6.1.9",
     "@angular/router": "^6.1.9",
-    "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
     "zone.js": "^0.x"
   },
@@ -32,34 +29,20 @@
     "@angular/compiler": "^6.1.9",
     "@angular/compiler-cli": "^6.1.9",
     "@angular/core": "^6.1.9",
-    "@angular/forms": "^6.1.9",
-    "@angular/http": "^6.1.9",
-    "@angular/platform-browser": "^6.1.9",
-    "@angular/platform-browser-dynamic": "^6.1.9",
     "@angular/platform-server": "^6.1.9",
     "@angular/router": "^6.1.9",
-    "angular-in-memory-web-api": "^0.1.5",
-    "awesome-typescript-loader": "^5.2.0",
-    "bootstrap": "^3.3.7",
+    "@types/node": "^10.12.0",
     "concurrently": "^3.0.0",
-    "copy-webpack-plugin": "^4.5.2",
-    "core-js": "^2.4.1",
-    "json-d-ts": "^1.0.1",
-    "lite-server": "^2.2.2",
-    "ngc-webpack": "^4.1.2",
-    "path": "^0.12.7",
+    "rollup-plugin-copy-glob": "^0.2.2",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-typescript2": "^0.17.2",
     "rollup-plugin-uglify-es": "0.0.1",
     "rxjs": "^6.2.2",
     "shx": "^0.3.1",
-    "typescript": "^2.6.0",
+    "tslib": "^1.9.3",
+    "typescript": "^2.9.2",
     "typings": "^1.4.0",
-    "vsts-npm-auth": "^0.37.0",
-    "zone.js": "^0.6.25"
-  },
-  "publishConfig": {
-    "registry": "https://microsoft.pkgs.visualstudio.com/_packaging/DES.EPIC.USCP.Scripts/npm/registry/"
+    "vsts-npm-auth": "^0.37.0"
   }
 }

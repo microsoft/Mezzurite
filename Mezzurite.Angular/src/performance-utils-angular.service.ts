@@ -1,10 +1,10 @@
 import { MezzuriteUtils } from "@ms/mezzurite-core";
-import pkg from '../package.json';
+import {environment} from "./environment";
 
 export class MezzuriteAngularUtils extends MezzuriteUtils{
     static createMezzuriteObject(){
         super.createMezzuriteObject();
-        (<any>window).mezzurite.packageVersion = pkg.version;
-        (<any>window).mezzurite.packageName = pkg.name;
+        (<any>window).mezzurite.packageVersion = environment.version;
+        (<any>window).mezzurite.packageName = environment.name;
     }
 }
