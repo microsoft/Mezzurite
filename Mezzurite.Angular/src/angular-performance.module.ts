@@ -1,6 +1,7 @@
 ﻿import { NgModule, ModuleWithProviders } from "@angular/core";
 import { PerformanceTimingService } from "@ms/mezzurite-core";
 import { MezzuriteDirective } from './angular-performance-directive';
+import { RoutingService } from "./routing.service";
 
 @NgModule({
     declarations: [MezzuriteDirective],
@@ -11,7 +12,8 @@ export class AngularPerfModule {
         return {
             ngModule: AngularPerfModule,
             providers: [
-                { provide: PerformanceTimingService, useFactory: createPerfTimingService }
+                { provide: PerformanceTimingService, useFactory: createPerfTimingService },
+                RoutingService
                 // Add new services here.
             ]
         };
@@ -23,6 +25,7 @@ export function createPerfTimingService() {
 }
 
 export {
-    PerformanceTimingService
+    PerformanceTimingService,
+    RoutingService
     // Add new services here.
 };
