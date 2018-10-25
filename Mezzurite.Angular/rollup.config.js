@@ -20,7 +20,8 @@ export default [
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
-          ...Object.keys(pkg.peerDependencies || {})
+          ...Object.keys(pkg.peerDependencies || {}),
+          "rxjs/operators"
         ],
       plugins: [
           json(),
@@ -44,7 +45,8 @@ export default [
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
-          ...Object.keys(pkg.peerDependencies || {})
+          ...Object.keys(pkg.peerDependencies || {}),
+          "rxjs/operators"
         ],
       plugins: [
           json(),

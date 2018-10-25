@@ -5,7 +5,7 @@
   "module": "./dist-esm/index.js",
   "scripts": {
     "clean": "shx rm -rf browser dist dist-esm",
-    "build": "npm run clean && node_modules\\.bin\\ngc -p tsconfig.aot.json && rollup -c && npm run post-clean",
+    "build": "npm run clean && rollup -c && npm run post-clean",
     "post-clean": "shx rm -rf aot"
   },
   "dependencies": {

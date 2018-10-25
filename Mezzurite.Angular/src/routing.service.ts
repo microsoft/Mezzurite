@@ -1,6 +1,6 @@
-import { Observable, Subject, timer as observableTimer } from "rxjs";
-import { filter, finalize, first, merge, takeUntil, switchMap } from 'rxjs/operators';
-import { Injectable } from "@angular/core";
+import { Subject, timer as observableTimer } from "rxjs";
+import { filter, merge, takeUntil } from 'rxjs/operators';
+import { Injectable, Inject } from "@angular/core";
 import { Router, NavigationStart, NavigationEnd } from "@angular/router";
 import { 
     PerformanceTimingService, 
@@ -16,6 +16,7 @@ import { MezzuriteAngularUtils } from './performance-utils-angular.service';
  * @export
  * @class RoutingService
  */
+@Injectable()
 export class RoutingService {
     endCounter: number = 0;
     pageWasUnloaded$: Subject<string>;
