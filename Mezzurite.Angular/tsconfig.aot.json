@@ -6,7 +6,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": false,
-    "noImplicitAny": true,
     "outDir": "./aot",
     "target": "es5"
   },

@@ -20,13 +20,13 @@ export default [
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
-          ...Object.keys(pkg.peerDependencies || {}),
+          ...Object.keys(pkg.peerDependencies || {})
         ],
       plugins: [
           json(),
           resolve(['.js', '.json']),
           typescript(),
-          uglify(),
+          // uglify(),
           copy([
             { files: 'aot/*.metadata.json', dest: 'dist' },
             { files: 'aot/*.metadata.json', dest: 'dist-esm' },
@@ -44,7 +44,7 @@ export default [
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
-          ...Object.keys(pkg.peerDependencies || {}),
+          ...Object.keys(pkg.peerDependencies || {})
         ],
       plugins: [
           json(),
@@ -56,7 +56,7 @@ export default [
                 }
             }
           }),
-          uglify()
+          // uglify()
         ],
       }
 ]
