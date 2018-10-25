@@ -17,11 +17,12 @@ import { MezzuriteAngularUtils } from './performance-utils-angular.service';
  * @class RoutingService
  */
 @Injectable()
-export class RoutingService {
+class RoutingService {
     endCounter: number = 0;
     pageWasUnloaded$: Subject<string>;
 
     constructor(private router: Router) {
+        console.log("router inside RoutingService? ",router);
             this.pageWasUnloaded$ = new Subject<string>();
             if (!(<any>window).mezzurite){
                 MezzuriteAngularUtils.createMezzuriteObject();
@@ -68,3 +69,5 @@ export class RoutingService {
         });
     };
 }
+
+export { RoutingService }
