@@ -79,8 +79,7 @@ interface StoreType {
   ]
 })
 export class AppModule {
-  constructor() {
-    const r = new RoutingService();
-    r.start();
+  constructor(private router: RoutingService) {
+    router.start();
   }
 }
