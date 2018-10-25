@@ -1,10 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2'
 import uglify from 'rollup-plugin-uglify-es';
 import json from 'rollup-plugin-json';
+import copy from 'rollup-plugin-copy-glob';
 import pkg from './package.json'
 
 export default [
@@ -25,9 +23,14 @@ export default [
           ...Object.keys(pkg.peerDependencies || {}),
         ],
       plugins: [
-        json(),
-        resolve(['.js', '.json']),
-        typescript()
+          json(),
+          resolve(['.js', '.json']),
+          typescript(),
+          uglify(),
+          copy([
+            { files: 'aot/*.metadata.json', dest: 'dist' },
+            { files: 'aot/*.metadata.json', dest: 'dist-esm' },
+          ], { verbose: false, watch: false })
         ],
       },
       {
@@ -44,8 +47,8 @@ export default [
           ...Object.keys(pkg.peerDependencies || {}),
         ],
       plugins: [
-        json(),
-        resolve(['.js', '.json']),
+          json(),
+          resolve(['.js', '.json']),
           typescript({
             tsconfigOverride: {
                 compilerOptions: {

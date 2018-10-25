@@ -164,7 +164,7 @@ export class PerformanceTimingService {
             let slowestResource = null;
             MezzuriteUtils.walkDOM(el, key, this.getElNames);
         
-            const resources: any = performance.getEntriesByType("resource").filter(r => (<any>r).initiatorType === 'img');
+            const resources: any = performance.getEntriesByType("resource").filter((r:any) => (<any>r).initiatorType === 'img');
             const currentResources = (<any>window).mezzurite.childElementNames[key];
             if (resources.length === 0){
                 return;

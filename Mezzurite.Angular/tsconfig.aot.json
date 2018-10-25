@@ -1,17 +1,14 @@
 {
   "compilerOptions": {
     "module": "es2015",
-    "lib": [ "dom", "es2015", "es6", "es5"],
+    "lib": [ "dom", "es2015"],
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "declaration": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "declaration": false,
     "noImplicitAny": true,
-    "outDir": "./dist-esm",
-    "target": "es5",
+    "outDir": "./aot",
+    "target": "es5"
   },
   "include": [
     "src/**/*"
