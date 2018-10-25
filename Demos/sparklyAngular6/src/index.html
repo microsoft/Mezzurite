@@ -1,0 +1,115 @@
+﻿<!doctype html>
+<html>
+<head>
+    <script>
+    
+        var jsllViewer = jsllViewer || {};
+    (function () {
+        var retrycount = 0;
+    
+        //var dataRenderFunction = "RenderToConsole";
+        //var dataRenderFunction = "RenderJsllViewer";
+    
+        jsllViewer.queue = function (args) {
+    
+            if (!jsllViewer.eventHistory) {
+                if (typeof jsllAwa === "undefined") {
+                    if (typeof awa !== "undefined") {
+                        jsllAwa = awa;
+                    }
+                    else if (typeof Asimov !== "undefined") {
+                        jsllAwa = Asimov;
+                    }
+                }
+    
+                if (typeof jsllAwa === "undefined") {
+                    if (retrycount < 1000) {
+                        retrycount++;
+                        setTimeout(function () { jsllViewer.queue(args) }, 1);
+                    }
+                    else {
+                        var noOp = 0;
+                        //no op debug hook.
+                    }
+                }
+                else {
+                    override(jsllAwa, '_validateAndTranslateEvent', doWorkOnReturnValue(function (e) { return eventCollector(e); }));
+                }
+            }
+        };
+       
+        // method which allows us to extend other js methods
+        function override(object, methodName, callback) {
+            object[methodName] = callback(object[methodName]);
+        }
+    
+        // This decorator allows you to do work against the return value of the method
+        // passed to it.  
+        function doWorkOnReturnValue(extraBehavior) {
+            return function (original) {
+                return function () {
+                    var returnValue = original.apply(this, arguments);
+                    extraBehavior(returnValue);
+                    return returnValue;
+                }
+            }
+        }
+    
+        jsllViewer.eventProcessor = "";
+    
+        function eventCollector(e) {
+            var data = [];
+            if (!Array.isArray(e)) {
+                data.push(e);
+            }
+            else {
+                data = e;
+            }
+    
+            data.forEach(function (e) {
+                if (!jsllViewer.eventHistory) {
+    
+                    jsllViewer.eventHistory = [{ EventData: e.event, written: false, diff: 0, siWritten: false }];
+                }
+                else {
+                    var d = new Date(jsllViewer.eventHistory[jsllViewer.eventHistory.length - 1].EventData.time).getTime() - new Date(e.event.time).getTime();
+                    jsllViewer.eventHistory.push({ EventData: e.event, written: false, diff: d, siWritten: false });
+                }
+            });
+    
+            if (jsllViewer["dataRenderFunction"] !== undefined) {
+                var fn = jsllViewer.dataRenderFunction;
+                if (typeof fn === 'function') {
+                    fn();
+                }
+                else
+                {
+                    console.log("jsllViewer.dataRenderFunciton is not a funciton type");
+                }
+    
+            };
+    
+            if (jsllViewer["eventProcessor"] !== undefined) {
+                if (typeof jsllViewer.eventProcessor === 'function') {
+                    jsllViewer.eventProcessor(e);
+                }
+            }
+        }
+    
+        jsllViewer.queue(null);
+    })();
+        </script>
+  <meta charset="utf-8">
+  <title>Sparkly Web Telemetry Application</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="MS-CV" content="8hgxETjQdbDGnKExY2U4B1.2.3">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://sparklywebclient.blob.core.windows.net/spaclient/jsll-4.2.4.cv.debug.js"></script>
+  <!-- If we rewrite this portion, then we can bundle them together -->
+</head>
+<body>
+  <app-root>Loading...</app-root>
+</body>
+</html>
