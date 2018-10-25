@@ -328,3 +328,13 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+*.rpt2_cache
+package-lock.json
+
+*/dist
+*/dist-esm
+*/browser
+
+.vscode
+Demos
