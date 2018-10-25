@@ -16,7 +16,6 @@ import { MezzuriteAngularUtils } from './performance-utils-angular.service';
  * @export
  * @class RoutingService
  */
-@Injectable()
 export class RoutingService {
     endCounter: number = 0;
     pageWasUnloaded$: Subject<string>;
