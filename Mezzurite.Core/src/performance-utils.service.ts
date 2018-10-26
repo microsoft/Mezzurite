@@ -15,9 +15,8 @@ export class MezzuriteUtils {
         for (var prop in mzObj){
             obj[prop] = (<any>mzObj)[prop];
         }
-        console.log("what is mezzurite? ",(<any>window).mezzurite)
     };
-
+ 
     static testReset(): void{
         let obj = (<any>window).mezzurite;
         obj.childElementNames = {};
