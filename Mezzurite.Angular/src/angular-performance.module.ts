@@ -3,10 +3,15 @@ import { PerformanceTimingService } from "@ms/mezzurite-core";
 import { MezzuriteDirective } from './angular-performance-directive';
 import { RoutingService } from "./routing.service";
 
+
 @NgModule({
     declarations: [MezzuriteDirective],
     exports: [MezzuriteDirective]
 })
+
+/**
+ * Mezzurite Performance Module for Angular
+ */
 export class AngularPerfModule {
     static forRoot() : ModuleWithProviders {
         return {

@@ -4,6 +4,9 @@ import { PerformanceTimingService, MezzuriteUtils, MezzuriteConstants } from '@m
 @Directive({ 
      selector: '[mezzurite]' 
 })
+/**
+ * Directive that enables tracking on specific component elements
+ */
 export class MezzuriteDirective implements OnInit {
 
     private id: string;

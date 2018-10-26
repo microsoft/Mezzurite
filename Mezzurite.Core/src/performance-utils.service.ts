@@ -10,6 +10,10 @@ import {MezzuriteConstants} from './performance-constants';
 export class MezzuriteUtils {
     constructor() { }
 
+    /**
+     * Adds default values for MezzuriteObject to the global window.mezzurite object
+     * @param obj existing mezzurite global object (if already created by logger)
+     */
     static createMezzuriteObject(obj: any): void {
         var mzObj = new MezzuriteObject();
         for (var prop in mzObj){
@@ -17,6 +21,9 @@ export class MezzuriteUtils {
         }
     };
  
+    /**
+     * Resets certain properties in window.mezzurite after capture cycle is completed
+     */
     static testReset(): void{
         let obj = (<any>window).mezzurite;
         obj.childElementNames = {};
@@ -26,6 +33,9 @@ export class MezzuriteUtils {
         (<any>window).mezzurite = obj;
     }
 
+    /**
+     * Creates a unique alpha-numeric key
+     */
     static makeId(): string {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -36,6 +46,10 @@ export class MezzuriteUtils {
         return text;
     };
 
+    /**
+     * Gets string name of the given function
+     * @param fun function
+     */
     static getFunctionName(fun: any): string {
         var ret = fun.toString();
         ret = ret.substr('function '.length);
@@ -43,6 +57,10 @@ export class MezzuriteUtils {
         return ret;
     }
 
+    /**
+     * Gets name of a given component passed into Mezzurite HOC
+     * @param WrappedComponent Component
+     */
     static getDisplayName(WrappedComponent: any): any {
         if (WrappedComponent.name !== undefined){
             return WrappedComponent.name;
@@ -50,6 +68,12 @@ export class MezzuriteUtils {
         return MezzuriteUtils.getFunctionName(WrappedComponent);
     };
 
+    /**
+     * Gets complete name consisting of prefix, component name, and unique key.
+     * @param name component name
+     * @param key unique key
+     * @param clarifier optional clarifier
+     */
     static getName(name: string, key: string, clarifier: string = null): string{
         if (clarifier === null){
             return MezzuriteConstants.measureNamePrefix + ";" + name + ";" + key;
@@ -59,6 +83,12 @@ export class MezzuriteUtils {
         }
     };
 
+    /**
+     * Creates metric to save to global mezzurite object
+     * @param metricType metric type
+     * @param value measured value
+     * @param data json metadata
+     */
     static createMetric(metricType: string, value: number, data: any = null): any{
         var obj: any = {
             metricType: metricType,
@@ -70,6 +100,12 @@ export class MezzuriteUtils {
         return obj;
     };
 
+    /**
+     * Walks DOM of a given element
+     * @param node DOM node
+     * @param key unique identifier
+     * @param func callback function
+     */
     static walkDOM(node: any, key: string, func: any) {
         func(node, key);
         node = node.firstChild;
@@ -79,6 +115,11 @@ export class MezzuriteUtils {
         }
     };
 
+    /**
+     * Gets fragment from full name
+     * @param fullName full name
+     * @param val value to pull
+     */
     static getFullNamePart(fullName: string, val: string){
         const arr = fullName.split(";");
         switch (val){

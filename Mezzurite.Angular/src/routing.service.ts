@@ -23,7 +23,9 @@ export class RoutingService {
             (<any>window).mezzurite.routerPerf = true;
         }
 
-    /* this method begins the listening process. Must be called for code to function properly. */
+    /**
+     * this method begins the listening process. Must be called for code to function properly.
+     */
     start = (): any => {
         const onNavStart$ = (<any>this).router.events.pipe(filter(event => event instanceof NavigationStart));
 

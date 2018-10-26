@@ -6,6 +6,10 @@ import {withRouter} from 'react-router';
 import {PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants} from '@ms/mezzurite-core';
 import { MezzuriteReactUtils } from './performance-utils-react.service';
 
+/**
+ * Higher order component for adding Mezzurite router functionality to a React app. Instruments withRouter HOC from React-Router.
+ * @param {*} WrappedComponent 
+ */
 const withMezzuriteRouter = (WrappedComponent) => {
     if (!window.mezzurite){
         MezzuriteReactUtils.createMezzuriteObject();

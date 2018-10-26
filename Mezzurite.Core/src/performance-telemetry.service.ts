@@ -5,9 +5,14 @@ import { MezzuriteConstants } from './performance-constants';
 import { PerformanceTimingService } from './performance-timing.service';
 import { MezzuriteUtils } from './performance-utils.service';
 
-
+/**
+ * Class containing core telemetry functions
+ */
 export class PerformanceTelemetryService {
 
+    /**
+     * Starts capture cycle period
+     */
     static startCaptureCycle(){  
         let that = this;
         if (!(<any>window).mezzurite.captureCycleStarted){
@@ -19,6 +24,10 @@ export class PerformanceTelemetryService {
         }
     };
 
+    /**
+     * Captures timings for the given period
+     * @param isRedirect Bool dictating whether timings were captured at end of cycle or early
+     */
     static captureTimings(isRedirect = false){
         clearTimeout((<any>window).mezzurite.captureTimer);
         (<any>window).mezzurite.endTime = window.performance.now();
@@ -37,6 +46,10 @@ export class PerformanceTelemetryService {
         (<any>window).mezzurite.captureCycleStarted = false;
     };
 
+    /**
+     * Creates timings object to send to telemetry
+     * @param isRedirect isRedirect bool
+     */
     static submitTelemetry(isRedirect: boolean): void {
         let timings: any[] = [];
         // add redirect value
@@ -62,15 +75,10 @@ export class PerformanceTelemetryService {
         MezzuriteUtils.testReset();
     };
 
-    static compatibilityCheck(){
-        const isCompatible = (window.performance !== undefined);
-        if (!isCompatible){
-               const timings = [MezzuriteUtils.createMetric(MezzuriteConstants.unsupportedBrowserName, -1, MezzuriteConstants.unsupportedBrowserPerf)]
-            this.log(timings);
-        }
-        return isCompatible;
-    }
-
+    /**
+     * Adds remaining metadata to send to logger and dispatches event
+     * @param timings 
+     */
     static log(timings: any){
         if ((<any>window).mezzurite){
             if (timings.length > 1){
@@ -83,7 +91,6 @@ export class PerformanceTelemetryService {
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
                     ViewportHeight: (<any>window).mezzurite.viewportHeight
                 }
-                console.log("to log: ",obj);
                 if ((<any>window).mezzurite.EventElement)
                 {
                     (<any>window).mezzurite.EventElement.dispatchEvent(new CustomEvent('Timing', {detail: obj}));
@@ -94,4 +101,16 @@ export class PerformanceTelemetryService {
             }
         }
     };
+
+    /**
+     * Checks whether window.performance is undefined
+     */
+    static compatibilityCheck(){
+        const isCompatible = (window.performance !== undefined);
+        if (!isCompatible){
+               const timings = [MezzuriteUtils.createMetric(MezzuriteConstants.unsupportedBrowserName, -1, MezzuriteConstants.unsupportedBrowserPerf)]
+            this.log(timings);
+        }
+        return isCompatible;
+    }
 }

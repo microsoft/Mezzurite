@@ -1,6 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+/**
+ * Global Mezzurite object
+ */
 export class MezzuriteObject {
     firstViewLoaded: boolean;
     captureCycleStarted: boolean;
