@@ -83,6 +83,7 @@ export class PerformanceTelemetryService {
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
                     ViewportHeight: (<any>window).mezzurite.viewportHeight
                 }
+                console.log("to log: ",obj);
                 if ((<any>window).mezzurite.EventElement)
                 {
                     (<any>window).mezzurite.EventElement.dispatchEvent(new CustomEvent('Timing', {detail: obj}));
