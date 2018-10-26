@@ -7,6 +7,10 @@ import { RoutingService } from "./routing.service";
     declarations: [MezzuriteDirective],
     exports: [MezzuriteDirective]
 })
+
+/**
+ * Mezzurite Performance Module for Angular
+ */
 export class AngularPerfModule {
     static forRoot() : ModuleWithProviders {
         return {

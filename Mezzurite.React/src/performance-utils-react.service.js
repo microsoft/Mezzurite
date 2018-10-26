@@ -4,6 +4,9 @@
 import { MezzuriteUtils } from "@ms/mezzurite-core";
 import pkg from "../package";
 
+/**
+ * Extension of Mezzurite Utilities that gets package specific information
+ */
 export class MezzuriteReactUtils extends MezzuriteUtils{
     static createMezzuriteObject(){
         super.createMezzuriteObject();
