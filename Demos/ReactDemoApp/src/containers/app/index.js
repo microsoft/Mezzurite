@@ -21,7 +21,4 @@ class App extends React.Component{
   } 
 }
 
-// export default compose(connect(mapStateToProps),
-//                         MezzuriteRouterHOC)(App);
-
 export default withMezzuriteRouter(App);

@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styles: [`
   `],
   template: `
-    <h1>About</h1>
+    <h1 mezzurite component-title="headerComponent">About</h1>
     <div>
       For hot module reloading run
       <pre>npm run start:hmr</pre>
