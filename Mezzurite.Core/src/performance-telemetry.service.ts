@@ -87,13 +87,9 @@ export class PerformanceTelemetryService {
                 {
                     (<any>window).mezzurite.EventElement.dispatchEvent(new CustomEvent('Timing', {detail: obj}));
                 }
-                else{
-                    (<any>obj)["DateTime"] = Date.now();
-                    (<any>window).mezzurite.defaultLogs.push(obj);
-                }
             }
             else {
-                console.log("no logs in default");
+                console.log("nothing for Mezzurite to log.");
             }
         }
     };
