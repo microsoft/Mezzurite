@@ -10,8 +10,12 @@ import {MezzuriteConstants} from './performance-constants';
 export class MezzuriteUtils {
     constructor() { }
 
-    static createMezzuriteObject(): void {
-        (<any>window).mezzurite = new MezzuriteObject();
+    static createMezzuriteObject(obj: any): void {
+        var mzObj = new MezzuriteObject();
+        for (var prop in mzObj){
+            obj[prop] = (<any>mzObj)[prop];
+        }
+        console.log("what is mezzurite? ",(<any>window).mezzurite)
     };
 
     static testReset(): void{

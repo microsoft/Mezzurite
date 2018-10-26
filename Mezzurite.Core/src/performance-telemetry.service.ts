@@ -31,7 +31,6 @@ export class PerformanceTelemetryService {
             m.startTime >= (<any>window).mezzurite.startTime &&
             m.startTime <= (<any>window).mezzurite.endTime
         )
-        debugger
         if (components.length > 0){
             this.submitTelemetry(isRedirect)
         }

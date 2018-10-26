@@ -28,7 +28,7 @@ export default [
           json(),
           resolve(['.js', '.json']),
           typescript(),
-          uglify(),
+          // uglify(),
           copy([
             { files: 'aot/*.metadata.json', dest: 'dist' },
             { files: 'aot/*.metadata.json', dest: 'dist-esm' },
@@ -48,7 +48,7 @@ export default [
               rxjs: "Rx",
               "rxjs/operators": "Rx",
               "@angular/router": "ng.router"
-            },
+            }
           }
         ],
         external: [
@@ -67,7 +67,7 @@ export default [
                 }
             }
           }),
-          uglify()
+          // uglify()
         ],
       }
 ]
