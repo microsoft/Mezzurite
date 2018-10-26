@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -79,7 +79,7 @@ interface StoreType {
   ]
 })
 export class AppModule {
-  constructor(private router: RoutingService) {
+  constructor(@Inject(RoutingService) private router: typeof RoutingService) {
     router.start();
   }
 }

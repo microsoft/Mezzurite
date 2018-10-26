@@ -97,10 +97,10 @@ export class PerformanceTimingService {
             m.startTime >= (<any>window).mezzurite.startTime &&
             m.startTime <= (<any>window).mezzurite.endTime
         )
-        let obj = {};
+        let obj: any = {};
         for (let i = 0; i < components.length; i++){
             var name: string = components[i].name
-            (<any>obj)[name] = components[i];
+            obj[name] = components[i];
         }
         return obj;
     }
