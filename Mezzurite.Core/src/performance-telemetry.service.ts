@@ -34,15 +34,7 @@ export class PerformanceTelemetryService {
         if (!(<any>window).mezzurite.captureCycleStarted){
             (<any>window).mezzurite.captureCycleStarted = true;
         }
-        const components = (<any>window).mezzurite.measures.filter((m:any) => 
-            m.name.indexOf(MezzuriteConstants.measureNamePrefix + ";" + MezzuriteConstants.altName) === -1 &&
-            m.name.indexOf(MezzuriteConstants.measureNamePrefix + ";" + MezzuriteConstants.vltName) === -1 &&
-            m.startTime >= (<any>window).mezzurite.startTime &&
-            m.startTime <= (<any>window).mezzurite.endTime
-        )
-        if (components.length > 0){
-            this.submitTelemetry(isRedirect)
-        }
+        this.submitTelemetry(isRedirect);
         (<any>window).mezzurite.captureCycleStarted = false;
     };
 
@@ -65,12 +57,12 @@ export class PerformanceTelemetryService {
                 (<any>window).mezzurite.firstViewLoaded = true;
             }
             // vlt
-            const vltResults = PerformanceTimingService.calculateVlt();
-            if (vltResults.components.length > 0){
+            if (components.length > 0){
+                const vltResults = PerformanceTimingService.calculateVlt();
                 timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
+                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.allComponents, -1, components));
             }
         }
-        timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.allComponents, -1, components));
         this.log(timings);
         MezzuriteUtils.testReset();
     };
@@ -90,6 +82,10 @@ export class PerformanceTelemetryService {
                     },
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
                     ViewportHeight: (<any>window).mezzurite.viewportHeight
+                }
+                // log to console when developing locally
+                if ((<any>window).location.href.indexOf("localhost") > -1){
+                    console.log("to log for testing: ",obj);
                 }
                 if ((<any>window).mezzurite.EventElement)
                 {
