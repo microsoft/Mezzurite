@@ -4,7 +4,16 @@
 import { MezzuriteConstants } from './performance-constants';
 import { MezzuriteUtils } from './performance-utils.service';
 
+/**
+ * Class containing core timing functions
+ */
 export class PerformanceTimingService {
+    /**
+     * Creates measure object from given set of performance marks
+     * @param name full semicolon delimited name
+     * @param slowestResource Slowest resource inside component
+     * @param maxComponentEndTime Max component end time (if VLT)
+     */
     static measure(name: string, slowestResource: any = null, maxComponentEndTime: any = null): void{
         let startEntry;
         let endEntry;
@@ -67,6 +76,10 @@ export class PerformanceTimingService {
         (<any>window).mezzurite.measures.push(obj);
     }
 
+    /**
+     * Gets a specific measure by name
+     * @param name name
+     */
     static getMeasureByName(name: string){
         if (name === undefined || name === null){
             return null;
@@ -80,6 +93,9 @@ export class PerformanceTimingService {
         return null;
     }
 
+    /**
+     * Gets current components from a given capture cycle
+     */
     static getCurrentComponents(){
         const components = (<any>window).mezzurite.measures.filter((m:any) => 
             m.name.indexOf(MezzuriteConstants.measureNamePrefix + ";" + MezzuriteConstants.altName) === -1 &&
@@ -90,6 +106,9 @@ export class PerformanceTimingService {
         return components;
     }
 
+    /**
+     * Gets lookup object of current components
+     */
     static getCurrentComponentsLookup(){
         const components = (<any>window).mezzurite.measures.filter((m:any) => 
             m.name.indexOf(MezzuriteConstants.measureNamePrefix + ";" + MezzuriteConstants.altName) === -1 &&
@@ -97,14 +116,17 @@ export class PerformanceTimingService {
             m.startTime >= (<any>window).mezzurite.startTime &&
             m.startTime <= (<any>window).mezzurite.endTime
         )
-        let obj = {};
+        let obj: any = {};
         for (let i = 0; i < components.length; i++){
             var name: string = components[i].name
-            (<any>obj)[name] = components[i];
+            obj[name] = components[i];
         }
         return obj;
     }
 
+    /**
+     * Calculates viewport load time
+     */
     static calculateVlt(){
         let maxComponent = null;
         let maxEndTime = 0;
@@ -148,35 +170,45 @@ export class PerformanceTimingService {
             vlt: measure.componentLoadTime,
             components: vltComponents
         }
-        }
+    }
 
-        static getElNames(el: any, key: string){
-            if ((<any>window).mezzurite.childElementNames[key] === undefined){
-                (<any>window).mezzurite.childElementNames[key] = [];
-            }
-            if (el.tagName === 'IMG'){
-                (<any>window).mezzurite.childElementNames[key].push(el.src);
-            }
+    /**
+     * Creates sub-element lookup object on global mezzurite object
+     * @param el 
+     * @param key 
+     */
+    static getElNames(el: any, key: string){
+        if ((<any>window).mezzurite.childElementNames[key] === undefined){
+            (<any>window).mezzurite.childElementNames[key] = [];
         }
+        if (el.tagName === 'IMG'){
+            (<any>window).mezzurite.childElementNames[key].push(el.src);
+        }
+    }
 
-        static calculateSlowestResource(el: any, fullName: string){
-            const key = MezzuriteUtils.getFullNamePart(fullName, MezzuriteConstants.fullNamePartKey);
-            let slowestResource = null;
-            MezzuriteUtils.walkDOM(el, key, this.getElNames);
-        
-            const resources: any = performance.getEntriesByType("resource").filter(r => (<any>r).initiatorType === 'img');
-            const currentResources = (<any>window).mezzurite.childElementNames[key];
-            if (resources.length === 0){
-                return;
-            }
-            for (let i = 0; i < currentResources.length; i++){
-                for (let j = 0; j < resources.length; j++){
-                    if (currentResources[i] === resources[j].name && (slowestResource === null || resources[j].responseEnd > slowestResource.responseEnd)){
-                        slowestResource = resources[j];
-                    }
+    /**
+     * Calculates slowest resource within a given component element
+     * @param el parent element
+     * @param fullName component fullname
+     */
+    static calculateSlowestResource(el: any, fullName: string){
+        const key = MezzuriteUtils.getFullNamePart(fullName, MezzuriteConstants.fullNamePartKey);
+        let slowestResource = null;
+        MezzuriteUtils.walkDOM(el, key, this.getElNames);
+    
+        const resources: any = performance.getEntriesByType("resource").filter((r:any) => (<any>r).initiatorType === 'img');
+        const currentResources = (<any>window).mezzurite.childElementNames[key];
+        if (resources.length === 0){
+            return;
+        }
+        for (let i = 0; i < currentResources.length; i++){
+            for (let j = 0; j < resources.length; j++){
+                if (currentResources[i] === resources[j].name && (slowestResource === null || resources[j].responseEnd > slowestResource.responseEnd)){
+                    slowestResource = resources[j];
                 }
             }
-            (<any>window).mezzurite.slowestResource[fullName] = slowestResource;
-            return slowestResource;
-        }   
+        }
+        (<any>window).mezzurite.slowestResource[fullName] = slowestResource;
+        return slowestResource;
+    }   
 }

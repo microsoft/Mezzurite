@@ -8,18 +8,27 @@ import { MezzuriteReactUtils } from './performance-utils-react.service';
 import { StateProvider } from './state-provider.service';
 import 'intersection-observer';
 
-// checks whether current component is class or stateless
+/**
+ * checks whether current component is class or stateless
+ * @param {*} Component component
+ */
 function isStateless(Component) {
     return !Component.prototype.render;
 }
 
-// checks if withMezzuriteRouter is being implemented on the App
+/**
+ * checks if withMezzuriteRouter is being implemented on the App
+ */
 function routerNotImplemented(){
     const routerNotImplementedBool = (window.mezzurite.routerPerf === undefined || !window.mezzurite.routerPerf);
     const listenerDoesntExistBool = (window.mezzurite.listenerExists === undefined || !window.mezzurite.listenerExists);
     return (routerNotImplementedBool && listenerDoesntExistBool)
 }
 
+/**
+ * Higher order component for adding Mezzurite functionality to a React component
+ * @param {*} WrappedComponent 
+ */
 const withMezzurite = (WrappedComponent) => {
     var ModifiedComponent;
 
@@ -59,7 +68,9 @@ const withMezzurite = (WrappedComponent) => {
                 }                
         }
         
-
+        /**
+         * Starts capture cycle on click when no routing service instrumented
+         */
         clickStartCaptureCycle(){
             PerformanceTelemetryService.captureTimings = PerformanceTelemetryService.captureTimings.bind(this);
             PerformanceTelemetryService.startCaptureCycle();
@@ -108,6 +119,9 @@ const withMezzurite = (WrappedComponent) => {
             },3000)
         }
 
+        /**
+         * Sets the ref property
+         */
         setRef(){
             this.wrappedRef = this;
         }

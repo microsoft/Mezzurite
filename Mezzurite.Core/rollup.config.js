@@ -1,4 +1,6 @@
 import typescript from 'rollup-plugin-typescript2'
+import uglify from 'rollup-plugin-uglify-es';
+import copy from 'rollup-plugin-copy-glob';
 import pkg from './package.json'
 
 export default [
@@ -20,6 +22,11 @@ export default [
         ],
       plugins: [
           typescript(),
+          uglify(),
+          copy([
+            { files: 'aot/*.metadata.json', dest: 'dist' },
+            { files: 'aot/*.metadata.json', dest: 'dist-esm' },
+          ], { verbose: false, watch: false })
         ],
       },
       {
@@ -43,6 +50,7 @@ export default [
                 }
             }
           }),
+          uglify()
         ],
       }
 ]

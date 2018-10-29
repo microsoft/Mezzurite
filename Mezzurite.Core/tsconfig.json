@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "es2015",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "declaration": true,
     "noImplicitAny": true,
     "outDir": "./dist-esm",
@@ -10,5 +12,9 @@
   "include": [
     "src/**/*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": false
+  }
 }
