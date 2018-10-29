@@ -4,6 +4,7 @@ import { PerformanceTimingService, MezzuriteUtils, MezzuriteConstants } from '@m
 @Directive({ 
      selector: '[mezzurite]' 
 })
+
 /**
  * Directive that enables tracking on specific component elements
  */
@@ -31,9 +32,9 @@ export class MezzuriteDirective implements OnInit {
         
         let observer = new IntersectionObserver(function(entries) {
             const entry = entries[0];
-            (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
-            (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
             if (entry.isIntersecting){
+                (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
+                (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
             else{

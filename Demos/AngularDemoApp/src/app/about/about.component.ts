@@ -38,8 +38,6 @@ export class AboutComponent implements OnInit {
          */
         this.localState = data.yourData;
       });
-
-    console.log('hello `About` component');
     /**
      * static data that is bundled
      * var mockData = require('assets/mock-data/mock-data.json');
@@ -58,7 +56,6 @@ export class AboutComponent implements OnInit {
 
       import('../../assets/mock-data/mock-data.json')
         .then((json) => {
-          console.log('async mockData', json);
           this.localState = json;
         });
 
