@@ -53,7 +53,7 @@ export class MezzuriteDirective implements OnInit {
                 else{
                     PerformanceTimingService.measure(that.fullName, slow)
                 }
-            },3000)
+            },MezzuriteConstants.slowestResourceTimeout)
         })
     }
 } 

@@ -1,0 +1,43 @@
+{
+  "name": "@des.epic.uscp.scripts/mezzurite.angularjs",
+  "version": "0.3.1",
+  "description": "Performance telemetry library for angularjs",
+  "repository": "",
+  "readme": "http://aka.ms/mezzurite",
+  "license": "",
+  "main": "./dist/index.js",
+  "module": "./dist-esm/index.js",
+  "scripts": {
+    "clean": "shx rm -rf browser dist dist-esm",
+    "build": "npm run clean && rollup -c && npm run post-build-cleanup",
+    "post-build-cleanup": "shx rm -rf dist/src dist-esm/src"
+  },
+  "dependencies": {
+    "@types/angular": "^1.5.6",
+    "@types/node": "^10.12.2",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "^6.3.3"
+  },
+  "devDependencies": {
+    "angular": "^1.6.6",
+    "awesome-typescript-loader": "^5.2.0",
+    "concurrently": "^3.0.0",
+    "lite-server": "^2.2.2",
+    "path": "^0.12.7",
+    "rollup-plugin-copy-glob": "^0.2.2",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-typescript2": "^0.17.2",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "shx": "^0.3.1",
+    "tslib": "^1.9.3",
+    "typescript": "^2.9.2"
+  },
+  "peerDependencies": {
+    "angular": "^1.6.6",
+    "rxjs": "^5.5.11"
+  },
+  "publishConfig": {
+    "registry": "https://microsoft.pkgs.visualstudio.com/_packaging/DES.EPIC.USCP.Scripts/npm/registry/"
+  }
+}

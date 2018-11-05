@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import { filter } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Router, NavigationStart } from "@angular/router";

@@ -6,6 +6,7 @@
  */
 const MezzuriteConstants = {
     captureCycleTimeout: 10000,
+    slowestResourceTimeout: 4000,
     idLength: 6,
     domAttributeName: "perf-id",
     measureNamePrefix: "mz",
