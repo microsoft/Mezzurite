@@ -4,6 +4,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "declaration": true,
     "noImplicitAny": true,
     "outDir": "./dist-esm",
