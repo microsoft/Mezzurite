@@ -35,20 +35,32 @@ The intention is to standardize between frameworks the way that teams discuss an
 - Angular 2 through 5
 - AngularJS
 
-## Features
+## The Mezzurite Approach
+Since SPA performance cannot be tracked in terms of PLT and other standard metrics we concluded that there was a need for new metrics that are applicable to SPAs. Working with different partners we identified the following:
+1. SPAs are heavily dependent on the framework they use.
+2. SPAs are created in terms of a set of individual components.
 
-Mezzurite captures a few different key timings:
-1. **Application Load Time (ALT)**
+### Mezzurite Metrics
+Using the above, we created the following metrics as relevant to the measurement of SPA performance:
+
+#### Application Load Time (ALT)
 - Captures time between when the url was requested until when the SPA framework is completely loaded. This mainly captures the network time, the server response time and time it takes to load the application framework into the DOM.
 - To measure the ALT, we hook into the framework router, and record the first known route change. We subtract this time from the navigation start: ALT == #routeChange1 - navigationStart
   
-2. **Component Load Time (CLT)**
+#### Component Load Time (CLT)
 - Time it takes for a component to load on the SPA page.
 - To measure CLTs, we instrument individual components. We hook into the framework's component lifecycle and take the timings from the initialization method of the component. CLT = component init end - component init start
   
-3. **Viewport Load Time (VLT)**
+#### Viewport Load Time (VLT)
 - Time taken to render the part of SPA page that fits the viewport for the form factor on which page is being viewed. Components on the page that are outside of the viewport are, by definition, not considered while calculating this metric.
 - To measure VLTs, we look at the individual components that have been recorded on the page as well as their current location in the DOM, then we find which one was the slowest within the viewport and subtract its time from the last route change that happened. VLT = (slowest component in viewport) init end (in ticks) - last route change time (in ticks)
+
+#### Time to First Viewport Load Time (TTFVLT)
+- Time duration between the first time a SPA url is requested by the client to when content gets rendered within the browser viewport.
+- This is the application load time + the viewport load time for the page that was first routed to TFVL = ALT + VLT
+
+### Comparing Mezzurite metrics with W3C timings
+![w3c timeline visual](./docs/images/Mezzurite_Timing.png "Mezzurite Spa Timing Graphic")
 
 ## Framework-Specific Documentation
 - [Mezzurite-React](./Mezzurite.React/README.md)
