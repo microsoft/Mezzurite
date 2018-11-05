@@ -1,6 +1,6 @@
 # Mezzurite-React
 
-#### Requirements:
+### Requirements:
 **For component tracking:** 
 ```
     "react": "^16.4.2"
