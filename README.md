@@ -27,6 +27,12 @@ Mezzurite captures a few different key timings:
 - Time taken to render the part of SPA page that fits the viewport for the form factor on which page is being viewed. Components on the page that are outside of the viewport are, by definition, not considered while calculating this metric.
 - To measure VLTs, we look at the individual components that have been recorded on the page as well as their current location in the DOM, then we find which one was the slowest within the viewport and subtract its time from the last route change that happened. VLT = (slowest component in viewport) init end (in ticks) - last route change time (in ticks)
 
+## Framework-Specific Documentation
+- [Mezzurite-React](./Mezzurite.React/README.md)
+- [Mezzurite-Angular 6](./Mezzurite.Angular/README.md)
+- [Mezzurite-Angular 2 through 5](./Mezzurite.Angular2_5/README.md)
+- [Mezzurite-AngularJS](./Mezzurite.AngularJS/README.md)
+
 ## Limitations
 - Currently do not track component loads that happen without a navigation to a new route.
 - With React, componentDidMount reflects the outer-most component, not its children. In most cases this is adequate, but for performance this means that the component can theoretically be marked complete before it's child resources have been completely downloaded. We have since added slowestResourceTiming to each component with a child resource (IMG) to better differentiate between these two values.
