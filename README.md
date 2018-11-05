@@ -1,7 +1,30 @@
 
 # Mezzurite
 
-The Mezzurite API standardizes the collection, logging and reporting of performance markers for Single Page Applications (SPA). Mezzurite allows you to collect Real User Monitoring (RUM) data, giving developers access to real world insight on performance issues customers might be facing.
+The Mezzurite API standardizes the collection, logging and reporting of performance markers for Single Page Applications (SPA). Mezzurite allows you to collect Real User Monitoring (RUM) data allowing you access to real world insight on performance issues your customers might be facing.
+
+Mezzurite exists because traditional metrics like Page Load Time (PLT) are not relevant to the performance of SPAs due to their dynamic content update nature. Developers that realize this often use custom markers to track their performance, which may or may not be useful. Our goal is to:
+1. Make it easy to capture relevant performance markers for single page applications
+2. Standardize these metrics so that the performance of different sites are comparable
+
+## Background
+### What is a Single Page Application?
+These are web applications built using JavaScript frameworks that run as a single page. The framework takes care of dynamically pulling in the content required for the page instead of the whole page being torn down by the browser and a new page fetched. Since only specific portions of the page are updated instead of the entire page, the performance is noticeably better. The navigational experience is also smoother. There is an ongoing trend of converting static web sites to single page applications for the performance/experience benefits.
+
+### Measuring the performance of traditional web sites
+Traditional web sites are built as static web sites, where on page load all the assets are statically linked to the page being downloaded. Browsers traditionally fire the onload event when all of these assets are loaded into the Document Object Model (DOM), indicating the end of the page load. The time it takes from the initial request till the onload event is triggered is know as the Page Load Time. This is one of the standard metrics used to measure web site's performance.
+
+### Challenges facing the performance measurement for Single Page Applications
+There are 2 main challenges facing the performance measurement of Single Page Applications:
+1. The onload event that the PLT relies on continues to get fired after the static assets get downloaded, which is the case for static web sites as well, however in the case of SPAs, there is additional content that needs to get loaded, that the framework dynamically updates. i.e. the onload event gets fired for a single page application much before all the page's content is available, making the PLT meaningless while measuring the performance of SPAs.
+2. From a browser perspective, there is only a single page that gets loaded in the browser. Navigations within SPA are handled by the framework and don't come in as new page requests to the browser.
+
+### Visual representation of the challenges of using standard metrics with SPAs
+The below image shows a few things:
+1. The onload event gets fired at the 1.225s mark
+2. There is still a bunch of activity after the onload event is fired, representing the dynamic updates by the JavaScript framework
+3. The SPA is fully loaded at the 2.6s mark, way after the PLT was fired
+![Spa](./docs/images/Mezzurite_TheSpaProblem.png "Mezzurite Spa Problem Graphic")
 
 ## Goals
 The intention is to standardize between frameworks the way that teams discuss and evaluate their real user performance data.
