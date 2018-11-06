@@ -26,7 +26,7 @@ angular.module('AngularJsTestApp', [
   'angularjsrouting'
 ])
 ```
-2. Inside the app run block, start the Mezzurite routing service:
+3. Inside the app run block, start the Mezzurite routing service:
 ```javascript
 .run(['$rootScope', 'AngularJsRoutingService', function($rootScope, AngularJsRoutingService){
   AngularJsRoutingService.start($rootScope); 
