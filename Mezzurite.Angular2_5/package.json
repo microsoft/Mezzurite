@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
+  "description": "Library for capturing SPA timings within Angular 2-5.",
+  "author": "Microsoft Corporation",
+  "license": "MIT",
   "scripts": {
     "clean": "shx rm -rf browser dist dist-esm",
     "build": "npm run clean && node_modules\\.bin\\ngc -p tsconfig.aot.json && rollup -c && npm run post-clean",

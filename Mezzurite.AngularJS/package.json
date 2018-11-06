@@ -1,9 +1,9 @@
 {
   "name": "@microsoft/mezzurite-angularjs",
   "version": "1.0.0",
-  "description": "Performance telemetry library for angularjs",
-  "repository": "",
-  "license": "",
+  "description": "Library for capturing SPA timings within AngularJS.",
+  "author": "Microsoft Corporation",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
   "scripts": {
