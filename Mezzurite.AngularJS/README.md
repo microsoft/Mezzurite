@@ -1,5 +1,4 @@
-# Mezzurite-Angular
-**For Angular 6, use @microsoft/mezzurite-angular@2.x**
+# Mezzurite-AngularJS
 ## Requirements:
 ```json
   "dependencies": {
