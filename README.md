@@ -77,10 +77,5 @@ Using the above, we created the following metrics as relevant to the measurement
 - Currently do not track component loads that happen without a navigation to a new route.
 - With React, componentDidMount reflects the outer-most component, not its children. In most cases this is adequate, but for performance this means that the component can theoretically be marked complete before it's child resources have been completely downloaded. We have since added slowestResourceTiming to each component with a child resource (IMG) to better differentiate between these two values.
 
-
-
-
-
-
-
+## Contributions
 [To read about contributing to this repo, click here](CONTRIBUTING.md)
