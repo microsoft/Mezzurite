@@ -43,10 +43,11 @@ function View1Ctrl($timeout, AngularJsPerfService){
     var el = document.getElementById("component-1")
     //create the component and start timing
     var myComponent = AngularJsPerfService.initPerfComponent("testComponent", el)
-    ...
-    ...
+    // ...
+    // ...
     // set your component complete
     $timeout(function(){
       myComponent.setComponentComplete();
     })
+}
 ```
