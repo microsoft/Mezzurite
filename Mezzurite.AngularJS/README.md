@@ -4,12 +4,10 @@
   "dependencies": {
     "@types/angular": "^1.5.6",
     "@types/node": "^10.12.2",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "^6.3.3"
+    "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
-    "angular": "^1.6.6",
-    "rxjs": "^5.5.11"
+    "angular": "^1.6.6"
   },
 ```
 
