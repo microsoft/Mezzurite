@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Header from '../../modules/header';
-import { withMezzurite } from '@ms/mezzurite-react';
+import { withMezzurite } from '@microsoft/mezzurite-react';
 
 class About extends Component {
 

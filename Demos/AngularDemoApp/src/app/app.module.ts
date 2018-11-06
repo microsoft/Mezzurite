@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularPerfModule, RoutingService } from '@ms/mezzurite-angular';
+import { AngularPerfModule, RoutingService } from '@microsoft/mezzurite-angular';
 
 /*
  * Platform and Environment providers/directives/pipes

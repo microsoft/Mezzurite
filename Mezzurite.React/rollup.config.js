@@ -17,7 +17,7 @@ export default [
     },
     experimentalCodeSplitting: true,
     external: [
-        'react', 'react-dom', 'react-router', 'intersection-observer', '@ms/mezzurite-core'
+        'react', 'react-dom', 'react-router', 'intersection-observer', '@microsoft/mezzurite-core'
     ],
     plugins: [
         json(),
@@ -41,7 +41,7 @@ export default [
     },
     experimentalCodeSplitting: true,
     external: [
-        'react', 'react-dom', 'react-router', 'intersection-observer', '@ms/mezzurite-core'
+        'react', 'react-dom', 'react-router', 'intersection-observer', '@microsoft/mezzurite-core'
     ],
     plugins: [
         json(),
@@ -64,7 +64,7 @@ export default [
     }
     },
     external: [
-        'react', 'react-dom', 'react-router', 'intersection-observer', '@ms/mezzurite-core'
+        'react', 'react-dom', 'react-router', 'intersection-observer', '@microsoft/mezzurite-core'
     ],
     plugins: [
         json(),

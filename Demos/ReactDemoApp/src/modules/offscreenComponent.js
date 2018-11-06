@@ -1,6 +1,6 @@
 import React from 'react';
 import Mountains from '../mountains.jpg';
-import { withMezzurite } from '@ms/mezzurite-react';
+import { withMezzurite } from '@microsoft/mezzurite-react';
 
 
 let divStyles = {

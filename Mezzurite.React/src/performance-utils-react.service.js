@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { MezzuriteUtils } from "@ms/mezzurite-core";
+import { MezzuriteUtils } from "@microsoft/mezzurite-core";
 import pkg from "../package";
 
 /**

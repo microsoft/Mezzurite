@@ -1,5 +1,5 @@
 import React from 'react';
-import { withMezzurite } from '@ms/mezzurite-react';
+import { withMezzurite } from '@microsoft/mezzurite-react';
 
 let styles = {
     margin: '20px',

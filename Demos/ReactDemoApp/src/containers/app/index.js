@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import Home from '../home'
 import About from '../about'
-import { withMezzuriteRouter } from '@ms/mezzurite-react';
+import { withMezzuriteRouter } from '@microsoft/mezzurite-react';
 
 class App extends React.Component{
   

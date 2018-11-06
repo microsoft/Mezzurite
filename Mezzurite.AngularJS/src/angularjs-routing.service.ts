@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import {MezzuriteConstants, PerformanceTelemetryService, PerformanceTimingService} from "@ms/mezzurite-core";
+import {MezzuriteConstants, PerformanceTelemetryService, PerformanceTimingService} from "@microsoft/mezzurite-core";
 import { MezzuriteAngularJsUtils } from './angularjs-performance-utils.service';
 
 export class AngularJsRoutingService {

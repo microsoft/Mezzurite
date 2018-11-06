@@ -22,7 +22,7 @@ export default [
           ...Object.keys(pkg.dependencies || {}),
           ...Object.keys(pkg.peerDependencies || {}),
           "rxjs/operators",
-          "@ms/mezzurite-core"
+          "@microsoft/mezzurite-core"
         ],
       plugins: [
           json(),
@@ -44,7 +44,7 @@ export default [
             format: 'umd',
             globals: {
               "@angular/core": "ng.core",
-              "@ms/mezzurite-core": "mezzurite-core",
+              "@microsoft/mezzurite-core": "mezzurite-core",
               rxjs: "Rx",
               "rxjs/operators": "Rx",
               "@angular/router": "ng.router"
@@ -55,7 +55,7 @@ export default [
           ...Object.keys(pkg.dependencies || {}),
           ...Object.keys(pkg.peerDependencies || {}),
           "rxjs/operators",
-          "@ms/mezzurite-core"
+          "@microsoft/mezzurite-core"
         ],
       plugins: [
           json(),

@@ -17,7 +17,7 @@
 ### Tracking Components Only
 1. In the component you want to track, add an import statement for mezzurite-react:
 ```javascript
-import {withMezzurite} from '@ms/mezzurite-react';
+import {withMezzurite} from '@microsoft/mezzurite-react';
 ```
 2. Since **withMezzurite** is a React "Higher Order Component", it will take in an existing component and return a modified version (with component performance timings). We need to modify our export statement:
 ```javascript
@@ -33,7 +33,7 @@ export default withMezzurite(ExampleComponent);
 1. Follow steps from "Tracking Components Only" section above.
 2. Inside main App module, add following import statement:
 ```javascript
-import {withMezzuriteRouter} from '@ms/mezzurite-react';
+import {withMezzuriteRouter} from '@microsoft/mezzurite-react';
 ```
 3. Similar to **withMezzurite**, we will create a new modified component using our **withMezzuriteRouter** HOC:
 ```javascript

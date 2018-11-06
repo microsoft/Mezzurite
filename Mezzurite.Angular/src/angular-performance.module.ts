@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { NgModule, ModuleWithProviders } from "@angular/core";
-import { PerformanceTimingService } from "@ms/mezzurite-core";
+import { PerformanceTimingService } from "@microsoft/mezzurite-core";
 import { MezzuriteDirective } from './angular-performance.directive';
 import { RoutingService } from "./angular-routing.service";
 

@@ -4,7 +4,7 @@
 import { filter } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Router, NavigationStart } from "@angular/router";
-import { PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants} from "@ms/mezzurite-core";
+import { PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants} from "@microsoft/mezzurite-core";
 import { MezzuriteAngularUtils } from "./performance-utils-angular.service";
 
 

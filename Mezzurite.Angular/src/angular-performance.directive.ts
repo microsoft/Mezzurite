@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { Directive, OnInit, ElementRef, Input } from '@angular/core';
-import { PerformanceTimingService, MezzuriteUtils, MezzuriteConstants } from '@ms/mezzurite-core';
+import { PerformanceTimingService, MezzuriteUtils, MezzuriteConstants } from '@microsoft/mezzurite-core';
 
 @Directive({ 
      selector: '[mezzurite]' 
