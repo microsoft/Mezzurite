@@ -2,6 +2,7 @@
 ## Requirements:
 ```json
   "dependencies": {
+    "@microsoft/mezzurite-core": "^1.1.0",
     "@types/angular": "^1.5.6",
     "@types/node": "^10.12.2",
     "reflect-metadata": "^0.1.8"
