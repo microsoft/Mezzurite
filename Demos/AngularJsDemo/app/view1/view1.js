@@ -3,9 +3,9 @@
 angular.module('AngularJsTestApp')
 .controller('View1Ctrl', View1Ctrl);
 
-View1Ctrl.$inject = ['$timeout', 'AngularJsPerfService'];
+View1Ctrl.$inject = ['AngularJsPerfService'];
 
-function View1Ctrl($timeout, AngularJsPerfService){
+function View1Ctrl(AngularJsPerfService){
     var el = document.getElementById("component-1")
     var pie = document.getElementById("pie-component")
     var myComponent = AngularJsPerfService.initPerfComponent("testComponent", el)

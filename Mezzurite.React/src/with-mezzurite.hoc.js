@@ -3,7 +3,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants} from '@ms/mezzurite-core';
+import {PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants} from '@microsoft/mezzurite-core';
 import { MezzuriteReactUtils } from './performance-utils-react.service';
 import { StateProvider } from './state-provider.service';
 import 'intersection-observer';

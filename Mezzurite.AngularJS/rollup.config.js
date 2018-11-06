@@ -21,7 +21,7 @@ export default [
         external: [
           ...Object.keys(pkg.dependencies || {}),
           ...Object.keys(pkg.peerDependencies || {}),
-          "@ms/mezzurite-core"
+          "@microsoft/mezzurite-core"
         ],
       plugins: [
           json(),
@@ -39,14 +39,14 @@ export default [
             format: 'umd',
             globals: {
               "angular": "angular",
-              "@ms/mezzurite-core": "MezzuriteCore",
+              "@microsoft/mezzurite-core": "MezzuriteCore",
             },
           }
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
           ...Object.keys(pkg.peerDependencies || {}),
-          "@ms/mezzurite-core"
+          "@microsoft/mezzurite-core"
         ],
       plugins: [
           json(),

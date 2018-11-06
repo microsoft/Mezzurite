@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { MezzuriteConstants, PerformanceTimingService } from '@ms/mezzurite-core';
+import { MezzuriteConstants, PerformanceTimingService } from '@microsoft/mezzurite-core';
 import { MezzuriteAngularJsUtils } from './angularjs-performance-utils.service';
 
 export class AngularJsPerfComponent {

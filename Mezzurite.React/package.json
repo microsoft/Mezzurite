@@ -1,11 +1,10 @@
 {
-  "name": "@ms/mezzurite-react",
+  "name": "@microsoft/mezzurite-react",
   "version": "1.0.0",
   "description": "Mezzurite.JS Bundle for use with React 16.x",
   "keywords": [
     "mezzurite-react"
   ],
-  "homepage": "https://osgwiki.com/wiki/USCP",
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
   "publishConfig": {

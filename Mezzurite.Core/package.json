@@ -1,5 +1,5 @@
 {
-  "name": "@ms/mezzurite-core",
+  "name": "@microsoft/mezzurite-core",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
@@ -10,6 +10,7 @@
     "test": "jest --verbose"
   },
   "dependencies": {
+    "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
     "reflect-metadata": "^0.1.8"
   },
@@ -31,7 +32,6 @@
     "ts-jest": "^23.10.4",
     "tslib": "^1.9.3",
     "typescript": "^2.9.2",
-    "typings": "^1.4.0",
     "vsts-npm-auth": "^0.37.0"
   },
   "jest": {

@@ -1,29 +1,33 @@
 # Mezzurite-Angular
-**For Angular 6, use @microsoft/mezzurite-angular@2.x**
+**For Angular 2-5, use @microsoft/mezzurite-angular@1.x**
 ## Requirements:
 ```json
   "dependencies": {
+    "@microsoft/mezzurite-core": "^1.1.0", // important!
     "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
-    "@types/node": "^10.12.2",
+    "@types/node": "^10.12.0",
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
-    "@angular/common": "^6.1.9",
-    "@angular/compiler": "^6.1.9",
-    "@angular/core": "^6.1.9",
-    "@angular/forms": "^6.1.9",
-    "@angular/http": "^6.1.9",
-    "@angular/platform-browser": "^6.1.9",
-    "@angular/platform-browser-dynamic": "^6.1.9",
-    "@angular/router": "^6.1.9",
+    "@angular/common": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/compiler": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/core": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/forms": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/http": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/platform-browser": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/platform-browser-dynamic": "^2.4.0||^4.0.0 ||^5.0.0",
+    "@angular/router": "^2.4.0||^4.0.0 ||^5.0.0",
     "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.2.2",
     "zone.js": "^0.x"
   },
 ```
 
 ## Onboarding
+**To use our logging library for Azure Application Insights, please install "@microsoft/applicationInsights-mezzurite" from npm**
+
 ### Basic Setup (Application Load Time)
 1. Import the following modules in app.module:
 ```javascript

@@ -48,8 +48,6 @@ angular.module('AngularJsTestApp', [
 }])
 
 .run(['$rootScope', 'AngularJsRoutingService', function($rootScope, AngularJsRoutingService){
-  console.log('My app is cool: ' + new Date().getTime());  
-  console.log("routing service: ",AngularJsRoutingService);
   AngularJsRoutingService.start($rootScope); 
 }]);
 

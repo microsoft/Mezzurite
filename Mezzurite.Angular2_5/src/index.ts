@@ -1,1 +1,4 @@
-﻿export * from "./angular-performance.module";
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+export * from "./angular-performance.module";
