@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2'
 import uglify from 'rollup-plugin-uglify-es';
@@ -22,7 +25,7 @@ export default [
           ...Object.keys(pkg.dependencies || {}),
           ...Object.keys(pkg.peerDependencies || {}),
           "rxjs/operators",
-          "@ms/mezzurite-core"
+          "@microsoft/mezzurite-core"
         ],
       plugins: [
           json(),
@@ -31,7 +34,7 @@ export default [
           uglify(),
           copy([
             { files: 'aot/*.metadata.json', dest: 'dist' },
-            { files: 'aot/*.metadata.json', dest: 'dist-esm' },
+            { files: 'aot/*.metadata.json', dest: 'dist-esm' }
           ], { verbose: false, watch: false })
         ],
       },
@@ -44,7 +47,7 @@ export default [
             format: 'umd',
             globals: {
               "@angular/core": "ng.core",
-              "@ms/mezzurite-core": "mezzurite-core",
+              "@microsoft/mezzurite-core": "mezzurite-core",
               rxjs: "Rx",
               "rxjs/operators": "Rx",
               "@angular/router": "ng.router"
@@ -55,7 +58,7 @@ export default [
           ...Object.keys(pkg.dependencies || {}),
           ...Object.keys(pkg.peerDependencies || {}),
           "rxjs/operators",
-          "@ms/mezzurite-core"
+          "@microsoft/mezzurite-core"
         ],
       plugins: [
           json(),

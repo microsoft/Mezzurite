@@ -1,5 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 import { Directive, OnInit, ElementRef, Input } from '@angular/core';
-import { PerformanceTimingService, MezzuriteUtils, MezzuriteConstants } from '@ms/mezzurite-core';
+import { PerformanceTimingService, MezzuriteUtils, MezzuriteConstants } from '@microsoft/mezzurite-core';
 
 @Directive({ 
      selector: '[mezzurite]' 
@@ -53,7 +56,7 @@ export class MezzuriteDirective implements OnInit {
                 else{
                     PerformanceTimingService.measure(that.fullName, slow)
                 }
-            },3000)
+            },MezzuriteConstants.slowestResourceTimeout)
         })
     }
 } 
