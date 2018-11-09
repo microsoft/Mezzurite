@@ -44,9 +44,14 @@ const withMezzurite = (WrappedComponent) => {
             super(props);
                 if (!window.mezzurite){
                     // capture first load
-                    MezzuriteReactUtils.createMezzuriteObject();
+                    window.mezzurite = {};
+                    MezzuriteReactUtils.createMezzuriteObject(window.mezzurite);
                     PerformanceTelemetryService.startCaptureCycle();
                 }
+                else{
+                    MezzuriteReactUtils.createMezzuriteObject(window.mezzurite);
+                }
+                
                 if (window.mezzurite.isCompatible === undefined){
                     window.mezzurite.isCompatible = PerformanceTelemetryService.compatibilityCheck();
                 }
