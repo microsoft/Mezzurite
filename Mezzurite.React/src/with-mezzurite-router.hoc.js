@@ -12,8 +12,10 @@ import { MezzuriteReactUtils } from './performance-utils-react.service';
  */
 const withMezzuriteRouter = (WrappedComponent) => {
     if (!window.mezzurite){
-        MezzuriteReactUtils.createMezzuriteObject();
+        window.mezzurite = {};
     }
+    MezzuriteReactUtils.createMezzuriteObject(window.mezzurite);
+
     if (window.mezzurite.isCompatible === undefined){
         window.mezzurite.isCompatible = PerformanceTelemetryService.compatibilityCheck();
     }
