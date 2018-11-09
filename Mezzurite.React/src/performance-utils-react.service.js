@@ -8,8 +8,8 @@ import pkg from "../package";
  * Extension of Mezzurite Utilities that gets package specific information
  */
 export class MezzuriteReactUtils extends MezzuriteUtils{
-    static createMezzuriteObject(){
-        super.createMezzuriteObject();
+    static createMezzuriteObject(obj){
+        super.createMezzuriteObject(obj);
         window.mezzurite.packageVersion = pkg.version;
         window.mezzurite.packageName = pkg.name;
     }
