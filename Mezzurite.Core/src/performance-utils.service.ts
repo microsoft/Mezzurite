@@ -17,7 +17,9 @@ export class MezzuriteUtils {
     static createMezzuriteObject(obj: any): void {
         var mzObj = new MezzuriteObject();
         for (var prop in mzObj){
-            obj[prop] = (<any>mzObj)[prop];
+            if (obj[prop] === undefined){
+                obj[prop] = (<any>mzObj)[prop];
+            }
         }
     };
  

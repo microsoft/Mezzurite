@@ -14,12 +14,11 @@ export class PerformanceTelemetryService {
      * Starts capture cycle period
      */
     static startCaptureCycle(){  
-        let that = this;
         if (!(<any>window).mezzurite.captureCycleStarted){
             (<any>window).mezzurite.startTime = window.performance.now();
             (<any>window).mezzurite.captureCycleStarted = true;
             (<any>window).mezzurite.captureTimer = setTimeout(function(){
-                that.captureTimings();
+                PerformanceTelemetryService.captureTimings();
             },MezzuriteConstants.captureCycleTimeout)
         }
     };
@@ -34,7 +33,7 @@ export class PerformanceTelemetryService {
         if (!(<any>window).mezzurite.captureCycleStarted){
             (<any>window).mezzurite.captureCycleStarted = true;
         }
-        this.submitTelemetry(isRedirect);
+        PerformanceTelemetryService.submitTelemetry(isRedirect);
         (<any>window).mezzurite.captureCycleStarted = false;
     };
 
@@ -60,8 +59,11 @@ export class PerformanceTelemetryService {
             if (components.length > 0){
                 const vltResults = PerformanceTimingService.calculateVlt();
                 timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
-                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.allComponents, -1, components));
+
             }
+        }
+        if (components.length > 0){
+            timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.allComponents, -1, components));
         }
         this.log(timings);
         MezzuriteUtils.testReset();
