@@ -51,7 +51,7 @@ const withMezzurite = (WrappedComponent) => {
                 else{
                     MezzuriteReactUtils.createMezzuriteObject(window.mezzurite);
                 }
-                
+
                 if (window.mezzurite.isCompatible === undefined){
                     window.mezzurite.isCompatible = PerformanceTelemetryService.compatibilityCheck();
                 }

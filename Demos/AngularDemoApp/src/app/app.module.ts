@@ -79,6 +79,6 @@ interface StoreType {
 })
 export class AppModule {
   constructor(@Inject(RoutingService) private router: typeof RoutingService) {
-    router.start();
+    (<any>router).start();
   }
 }
