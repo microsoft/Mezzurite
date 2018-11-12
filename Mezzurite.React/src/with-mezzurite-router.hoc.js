@@ -23,12 +23,11 @@ const withMezzuriteRouter = (WrappedComponent) => {
         console.warn("compatibility warning")
         return WrappedComponent;
     }
+    // indicates that we are tracking router timings
+    window.mezzurite.routerPerf = true;
+    
     return withRouter((props) => {
         // this bool disables click handler (used for scenarios without Mezzurite Router HOC)
-            if (window.mezzurite.router === undefined){
-                window.mezzurite.routerPerf = true;
-            }
-    
             if (window.mezzurite.recentPath !== props.location.pathname){
                 // handle re-route before complete timing capture cycle
                 if (window.mezzurite.captureCycleStarted){

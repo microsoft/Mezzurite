@@ -60,7 +60,9 @@ export default [
     format: 'umd',
     globals: {
         react: 'React',
-        'react-dom': 'ReactDOM'
+        'react-dom': 'ReactDOM',
+        'react-router': 'ReactRouter',
+        '@microsoft/mezzurite-core': 'MezzuriteCore'
     }
     },
     external: [
