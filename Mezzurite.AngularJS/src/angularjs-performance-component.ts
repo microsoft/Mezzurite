@@ -31,7 +31,6 @@ export class AngularJsPerfComponent {
             }
         }, config);
             observer.observe(this.element);
-            observer.unobserve(this.element);
 
         setTimeout(function(){
             const slow = PerformanceTimingService.calculateSlowestResource(that.element, that.fullName);
