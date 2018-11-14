@@ -55,7 +55,5 @@ export class MezzuriteDirective implements OnInit {
             observer.unobserve(this.el);
         }, config);
             observer.observe(this.el);
-
-            
     }
 } 

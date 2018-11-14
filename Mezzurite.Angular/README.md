@@ -9,14 +9,14 @@
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
-    "@angular/common": "^6.1.9",
-    "@angular/compiler": "^6.1.9",
-    "@angular/core": "^6.1.9",
-    "@angular/forms": "^6.1.9",
-    "@angular/http": "^6.1.9",
-    "@angular/platform-browser": "^6.1.9",
-    "@angular/platform-browser-dynamic": "^6.1.9",
-    "@angular/router": "^6.1.9",
+    "@angular/common": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/compiler": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/core": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/forms": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/http": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/platform-browser": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/platform-browser-dynamic": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/router": "^3.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
     "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
     "zone.js": "^0.x"
