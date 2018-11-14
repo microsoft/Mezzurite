@@ -42,7 +42,7 @@ export class MezzuriteDirective implements OnInit {
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
             setTimeout(function(){
-                // consider how media queries affect this (image that is never downloaded)
+                // consider how media queries affect this (image that is never downloaded) (Issue #7)
                 const slow = PerformanceTimingService.calculateSlowestResource(that.el, that.fullName);
                 if (slow === null){
                     PerformanceTimingService.measure(that.fullName)
