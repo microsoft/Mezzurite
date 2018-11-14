@@ -8,7 +8,7 @@ export class AngularJsPerfComponent {
     fullName: string;
     key: string;
     constructor(public name: string, public element: HTMLElement) {
-        this.key = MezzuriteAngularJsUtils.makeId();
+        this.key = (<any>MezzuriteAngularJsUtils).makeId();
         window.performance.mark(this.key + MezzuriteConstants.componentMarkStart);
         this.fullName = MezzuriteConstants.measureNamePrefix + ";" + this.name + ";" + this.key
         const config = {
@@ -17,6 +17,7 @@ export class AngularJsPerfComponent {
         };
         var that = this;
         let observer = new IntersectionObserver(function(entries) {
+            window.performance.mark(this.key + MezzuriteConstants.componentMarkEnd);
             const entry = entries[0];
             if (that.fullName !== undefined){
                 if (entry.isIntersecting){
@@ -30,11 +31,8 @@ export class AngularJsPerfComponent {
             }
         }, config);
             observer.observe(this.element);
-    }
+            observer.unobserve(this.element);
 
-    setComponentComplete(){
-        window.performance.mark(this.key + MezzuriteConstants.componentMarkEnd);
-        var that = this;
         setTimeout(function(){
             const slow = PerformanceTimingService.calculateSlowestResource(that.element, that.fullName);
             if (slow === null){
@@ -43,6 +41,8 @@ export class AngularJsPerfComponent {
             else{
                 PerformanceTimingService.measure(that.fullName, slow)
             }
+            that.element = null;
         },MezzuriteConstants.slowestResourceTimeout)
     }
+
 }

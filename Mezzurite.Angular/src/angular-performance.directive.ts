@@ -34,21 +34,19 @@ export class MezzuriteDirective implements OnInit {
         };
         
         let observer = new IntersectionObserver(function(entries) {
+            performance.mark(that.id + MezzuriteConstants.componentMarkEnd)
             const entry = entries[0];
             if (entry.isIntersecting){
                 (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
                 (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
-            else{
-                (<any>window).mezzurite.vltComponentLookup[that.fullName] = false;
-            }
         }, config);
             observer.observe(this.el);
+            observer.unobserve(this.el);
 
-        setTimeout(function(){
-            performance.mark(that.id + MezzuriteConstants.componentMarkEnd)
             setTimeout(function(){
+                // consider how media queries affect this (image that is never downloaded)
                 const slow = PerformanceTimingService.calculateSlowestResource(that.el, that.fullName);
                 if (slow === null){
                     PerformanceTimingService.measure(that.fullName)
@@ -56,7 +54,7 @@ export class MezzuriteDirective implements OnInit {
                 else{
                     PerformanceTimingService.measure(that.fullName, slow)
                 }
+                that.el = null;
             },MezzuriteConstants.slowestResourceTimeout)
-        })
     }
 } 
