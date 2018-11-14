@@ -6,14 +6,12 @@ angular.module('AngularJsTestApp')
 View1Ctrl.$inject = ['AngularJsPerfService'];
 
 function View1Ctrl(AngularJsPerfService){
-    var el = document.getElementById("component-1")
-    var pie = document.getElementById("pie-component")
-    var myComponent = AngularJsPerfService.initPerfComponent("testComponent", el)
-    var pieComponent = AngularJsPerfService.initPerfComponent("pieComponent", pie)
-    angular.element(el).ready(function(){
-        myComponent.setComponentComplete();
-    })
-    angular.element(pie).ready(function(){
-        pieComponent.setComponentComplete();
+    var image = document.getElementById("big-image-component")
+    var box = document.getElementById("red-box-component")
+    var imageComponent = AngularJsPerfService.initPerfComponent("imageComponent", image)
+    var boxComponent = AngularJsPerfService.initPerfComponent("boxComponent", box)
+    boxComponent.setComponentComplete();
+    angular.element(image).ready(function(){
+        imageComponent.setComponentComplete();
     })
 };

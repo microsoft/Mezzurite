@@ -16,22 +16,26 @@ export class AngularJsPerfComponent {
             rootMargin: '0px'
         };
         var that = this;
-        let observer = new IntersectionObserver(function(entries) {
-            window.performance.mark(this.key + MezzuriteConstants.componentMarkEnd);
+        let observer = new IntersectionObserver(function(entries, observer) {
             const entry = entries[0];
+            (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
+            (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
             if (that.fullName !== undefined){
                 if (entry.isIntersecting){
-                    (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
-                    (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                     (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
                 }
                 else{
                     (<any>window).mezzurite.vltComponentLookup[that.fullName] = false;
                 }
             }
+            observer.unobserve(that.element);
         }, config);
             observer.observe(this.element);
+    }
 
+    setComponentComplete(){
+        window.performance.mark(this.key + MezzuriteConstants.componentMarkEnd);
+        var that = this;
         setTimeout(function(){
             const slow = PerformanceTimingService.calculateSlowestResource(that.element, that.fullName);
             if (slow === null){
@@ -43,5 +47,4 @@ export class AngularJsPerfComponent {
             that.element = null;
         },MezzuriteConstants.slowestResourceTimeout)
     }
-
 }
