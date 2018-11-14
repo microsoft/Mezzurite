@@ -68,8 +68,7 @@ const withMezzurite = (WrappedComponent) => {
                 // if not using mezzurite with React Router 4, adds click handler to capture events
                 if (routerNotImplemented() && !window.mezzurite.listenerExists)
                 {
-                    // passive is important - refactor
-                    window.addEventListener('mousedown', this.clickStartCaptureCycle);
+                    window.addEventListener('mousedown', this.clickStartCaptureCycle, {passive: true});
                     window.mezzurite.listenerExists = true;
                 }                
         }
