@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-angularjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for capturing SPA timings within AngularJS.",
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "post-build-cleanup": "shx rm -rf dist/src dist-esm/src"
   },
   "dependencies": {
+    "@microsoft/mezzurite-core": "^1.0.1",
     "@types/angular": "^1.5.6",
-    "@types/node": "^10.12.2",
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {

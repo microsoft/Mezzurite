@@ -135,7 +135,7 @@ export class PerformanceTimingService {
         let vltLookup = (<any>window).mezzurite.vltComponentLookup;
         let measure;
         for (let key in vltLookup){
-            if (vltLookup[key] === true){
+            if (components[key] && vltLookup[key] === true){
                 vltComponents.push(components[key]);
                 if (maxComponent !== null){
                     let slowestResourceEnd = 0;

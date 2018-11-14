@@ -33,22 +33,16 @@ export class MezzuriteDirective implements OnInit {
             rootMargin: '0px'
         };
         
-        let observer = new IntersectionObserver(function(entries) {
+        let observer = new IntersectionObserver(function(entries, observer) {
+            performance.mark(that.id + MezzuriteConstants.componentMarkEnd)
             const entry = entries[0];
+            (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
+            (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
             if (entry.isIntersecting){
-                (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
-                (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
-            else{
-                (<any>window).mezzurite.vltComponentLookup[that.fullName] = false;
-            }
-        }, config);
-            observer.observe(this.el);
-
-        setTimeout(function(){
-            performance.mark(that.id + MezzuriteConstants.componentMarkEnd)
             setTimeout(function(){
+                // consider how media queries affect this (image that is never downloaded) (Issue #7)
                 const slow = PerformanceTimingService.calculateSlowestResource(that.el, that.fullName);
                 if (slow === null){
                     PerformanceTimingService.measure(that.fullName)
@@ -56,7 +50,10 @@ export class MezzuriteDirective implements OnInit {
                 else{
                     PerformanceTimingService.measure(that.fullName, slow)
                 }
+                that.el = null;
             },MezzuriteConstants.slowestResourceTimeout)
-        })
+            observer.unobserve(that.el);
+        }, config);
+            observer.observe(this.el);
     }
 } 

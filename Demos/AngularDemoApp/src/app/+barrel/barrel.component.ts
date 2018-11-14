@@ -13,13 +13,15 @@ console.log('`Barrel` component loaded asynchronously');
 @Component({
   selector: 'barrel',
   template: `
-    <h1>Hello from Barrel</h1>
+    <div>
+    <h1 mezzurite component-title="barrelComponent">Hello from Barrel</h1>
     <span>
       <a [routerLink]=" ['./child-barrel'] ">
         Child Barrel
       </a>
     </span>
     <router-outlet></router-outlet>
+    </div>
   `,
 })
 export class BarrelComponent implements OnInit {

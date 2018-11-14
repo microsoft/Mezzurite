@@ -1,5 +1,4 @@
 import React from 'react';
-import Mountains from '../mountains.jpg';
 import { withMezzurite } from '@microsoft/mezzurite-react';
 
 
@@ -16,17 +15,10 @@ let imageStyles = {
 }
 
 class OffscreenComponent extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            loaded: true
-        }
-    }
-
     render(){
             return (
                 <div style={divStyles}>
-                    <img style={imageStyles} src={Mountains} alt="Mountains"/>
+                    <img style={imageStyles} src="https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73751/world.topo.bathy.200407.3x21600x10800.png" alt="Earth"/>
                 </div>
             )
     }

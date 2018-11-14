@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-angular",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Library for capturing SPA timings within Angular 6.",
   "author": "Microsoft Corporation",
   "license": "MIT",

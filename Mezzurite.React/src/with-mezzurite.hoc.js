@@ -68,7 +68,7 @@ const withMezzurite = (WrappedComponent) => {
                 // if not using mezzurite with React Router 4, adds click handler to capture events
                 if (routerNotImplemented() && !window.mezzurite.listenerExists)
                 {
-                    window.addEventListener('mousedown', this.clickStartCaptureCycle);
+                    window.addEventListener('mousedown', this.clickStartCaptureCycle, {passive: true});
                     window.mezzurite.listenerExists = true;
                 }                
         }
@@ -82,46 +82,39 @@ const withMezzurite = (WrappedComponent) => {
         }
 
         componentDidMount(){
-            const el = ReactDOM.findDOMNode(this.wrappedRef)
+            let el = ReactDOM.findDOMNode(this.wrappedRef)
             this.fullName = MezzuriteReactUtils.getName(this.displayName, this.key);
             var that = this;
 
             // intersection observer config
             const config = {
                 root: null, // setting it to 'null' sets it to default value: viewport
-                rootMargin: '0px',
-                threshold: [.1, .2, .3, .4, .5, .6, .7, .8, .9, 1]
+                rootMargin: '0px'
             };
             
             if (!routerNotImplemented()){
-                let observer = new IntersectionObserver(function(entries) {
+                let observer = new IntersectionObserver(function(entries, observer) {
+                    window.performance.mark(that.key + MezzuriteConstants.componentMarkEnd);
                     const entry = entries[0];
                     window.mezzurite.viewportWidth = entry.rootBounds.width;
                     window.mezzurite.viewportHeight = entry.rootBounds.height;
-                    if (entry.intersectionRatio > 0){
+                    if (entry.isIntersecting){
                         window.mezzurite.vltComponentLookup[that.fullName] = true;
                     }
-                    else{
-                        window.mezzurite.vltComponentLookup[that.fullName] = false;
-                    }
+                    setTimeout(function(){
+                        const slow = PerformanceTimingService.calculateSlowestResource(el, that.fullName);
+                        if (slow === null){
+                            PerformanceTimingService.measure(that.fullName)
+                        }
+                        else{
+                            PerformanceTimingService.measure(that.fullName, slow)
+                        }
+                        el = null;
+                    },MezzuriteConstants.slowestResourceTimeout)
+                    observer.unobserve(el);
                 }, config);
                   observer.observe(el);
             }
-
-            window.requestAnimationFrame(() => {
-                // component mount mark
-                window.performance.mark(that.key + MezzuriteConstants.componentMarkEnd);
-            });
-
-            setTimeout(function(){
-                const slow = PerformanceTimingService.calculateSlowestResource(el, that.fullName);
-                if (slow === null){
-                    PerformanceTimingService.measure(that.fullName)
-                }
-                else{
-                    PerformanceTimingService.measure(that.fullName, slow)
-                }
-            },3000)
         }
 
         /**
