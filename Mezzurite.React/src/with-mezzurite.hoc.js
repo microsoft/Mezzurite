@@ -92,7 +92,6 @@ const withMezzurite = (WrappedComponent) => {
                 rootMargin: '0px'
             };
             
-            // router is implemented
             if (!routerNotImplemented()){
                 let observer = new IntersectionObserver(function(entries, observer) {
                     window.performance.mark(that.key + MezzuriteConstants.componentMarkEnd);
@@ -102,16 +101,6 @@ const withMezzurite = (WrappedComponent) => {
                     if (entry.isIntersecting){
                         window.mezzurite.vltComponentLookup[that.fullName] = true;
                     }
-                    // setTimeout(function(){
-                    //     const slow = PerformanceTimingService.calculateSlowestResource(el, that.fullName);
-                    //     if (slow === null){
-                    //         PerformanceTimingService.measure(that.fullName)
-                    //     }
-                    //     else{
-                    //         PerformanceTimingService.measure(that.fullName, slow)
-                    //     }
-                    //     el = null;
-                    // },MezzuriteConstants.slowestResourceTimeout)
                     observer.unobserve(el);
                     el = null;
                 }, config);
