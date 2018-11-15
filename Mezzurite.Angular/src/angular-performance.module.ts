@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 import { NgModule, ModuleWithProviders } from "@angular/core";
-import { PerformanceTimingService } from "@microsoft/mezzurite-core";
 import { MezzuriteDirective } from './angular-performance.directive';
 import { RoutingService } from "./angular-routing.service";
 
@@ -20,7 +19,6 @@ export class AngularPerfModule {
         return {
             ngModule: AngularPerfModule,
             providers: [
-                { provide: PerformanceTimingService, useFactory: createPerfTimingService },
                 RoutingService
                 // Add new services here.
             ]
@@ -28,12 +26,6 @@ export class AngularPerfModule {
     }
 }
 
-export function createPerfTimingService() {
-    return new PerformanceTimingService();
-}
-
 export {
-    PerformanceTimingService,
     RoutingService
-    // Add new services here.
 };

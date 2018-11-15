@@ -14,6 +14,7 @@ export class MezzuriteObject {
     slowestResource: object;
     currentComponents: object;
     vltComponentLookup: object;
+    elementLookup: object
 
     constructor() {
         this.firstViewLoaded = false;
@@ -25,5 +26,6 @@ export class MezzuriteObject {
         this.slowestResource = {};
         this.currentComponents = {};
         this.vltComponentLookup = {};
+        this.elementLookup = {};
     }
 }

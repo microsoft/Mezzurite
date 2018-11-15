@@ -10,7 +10,8 @@ export class AngularJsPerfComponent {
     constructor(public name: string, public element: HTMLElement) {
         this.key = (<any>MezzuriteAngularJsUtils).makeId();
         window.performance.mark(this.key + MezzuriteConstants.componentMarkStart);
-        this.fullName = MezzuriteConstants.measureNamePrefix + ";" + this.name + ";" + this.key
+        this.fullName = MezzuriteConstants.measureNamePrefix + ";" + this.name + ";" + this.key;
+        (<any>window).mezzurite.elementLookup[this.fullName] = element;
         const config = {
             root: null, // setting it to 'null' sets it to default value: viewport
             rootMargin: '0px'
@@ -29,22 +30,12 @@ export class AngularJsPerfComponent {
                 }
             }
             observer.unobserve(that.element);
+            that.element = null;
         }, config);
             observer.observe(this.element);
     }
 
     setComponentComplete(){
         window.performance.mark(this.key + MezzuriteConstants.componentMarkEnd);
-        var that = this;
-        setTimeout(function(){
-            const slow = PerformanceTimingService.calculateSlowestResource(that.element, that.fullName);
-            if (slow === null){
-                PerformanceTimingService.measure(that.fullName)
-            }
-            else{
-                PerformanceTimingService.measure(that.fullName, slow)
-            }
-            that.element = null;
-        },MezzuriteConstants.slowestResourceTimeout)
     }
 }

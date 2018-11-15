@@ -211,4 +211,17 @@ export class PerformanceTimingService {
         (<any>window).mezzurite.slowestResource[fullName] = slowestResource;
         return slowestResource;
     }   
+
+    static calculateSlowestResourceBatch(){
+        const elementDict = (<any>window).mezzurite.elementLookup;
+        for (let prop in elementDict){
+            let slow = this.calculateSlowestResource(elementDict[prop], prop);
+            if (slow === null){
+                PerformanceTimingService.measure(prop)
+            }
+            else{
+                PerformanceTimingService.measure(prop, slow)
+            }
+        }
+    }
 }

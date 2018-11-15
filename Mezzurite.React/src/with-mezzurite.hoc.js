@@ -84,9 +84,9 @@ const withMezzurite = (WrappedComponent) => {
         componentDidMount(){
             let el = ReactDOM.findDOMNode(this.wrappedRef)
             this.fullName = MezzuriteReactUtils.getName(this.displayName, this.key);
+            window.mezzurite.elementLookup[this.fullName] = el;
             var that = this;
 
-            // intersection observer config
             const config = {
                 root: null, // setting it to 'null' sets it to default value: viewport
                 rootMargin: '0px'
@@ -101,17 +101,8 @@ const withMezzurite = (WrappedComponent) => {
                     if (entry.isIntersecting){
                         window.mezzurite.vltComponentLookup[that.fullName] = true;
                     }
-                    setTimeout(function(){
-                        const slow = PerformanceTimingService.calculateSlowestResource(el, that.fullName);
-                        if (slow === null){
-                            PerformanceTimingService.measure(that.fullName)
-                        }
-                        else{
-                            PerformanceTimingService.measure(that.fullName, slow)
-                        }
-                        el = null;
-                    },MezzuriteConstants.slowestResourceTimeout)
                     observer.unobserve(el);
+                    el = null;
                 }, config);
                   observer.observe(el);
             }

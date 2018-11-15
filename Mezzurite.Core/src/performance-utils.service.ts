@@ -32,6 +32,7 @@ export class MezzuriteUtils {
         obj.slowestResource = {};
         obj.currentComponents = {};
         obj.vltComponentLookup = {};
+        obj.elementLookup = {};
         (<any>window).mezzurite = obj;
     }
 

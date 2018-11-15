@@ -45,7 +45,11 @@ export class PerformanceTelemetryService {
         let timings: any[] = [];
         // add redirect value
         timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.redirect, isRedirect === false ? 0 : 1))
-    
+
+        // calculate component measures off slowest resource values
+        if ((<any>window).mezzurite.elementLookup !== {}){
+            PerformanceTimingService.calculateSlowestResourceBatch();
+        }
         // all components
         var components = PerformanceTimingService.getCurrentComponents();
         if ((<any>window).mezzurite.routerPerf){
@@ -57,6 +61,7 @@ export class PerformanceTelemetryService {
             }
             // vlt
             if (components.length > 0){
+
                 const vltResults = PerformanceTimingService.calculateVlt();
                 timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
 
