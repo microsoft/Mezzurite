@@ -4,6 +4,10 @@
   "description": "Library for capturing SPA timings within React.",
   "author": "Microsoft Corporation",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/Mezzurite.git"
+  },
   "keywords": [
     "mezzurite-react"
   ],
@@ -43,5 +47,8 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-uglify-es": "0.0.1",
     "shx": "^0.3.2"
+  },
+  "dependencies": {
+    "@microsoft/mezzurite-core": "^1.1.0"
   }
 }

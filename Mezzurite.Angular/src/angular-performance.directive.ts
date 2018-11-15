@@ -26,8 +26,8 @@ export class MezzuriteDirective implements OnInit {
 
     ngOnInit(){
         this.fullName = MezzuriteUtils.getName(this.title, this.id);
+        (<any>window).mezzurite.elementLookup[this.fullName] = this.el;
         const that = this;
-
         const config = {
             root: null as any, // setting it to 'null' sets it to default value: viewport
             rootMargin: '0px'
@@ -41,18 +41,8 @@ export class MezzuriteDirective implements OnInit {
             if (entry.isIntersecting){
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
-            setTimeout(function(){
-                // consider how media queries affect this (image that is never downloaded) (Issue #7)
-                const slow = PerformanceTimingService.calculateSlowestResource(that.el, that.fullName);
-                if (slow === null){
-                    PerformanceTimingService.measure(that.fullName)
-                }
-                else{
-                    PerformanceTimingService.measure(that.fullName, slow)
-                }
-                that.el = null;
-            },MezzuriteConstants.slowestResourceTimeout)
             observer.unobserve(that.el);
+            that.el = null;
         }, config);
             observer.observe(this.el);
     }

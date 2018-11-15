@@ -4,6 +4,10 @@
   "description": "Library for capturing SPA timings within Angular 6.",
   "author": "Microsoft Corporation",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/Mezzurite.git"
+  },
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
   "scripts": {

@@ -6,6 +6,10 @@
   "description": "Library for capturing SPA timings within Angular 2-5.",
   "author": "Microsoft Corporation",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/Mezzurite.git"
+  },
   "scripts": {
     "clean": "shx rm -rf browser dist dist-esm",
     "build": "npm run clean && npm run build:aot && npm run build:rollup && npm run post-clean",

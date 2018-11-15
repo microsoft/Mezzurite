@@ -22,6 +22,7 @@ export class MezzuriteDirective implements OnInit {
         this.id = MezzuriteUtils.makeId();
         performance.mark(this.id + MezzuriteConstants.componentMarkStart)
         this.el = ref.nativeElement;
+        (<any>window).mezzurite.elementLookup[this.fullName] = this.el;
     }
 
     ngOnInit(){
@@ -41,18 +42,8 @@ export class MezzuriteDirective implements OnInit {
                 (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
-            setTimeout(function(){
-                // consider how media queries affect this (image that is never downloaded)
-                const slow = PerformanceTimingService.calculateSlowestResource(that.el, that.fullName);
-                if (slow === null){
-                    PerformanceTimingService.measure(that.fullName)
-                }
-                else{
-                    PerformanceTimingService.measure(that.fullName, slow)
-                }
-                that.el = null;
-            },MezzuriteConstants.slowestResourceTimeout)
             observer.unobserve(this.el);
+            this.el = null;
         }, config);
             observer.observe(this.el);
     }
