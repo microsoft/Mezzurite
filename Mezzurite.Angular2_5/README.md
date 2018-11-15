@@ -45,6 +45,10 @@ export class AppModule {
   }
 }
 ```
+4. If using sub-modules inside your app, you will need to import AngularPerfModule inside each sub-module in order to give your entire app access to the Mezzurite directive:
+```
+Imports: [  AngularPerfModule ]
+```
 ### Component Tracking (CLT and VLT)
 Components are instrumented inside the html markup as an attribute directive:
 ```html
