@@ -27,7 +27,7 @@
 ### Basic Setup (Application Load Time)
 1. Import the following modules in app.module:
 ```javascript
-import { AngularPerfModule, RoutingService } from '@microsoft/mezzurite.angular';
+import { AngularPerfModule, RoutingService } from '@microsoft/mezzurite-angular';
 ```
 2. In the NgModule imports, add the following:
 ```
@@ -40,6 +40,10 @@ export class AppModule {
     router.start();
   }
 }
+```
+4. If using sub-modules inside your app, you will need to import AngularPerfModule inside each sub-module in order to give your entire app access to the Mezzurite directive:
+```
+Imports: [  AngularPerfModule ]
 ```
 ### Component Tracking (CLT and VLT)
 Components are instrumented inside the html markup as an attribute directive:

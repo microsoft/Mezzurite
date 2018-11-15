@@ -1,9 +1,0 @@
-.gitignore
-package-lock.json
-src
-node_modules
-.babelrc
-.rpt2_cache
-rollup.config.js
-tsconfig.json
-tsconfig.aot.json
