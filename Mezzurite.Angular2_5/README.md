@@ -3,7 +3,7 @@
 ## Requirements:
 ```json
   "dependencies": {
-    "@microsoft/mezzurite-core": "^1.1.0", // important!
+    "@microsoft/mezzurite-core": "^1.0.1", // important!
     "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
     "@types/node": "^10.12.0",
