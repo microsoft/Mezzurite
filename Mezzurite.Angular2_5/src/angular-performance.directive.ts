@@ -22,12 +22,13 @@ export class MezzuriteDirective implements OnInit {
         this.id = MezzuriteUtils.makeId();
         performance.mark(this.id + MezzuriteConstants.componentMarkStart)
         this.el = ref.nativeElement;
+        (<any>window).mezzurite.elementLookup[this.fullName] = this.el;
     }
 
     ngOnInit(){
         this.fullName = MezzuriteUtils.getName(this.title, this.id);
-        (<any>window).mezzurite.elementLookup[this.fullName] = this.el;
         const that = this;
+
         const config = {
             root: null as any, // setting it to 'null' sets it to default value: viewport
             rootMargin: '0px'
@@ -36,13 +37,13 @@ export class MezzuriteDirective implements OnInit {
         let observer = new IntersectionObserver(function(entries, observer) {
             performance.mark(that.id + MezzuriteConstants.componentMarkEnd)
             const entry = entries[0];
-            (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
-            (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
             if (entry.isIntersecting){
+                (<any>window).mezzurite.viewportWidth = entry.rootBounds.width;
+                (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
-            observer.unobserve(that.el);
-            that.el = null;
+            observer.unobserve(this.el);
+            this.el = null;
         }, config);
             observer.observe(this.el);
     }
