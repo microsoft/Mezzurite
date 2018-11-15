@@ -31,7 +31,7 @@
 ### Basic Setup (Application Load Time)
 1. Import the following modules in app.module:
 ```javascript
-import { AngularPerfModule, RoutingService } from '@microsoft/mezzurite.angular';
+import { AngularPerfModule, RoutingService } from '@microsoft/mezzurite-angular';
 ```
 2. In the NgModule imports, add the following:
 ```
