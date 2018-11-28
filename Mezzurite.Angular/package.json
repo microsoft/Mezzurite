@@ -1,7 +1,7 @@
 {
   "name": "@microsoft/mezzurite-angular",
-  "version": "2.0.6",
-  "description": "Library for capturing SPA timings within Angular 6.",
+  "version": "2.0.10",
+  "description": "Library for capturing SPA timings within Angular 6+.",
   "author": "Microsoft Corporation",
   "license": "MIT",
   "repository": {
@@ -10,12 +10,14 @@
   },
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
+  "types": "./dist-esm/index.d.ts",
   "scripts": {
-    "clean": "shx rm -rf browser dist dist-esm",
-    "build": "npm run clean && npm run build:aot && npm run build:rollup && npm run post-clean",
+    "clean": "shx rm -rf browser dist dist-esm aot build/compiled types",
+    "build": "npm run clean && npm run build:aot && npm run build:rollup && npm run make-bundle && npm run post-clean",
     "build:aot": "node_modules\\.bin\\ngc -p tsconfig.aot.json",
     "build:rollup": "rollup -c",
-    "post-clean": "shx rm -rf aot"
+    "post-clean": "shx rm -rf build/compiled aot",
+    "make-bundle": "node build/make-bundle"
   },
   "dependencies": {
     "@microsoft/mezzurite-core": "^1.0.1",

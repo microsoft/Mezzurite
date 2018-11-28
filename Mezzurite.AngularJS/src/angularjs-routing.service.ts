@@ -47,6 +47,7 @@ export class AngularJsRoutingService {
                     PerformanceTelemetryService.startCaptureCycle();
                     // If first load, capture ALT
                     if (!(<any>window).mezzurite.firstViewLoaded){
+                        (<any>window).mezzurite.startTime = 0;
                         window.performance.mark(MezzuriteConstants.altMarkEnd);
                         window.performance.mark(MezzuriteConstants.vltMarkStart);
                         PerformanceTimingService.measure(MezzuriteAngularJsUtils.getName(MezzuriteConstants.altName, MezzuriteAngularJsUtils.makeId()), 0, MezzuriteConstants.altMarkEnd);

@@ -12,11 +12,7 @@ export default [
           {
             file: pkg.main,
             format: 'cjs',
-          },
-          {
-            file: pkg.module,
-            format: 'es',
-          },
+          }
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
@@ -27,6 +23,32 @@ export default [
           json(),
           resolve(['.js', '.json']),
           typescript(),
+          uglify()
+        ],
+      },
+      {
+        input: 'src/index.ts',
+        output: [
+          {
+            file: pkg.module,
+            format: 'es',
+          }
+        ],
+        external: [
+          ...Object.keys(pkg.dependencies || {}),
+          ...Object.keys(pkg.peerDependencies || {}),
+          "@microsoft/mezzurite-core"
+        ],
+      plugins: [
+          json(),
+          resolve(['.js', '.json']),
+          typescript({
+            tsconfigOverride: {
+                compilerOptions: {
+                    declaration: false
+                }
+            }
+          }),
           uglify()
         ],
       },
@@ -58,11 +80,7 @@ export default [
                 }
             }
           }),
-          uglify(),
-          copy([
-            { files: 'dist/src/*.*', dest: 'dist' },
-            { files: 'dist-esm/src/*.*', dest: 'dist-esm' },
-          ], { verbose: true, watch: false })
+          uglify()
         ],
       }
 ]
