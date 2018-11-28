@@ -26,7 +26,13 @@ export default [
     plugins: [
         json(),
         resolve(['.js', '.json']),
-        typescript(),
+        typescript({
+          tsconfigOverride: {
+              compilerOptions: {
+                  declaration: false
+              }
+          }
+        }),
         uglify()
       ],
     },
@@ -83,8 +89,8 @@ export default [
           }),
           uglify(),
           copy([
-            { files: 'aot/src/*.metadata.json', dest: 'dist' },
-            { files: 'aot/src/*.metadata.json', dest: 'dist-esm' }
+            { files: 'aot/*.metadata.json', dest: 'dist' },
+            { files: 'aot/*.metadata.json', dest: 'dist-esm' }
           ], { verbose: false, watch: false })
         ],
       },

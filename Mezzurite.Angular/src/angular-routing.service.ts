@@ -29,7 +29,7 @@ export class RoutingService {
     /**
      * this method begins the listening process. Must be called for code to function properly.
      */
-    start = (): any => {
+    start(): void {
         const onNavStart$ = (<any>this).router.events.pipe(filter(event => event instanceof NavigationStart));
 
         onNavStart$.subscribe(() => {
