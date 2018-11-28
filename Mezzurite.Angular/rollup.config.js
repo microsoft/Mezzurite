@@ -89,8 +89,8 @@ export default [
           }),
           uglify(),
           copy([
-            { files: 'aot/*.metadata.json', dest: 'dist' },
-            { files: 'aot/*.metadata.json', dest: 'dist-esm' }
+            { files: 'aot/src/*.metadata.json', dest: 'dist' },
+            { files: 'aot/src/*.metadata.json', dest: 'dist-esm' }
           ], { verbose: false, watch: false })
         ],
       },
