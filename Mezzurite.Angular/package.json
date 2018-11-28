@@ -23,7 +23,6 @@
     "@microsoft/mezzurite-core": "^1.0.1",
     "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
-    "@types/node": "^10.12.2",
     "intersection-observer": "^0.5.1",
     "reflect-metadata": "^0.1.8"
   },
@@ -47,6 +46,7 @@
     "@angular/core": "^6.0.0",
     "@angular/platform-server": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@types/node": "^10.12.10",
     "concurrently": "^3.0.0",
     "rollup-plugin-copy-glob": "^0.2.2",
     "rollup-plugin-json": "^3.1.0",

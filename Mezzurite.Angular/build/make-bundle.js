@@ -7,7 +7,7 @@ const writeFile = promisify(fs.writeFile)
 const readdir = promisify(fs.readdir)
 const packageName = "index"
 const compiledPath = path.join(__dirname, "compiled")
-const typesPath = path.join(__dirname, "..", "aot")
+const typesPath = path.join(__dirname, "..", "aot/src")
 const cjsPath = path.join(__dirname, "..", "dist")
 const esmPath = path.join(__dirname, "..", "dist-esm")
 
@@ -40,7 +40,7 @@ function removeSemicolons(code) {
 }
 function processDeclaration(file, code){
   if (file.indexOf(".d.ts") === -1){
-    return;
+    return null;
   }
   var _code = removeLocalImportsExports(code);
   return _code;

@@ -18,6 +18,7 @@
   "exclude": ["node_modules"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true
   }
 }
