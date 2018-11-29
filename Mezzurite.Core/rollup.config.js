@@ -22,7 +22,7 @@ export default [
         ],
       plugins: [
           typescript(),
-          uglify(),
+          // uglify(),
           copy([
             { files: 'aot/*.metadata.json', dest: 'dist' },
             { files: 'aot/*.metadata.json', dest: 'dist-esm' },
@@ -50,7 +50,7 @@ export default [
                 }
             }
           }),
-          uglify()
+          // uglify()
         ],
       }
 ]

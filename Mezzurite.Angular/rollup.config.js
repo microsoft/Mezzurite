@@ -10,16 +10,60 @@ import pkg from './package.json'
 
 export default [
     {
-        input: 'src/index.ts',
+      input: 'src/angular-performance.module.ts',
+      output: [
+        {
+          file: "build/compiled/dist/index.js",
+          format: 'esm',
+        }
+      ],
+      external: [
+        ...Object.keys(pkg.dependencies || {}),
+        ...Object.keys(pkg.peerDependencies || {}),
+        "rxjs/operators",
+        "@microsoft/mezzurite-core"
+      ],
+    plugins: [
+        json(),
+        resolve(['.js', '.json']),
+        typescript({
+          tsconfigOverride: {
+              compilerOptions: {
+                  declaration: false
+              }
+          }
+        }),
+        uglify()
+      ],
+    },
+    {
+        input: 'src/angular-performance.module.ts',
         output: [
           {
             file: pkg.main,
             format: 'cjs',
-          },
+          }
+        ],
+        external: [
+          ...Object.keys(pkg.dependencies || {}),
+          ...Object.keys(pkg.peerDependencies || {}),
+          "rxjs/operators",
+          "@microsoft/mezzurite-core"
+        ],
+      plugins: [
+          json(),
+          resolve(['.js', '.json']),
+          typescript(),
+          uglify()
+        ],
+      },
+      {
+        input: 'src/angular-performance.module.ts',
+        output: [
           {
             file: pkg.module,
             format: 'es',
-          },
+          }
         ],
         external: [
           ...Object.keys(pkg.dependencies || {}),
@@ -33,13 +77,13 @@ export default [
           typescript(),
           uglify(),
           copy([
-            { files: 'aot/*.metadata.json', dest: 'dist' },
-            { files: 'aot/*.metadata.json', dest: 'dist-esm' }
+            { files: 'aot/src/*.metadata.json', dest: 'dist' },
+            { files: 'aot/src/*.metadata.json', dest: 'dist-esm' }
           ], { verbose: false, watch: false })
         ],
       },
       {
-        input: 'src/index.ts',
+        input: 'src/angular-performance.module.ts',
         output: [
           {
             name: "MezzuriteAngular",

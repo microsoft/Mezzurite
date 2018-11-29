@@ -9,7 +9,6 @@ import { MezzuriteUtils } from './performance-utils.service';
  * Class containing core telemetry functions
  */
 export class PerformanceTelemetryService {
-
     /**
      * Starts capture cycle period
      */

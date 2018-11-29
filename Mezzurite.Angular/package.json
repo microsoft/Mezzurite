@@ -1,7 +1,7 @@
 {
   "name": "@microsoft/mezzurite-angular",
-  "version": "2.0.3",
-  "description": "Library for capturing SPA timings within Angular 6.",
+  "version": "2.0.12",
+  "description": "Library for capturing SPA timings within Angular 6+.",
   "author": "Microsoft Corporation",
   "license": "MIT",
   "repository": {
@@ -10,29 +10,30 @@
   },
   "main": "./dist/index.js",
   "module": "./dist-esm/index.js",
+  "types": "./dist-esm/index.d.ts",
   "scripts": {
-    "clean": "shx rm -rf browser dist dist-esm",
+    "clean": "shx rm -rf browser dist dist-esm aot build",
     "build": "npm run clean && npm run build:aot && npm run build:rollup && npm run post-clean",
     "build:aot": "node_modules\\.bin\\ngc -p tsconfig.aot.json",
     "build:rollup": "rollup -c",
-    "post-clean": "shx rm -rf aot"
+    "post-clean": "shx rm -rf aot build"
   },
   "dependencies": {
     "@microsoft/mezzurite-core": "^1.0.1",
     "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
-    "@types/node": "^10.12.2",
+    "intersection-observer": "^0.5.1",
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
-    "@angular/common": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/compiler": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/core": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/forms": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/http": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/platform-browser": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/platform-browser-dynamic": "^2.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
-    "@angular/router": "^3.4.0||^4.0.0||^5.0.0||^6.0.0||^7.0.0",
+    "@angular/common": ">2.4.0",
+    "@angular/compiler": ">2.4.0",
+    "@angular/core": ">2.4.0",
+    "@angular/forms": ">2.4.0",
+    "@angular/http": ">2.4.0",
+    "@angular/platform-browser": ">2.4.0",
+    "@angular/platform-browser-dynamic": ">2.4.0",
+    "@angular/router": ">3.4.0",
     "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
     "zone.js": "^0.x"
@@ -44,6 +45,7 @@
     "@angular/core": "^6.0.0",
     "@angular/platform-server": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@types/node": "^10.12.10",
     "concurrently": "^3.0.0",
     "rollup-plugin-copy-glob": "^0.2.2",
     "rollup-plugin-json": "^3.1.0",
@@ -51,7 +53,7 @@
     "rollup-plugin-typescript2": "^0.17.2",
     "rollup-plugin-uglify-es": "0.0.1",
     "rxjs": "^6.2.2",
-    "shx": "^0.3.1",
+    "shx": "^0.3.2",
     "tslib": "^1.9.3",
     "typescript": "^2.9.2",
     "vsts-npm-auth": "^0.37.0"

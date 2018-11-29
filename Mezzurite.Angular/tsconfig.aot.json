@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "module": "es2015",
-    "lib": [ "dom", "es2015"],
     "moduleResolution": "node",
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "declaration": false,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "./aot",
-    "target": "es5"
+    "lib": ["es2015", "dom"],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "../../node_modules/@types/"
+    ]
   },
-  "include": [
+  "files": [
     "src/**/*"
   ],
-  "exclude": ["node_modules"],
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": false
-  }
+   "genDir": "aot",
+   "skipMetadataEmit" : true
+ }
 }

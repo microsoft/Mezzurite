@@ -15,6 +15,7 @@ export class MezzuriteUtils {
      * @param obj existing mezzurite global object (if already created by logger)
      */
     static createMezzuriteObject(obj: any): void {
+        this.addCustomEventPolyfill();
         var mzObj = new MezzuriteObject();
         for (var prop in mzObj){
             if (obj[prop] === undefined){
@@ -133,5 +134,23 @@ export class MezzuriteUtils {
             default:
             return null;
         }
+    }
+
+    /**
+     * Polyfill that adds CustomEvent for IE usage
+     */
+    static addCustomEventPolyfill(){
+        if ( typeof (<any>window).CustomEvent === "function" ) return false;
+
+        function CustomEvent ( event: string, params: any ) {
+          params = params || { bubbles: false, cancelable: false, detail: undefined };
+          var evt = document.createEvent( 'CustomEvent' );
+          evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+          return evt;
+         }
+      
+        CustomEvent.prototype = (<any>window).Event.prototype;
+      
+        (<any>window).CustomEvent = CustomEvent;
     }
 }

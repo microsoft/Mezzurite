@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "./dist-esm",
+    "outDir": "./build/compiled/tsc",
     "target": "es5",
   },
   "include": [
@@ -18,6 +18,7 @@
   "exclude": ["node_modules"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
-    "strictMetadataEmit": false
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true
   }
 }

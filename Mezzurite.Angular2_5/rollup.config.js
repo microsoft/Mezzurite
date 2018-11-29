@@ -7,7 +7,7 @@ import pkg from './package.json'
 
 export default [
     {
-        input: 'src/index.ts',
+        input: 'src/angular-performance.module.ts',
         output: [
           {
             file: pkg.main,
@@ -36,7 +36,7 @@ export default [
         ],
       },
       {
-        input: 'src/index.ts',
+        input: 'src/angular-performance.module.ts',
         output: [
           {
             name: "MezzuriteAngular",

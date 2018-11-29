@@ -3,6 +3,7 @@
 
 import { Directive, OnInit, ElementRef, Input } from '@angular/core';
 import { MezzuriteUtils, MezzuriteConstants } from '@microsoft/mezzurite-core';
+import 'intersection-observer';
 
 @Directive({ 
      selector: '[mezzurite]' 
