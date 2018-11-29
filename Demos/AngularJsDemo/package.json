@@ -15,19 +15,22 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^0.4.1",
-    "protractor": "^4.0.9"
+    "protractor": "^4.0.9",
+    "shx": "^0.3.2"
   },
   "scripts": {
     "postinstall": "bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app",
+    "start": "npm run copy-mz-core && npm run copy-mz && http-server -a localhost -p 8000 -c-1 ./app",
+    "copy-mz-core": "shx cp node_modules/@microsoft/mezzurite-core/browser/mezzurite.core.umd.js app/mezzurite.core.umd.js",
+    "copy-mz": "shx cp node_modules/@microsoft/mezzurite-angularjs/browser/mezzurite.angularjs.umd.js app/mezzurite.angularjs.umd.js",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
     "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
   },
   "dependencies": {
-    "@des.epic.uscp.scripts/mezzurite.angularjs": "^0.3.0",
+    "@microsoft/mezzurite-angularjs": "^1.0.5",
     "@types/node": "^10.12.2",
     "angular-cli": "^1.0.0-beta.28.3",
     "rxjs": "^6.3.3"
