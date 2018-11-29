@@ -136,6 +136,9 @@ export class MezzuriteUtils {
         }
     }
 
+    /**
+     * Polyfill that adds CustomEvent for IE usage
+     */
     static addCustomEventPolyfill(){
         if ( typeof (<any>window).CustomEvent === "function" ) return false;
 

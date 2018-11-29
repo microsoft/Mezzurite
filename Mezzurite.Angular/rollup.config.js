@@ -53,13 +53,7 @@ export default [
       plugins: [
           json(),
           resolve(['.js', '.json']),
-          typescript({
-            tsconfigOverride: {
-                compilerOptions: {
-                    declaration: false
-                }
-            }
-          }),
+          typescript(),
           uglify()
         ],
       },
@@ -80,13 +74,7 @@ export default [
       plugins: [
           json(),
           resolve(['.js', '.json']),
-          typescript({
-            tsconfigOverride: {
-                compilerOptions: {
-                    declaration: false
-                }
-            }
-          }),
+          typescript(),
           uglify(),
           copy([
             { files: 'aot/src/*.metadata.json', dest: 'dist' },
