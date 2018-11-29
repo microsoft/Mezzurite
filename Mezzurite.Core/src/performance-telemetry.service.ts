@@ -40,6 +40,19 @@ export class PerformanceTelemetryService {
     /**
      * Creates timings object to send to telemetry
      * @param isRedirect isRedirect bool
+     * 
+     * Timing object is an array of of objects with each object having three key/value pairs
+     * 
+     * [
+     *  {metricType=<string>, value=<number>, data=<string> }
+     * ]
+     * 
+     * metricType is one of the following:
+     *  ALT, VLT, FVLT, RouteUrl, Redirect, AllComponents
+     * 
+     * value is a number value for the metric, -1 means no value.
+     * 
+     * data is a stringified json.  
      */
     static submitTelemetry(isRedirect: boolean): void {
         let timings: any[] = [];
@@ -53,18 +66,21 @@ export class PerformanceTelemetryService {
         // all components
         var components = PerformanceTimingService.getCurrentComponents();
         if ((<any>window).mezzurite.routerPerf){
-            // alt
-            if ((<any>window).mezzurite.firstViewLoaded === false){
-                const altMeasure = (<any>window).mezzurite.measures.filter((m:any) => m.name.indexOf(MezzuriteConstants.altName) > -1)[0];
-                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.altName, altMeasure.componentLoadTime));
-                (<any>window).mezzurite.firstViewLoaded = true;
-            }
+            var altMeasure;
+            var vltResults;
+            
             // vlt
             if (components.length > 0){
-
-                const vltResults = PerformanceTimingService.calculateVlt();
+                vltResults = PerformanceTimingService.calculateVlt();
                 timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
-
+            }
+            // alt/fvlt
+            if ((<any>window).mezzurite.firstViewLoaded === false){
+                altMeasure = (<any>window).mezzurite.measures.filter((m:any) => m.name.indexOf(MezzuriteConstants.altName) > -1)[0];
+                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.altName, altMeasure.componentLoadTime));
+                // adding fvlt timing.
+                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.fvltName, vltResults.vlt + altMeasure.componentLoadTime));
+                (<any>window).mezzurite.firstViewLoaded = true;
             }
         }
         if (components.length > 0){
@@ -88,7 +104,8 @@ export class PerformanceTelemetryService {
                         version: (<any>window).mezzurite.packageVersion
                     },
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
-                    ViewportHeight: (<any>window).mezzurite.viewportHeight
+                    ViewportHeight: (<any>window).mezzurite.viewportHeight,
+                    RouteUrl: (<any>window).mezzurite.routeUrl,
                 }
                 // log to console when developing locally
                 if ((<any>window).location.href.indexOf("localhost") > -1){

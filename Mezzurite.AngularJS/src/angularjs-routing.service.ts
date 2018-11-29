@@ -33,7 +33,7 @@ export class AngularJsRoutingService {
                 return;
             }
 
-            if ((<any>window).mezzurite.recentPath !== next.$$route.originalPath){
+            if ((<any>window).mezzurite.routeUrl !== next.$$route.originalPath){
                 // handle re-route before complete timing capture cycle
                 if ((<any>window).mezzurite.captureCycleStarted){
                     (<any>window).mezzurite.captureCycleStarted = false;
@@ -43,7 +43,7 @@ export class AngularJsRoutingService {
                     PerformanceTelemetryService.startCaptureCycle();
                 }
                 else{
-                      // starts the capture cycle to transmit telemetry if current pathname is different than recentPath
+                      // starts the capture cycle to transmit telemetry if current pathname is different than routeUrl
                     PerformanceTelemetryService.startCaptureCycle();
                     // If first load, capture ALT
                     if (!(<any>window).mezzurite.firstViewLoaded){
@@ -56,7 +56,7 @@ export class AngularJsRoutingService {
                     }
                 }
             }   
-            (<any>window).mezzurite.recentPath = next.$$route.originalPath;
+            (<any>window).mezzurite.routeUrl = next.$$route.originalPath;
         });
 
         scope.$on("$stateChangeStart", (e: any, toState: any, toParams: any, fromState: any, fromParams: any, options: any) => {
