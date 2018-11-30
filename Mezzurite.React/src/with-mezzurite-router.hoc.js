@@ -28,7 +28,7 @@ const withMezzuriteRouter = (WrappedComponent) => {
     
     return withRouter((props) => {
         // this bool disables click handler (used for scenarios without Mezzurite Router HOC)
-            if (window.mezzurite.recentPath !== props.location.pathname){
+            if (window.mezzurite.routeUrl !== props.location.pathname){
                 // handle re-route before complete timing capture cycle
                 if (window.mezzurite.captureCycleStarted){
                     window.mezzurite.captureCycleStarted = false;
@@ -38,7 +38,7 @@ const withMezzuriteRouter = (WrappedComponent) => {
                     PerformanceTelemetryService.startCaptureCycle();
                 }
                 else{
-                    // starts the capture cycle to transmit telemetry if current pathname is different than recentPath
+                    // starts the capture cycle to transmit telemetry if current pathname is different than routeUrl
                     PerformanceTelemetryService.startCaptureCycle();
                     // If first load, capture ALT
                     if (!window.mezzurite.firstViewLoaded){
@@ -51,7 +51,7 @@ const withMezzuriteRouter = (WrappedComponent) => {
                     }
                 }
             }   
-            window.mezzurite.recentPath = props.location.pathname;
+            window.mezzurite.routeUrl = props.location.pathname;
         return <WrappedComponent {...props} />
      })
 }

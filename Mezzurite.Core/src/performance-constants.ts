@@ -12,6 +12,7 @@ const MezzuriteConstants = {
     measureNamePrefix: "mz",
     altName: "ALT",
     vltName: "VLT",
+    fvltName: "FVLT",
     vltMarkStart: "VltStart",
     altMarkStart: "AltStart",
     altMarkEnd: "AltEnd",
