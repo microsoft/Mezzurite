@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular)
+
 # Mezzurite-Angular
 **For Angular 2-5, use @microsoft/mezzurite-angular@1.x**
 ## Requirements:
@@ -26,6 +28,13 @@
 ```
 
 ## Onboarding
+
+### Installation
+Install the mezzurite dependencies from npm:
+```javascript
+  npm install "@microsoft/mezzurite-core"
+  npm install "@microsoft/mezzurite-angular@1.x.x"
+```
 **To use our logging library for Azure Application Insights, please install "@microsoft/applicationInsights-mezzurite" from npm**
 
 ### Basic Setup (Application Load Time)

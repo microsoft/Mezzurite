@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular)
+
 # Mezzurite-Angular
 **For Angular 6, use @microsoft/mezzurite-angular@2.x**
 ## Requirements:
@@ -26,6 +28,14 @@
 ```
 
 ## Onboarding
+
+### Installation
+Install the mezzurite dependencies from npm:
+```javascript
+  npm install "@microsoft/mezzurite-core"
+  npm install "@microsoft/mezzurite-angular@2.x.x"
+```
+
 ### Basic Setup (Application Load Time)
 1. Import the following modules in app.module:
 ```javascript
