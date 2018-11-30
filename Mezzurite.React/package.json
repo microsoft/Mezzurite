@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library for capturing SPA timings within React.",
   "author": "Microsoft Corporation",
   "license": "MIT",
