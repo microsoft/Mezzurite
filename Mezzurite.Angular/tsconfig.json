@@ -1,24 +1,26 @@
 {
   "compilerOptions": {
-    "module": "es2015",
-    "lib": [ "dom", "es2015"],
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "declaration": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "./build/compiled/tsc",
-    "target": "es5",
+      "baseUrl": ".",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "rootDir": ".",
+      "sourceMap": true,
+      "inlineSources": true,
+      "target": "es5",
+      "skipLibCheck": true,
+      "lib": [
+          "es2015",
+          "dom"
+      ],
+      "typeRoots": [
+          "node_modules/@types/"
+      ]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": ["node_modules"],
-  "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "fullTemplateTypeCheck": true
-  }
+  "exclude": [
+      "node_modules"
+  ]
 }
