@@ -1,6 +1,3 @@
-![Mezzurite Logo](/docs/images/Mezzurite_yellow.svg)
-<!-- .element style="width: 40%; height: 40%; margin-left: 20%" -->
-
 <img src="/docs/images/Mezzurite_yellow.svg" alt="Mezzurite Logo" height="50%" width="50%">
 
 # Mezzurite
