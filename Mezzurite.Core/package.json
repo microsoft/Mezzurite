@@ -1,8 +1,6 @@
 {
   "name": "@microsoft/mezzurite-core",
-  "version": "1.0.3",
-  "main": "./dist/index.js",
-  "module": "./dist-esm/index.js",
+  "version": "1.0.6",
   "description": "Core Library for use with framework-specific Mezzurite package to capture timings for single page applications.",
   "author": "Microsoft Corporation",
   "repository": {
@@ -10,12 +8,19 @@
     "url": "git+https://github.com/Microsoft/Mezzurite.git"
   },
   "license": "MIT",
+  "main": "./bundles/mezzurite-core.umd.js",
+  "module": "./fesm5/mezzurite-core.js",
+  "es2015": "./fesm2015/mezzurite-core.js",
+  "esm5": "./esm5/mezzurite-core.js",
+  "esm2015": "./esm2015/mezzurite-core.js",
+  "fesm5": "./fesm5/mezzurite-core.js",
+  "fesm2015": "./fesm2015/mezzurite-core.js",
+  "typings": "./mezzurite-core.d.ts",
   "scripts": {
-    "clean": "shx rm -rf browser dist dist-esm",
-    "build": "npm run clean && node_modules\\.bin\\ngc -p tsconfig.aot.json && rollup -c && npm run post-clean",
-    "build-test": "npm run build && npm run test",
-    "post-clean": "shx rm -rf aot dist/__tests__ dist-esm/__tests__",
-    "test": "jest --verbose"
+    "build": "node build.js",
+    "pack:lib": "npm run build && npm pack ./dist",
+    "publish:lib": "npm run build && npm publish ./dist",
+    "publish:lib:next": "npm run build && npm publish --tag next ./dist"
   },
   "dependencies": {
     "@types/angular": "^1.6.51",
@@ -28,19 +33,20 @@
     "@angular/core": "^6.1.9",
     "@angular/platform-server": "^6.1.9",
     "@types/jasmine": "^2.8.9",
+    "@types/node": "^10.12.11",
     "concurrently": "^3.0.0",
     "jest": "^23.6.0",
     "lite-server": "^2.2.2",
     "performance-polyfill": "0.0.2",
-    "rollup-plugin-copy-glob": "^0.2.2",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-typescript2": "^0.17.2",
-    "rollup-plugin-uglify-es": "0.0.1",
-    "shx": "^0.3.2",
+    "rollup-plugin-license": "^0.7.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "shelljs": "^0.8.3",
     "ts-jest": "^23.10.4",
     "tslib": "^1.9.3",
-    "typescript": "^2.9.2",
-    "vsts-npm-auth": "^0.37.0"
+    "tslint": "^5.11.0",
+    "tslint-angular": "^1.1.2",
+    "typescript": "^2.9.2"
   },
   "jest": {
     "moduleFileExtensions": [
