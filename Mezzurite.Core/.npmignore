@@ -1,7 +1,0 @@
-.rpt2_cache
-node_modules
-src
-package-lock.json
-rollup.config.js
-tsconfig.aot.json
-tsconfig.json

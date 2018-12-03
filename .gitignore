@@ -331,6 +331,7 @@ ASALocalRun/
 
 *.rpt2_cache
 package-lock.json
+.npmignore
 .npmrc
 
 */dist
