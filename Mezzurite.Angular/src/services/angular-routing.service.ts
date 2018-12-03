@@ -30,8 +30,12 @@ export class RoutingService {
     start(): void {
         const onNavStart$ = (<any>this).router.events.pipe(filter(event => event instanceof NavigationStart));
 
-        onNavStart$.subscribe(() => {
-            if ((<any>window).mezzurite.captureCycleStarted) {
+
+        onNavStart$.subscribe((e: any) => {
+            (<any>window).mezzurite.routeUrl= e.url;
+
+            if ((<any>window).mezzurite.captureCycleStarted){
+
                 (<any>window).mezzurite.captureCycleStarted = false;
                 PerformanceTelemetryService.captureTimings(true);
                 window.performance.mark(MezzuriteConstants.vltMarkStart);

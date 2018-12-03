@@ -339,3 +339,5 @@ package-lock.json
 
 .vscode
 
+mezzurite.core.umd.js
+mezzurite.angularjs.umd.js
