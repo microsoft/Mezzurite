@@ -31,10 +31,9 @@
 ## Onboarding
 
 ### Installation
-Install the mezzurite dependencies from npm:
+Install mezzurite from npm:
 ```javascript
-  npm install "@microsoft/mezzurite-core"
-  npm install "@microsoft/mezzurite-angular@2.x.x"
+  npm install "@microsoft/mezzurite-angular"
 ```
 
 ### Basic Setup (Application Load Time)
