@@ -40,8 +40,8 @@ if (shell.exec(`ngc -p ${OUT_DIR}/tsconfig-build.json`).code !== 0) {
 }
 shell.echo(chalk.green(`AoT compilation completed`));
 
-shell.echo(`Copy ES2015 for package`);
-shell.cp(`-Rf`, [`${NPM_DIR}/src/`, `${NPM_DIR}/*.js`, `${NPM_DIR}/*.js.map`], `${ESM2015_DIR}`);
+// shell.echo(`Copy ES2015 for package`);
+// shell.cp(`-Rf`, [`${NPM_DIR}/src/`, `${NPM_DIR}/*.js`, `${NPM_DIR}/*.js.map`], `${ESM2015_DIR}`);
 
 /* BUNDLING PACKAGE */
 // shell.echo(`Start bundling`);

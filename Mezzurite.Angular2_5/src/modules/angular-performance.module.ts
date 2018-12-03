@@ -1,9 +1,6 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-import { NgModule, ModuleWithProviders } from '@angular/core';
+﻿import { NgModule, ModuleWithProviders } from "@angular/core";
 import { MezzuriteDirective } from '../components/angular-performance.directive';
-import { RoutingService } from '../services/angular-routing.service';
+import { RoutingService } from "../services/angular-routing.service";
 
 
 @NgModule({
@@ -15,7 +12,7 @@ import { RoutingService } from '../services/angular-routing.service';
  * Mezzurite Performance Module for Angular
  */
 export class AngularPerfModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot() : ModuleWithProviders {
         return {
             ngModule: AngularPerfModule,
             providers: [

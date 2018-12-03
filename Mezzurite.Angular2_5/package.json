@@ -1,9 +1,6 @@
 {
   "name": "@microsoft/mezzurite-angular",
   "version": "1.0.5",
-  "main": "./dist/index.js",
-  "module": "./dist-esm/index.js",
-  "types": "./dist/index.d.ts",
   "description": "Library for capturing SPA timings within Angular 2-5.",
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -11,18 +8,24 @@
     "type": "git",
     "url": "git+https://github.com/Microsoft/Mezzurite.git"
   },
+  "main": "./bundles/mezzurite-angular.umd.js",
+  "module": "./fesm5/mezzurite-angular.js",
+  "es2015": "./fesm2015/mezzurite-angular.js",
+  "esm5": "./esm5/mezzurite-angular.js",
+  "esm2015": "./esm2015/mezzurite-angular.js",
+  "fesm5": "./fesm5/mezzurite-angular.js",
+  "fesm2015": "./fesm2015/mezzurite-angular.js",
+  "typings": "./mezzurite-angular.d.ts",
   "scripts": {
-    "clean": "shx rm -rf browser dist dist-esm aot build",
-    "build": "npm run clean && npm run build:aot && npm run build:rollup && npm run post-clean",
-    "build:aot": "node_modules\\.bin\\ngc -p tsconfig.aot.json",
-    "build:rollup": "rollup -c",
-    "post-clean": "shx rm -rf build aot"
+    "build": "node build.js",
+    "pack:lib": "npm run build && npm pack ./dist",
+    "publish:lib": "npm run build && npm publish ./dist",
+    "publish:lib:next": "npm run build && npm publish --tag next ./dist"
   },
   "dependencies": {
-    "@microsoft/mezzurite-core": "^1.0.1",
+    "@microsoft/mezzurite-core": "^1.0.6",
     "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
-    "@types/node": "^10.12.0",
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
@@ -46,16 +49,18 @@
     "@angular/core": "^2.4.0",
     "@angular/platform-server": "^2.4.0",
     "@angular/router": "^3.4.0",
+    "@types/node": "^10.12.0",
+    "chalk": "^2.4.1",
     "concurrently": "^3.0.0",
-    "rollup-plugin-copy-glob": "^0.2.2",
-    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-license": "^0.7.0",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-typescript2": "^0.17.2",
-    "rollup-plugin-uglify-es": "0.0.1",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
-    "shx": "^0.3.1",
+    "shelljs": "^0.8.3",
     "tslib": "^1.9.3",
+    "tslint": "^5.11.0",
+    "tslint-angular": "^1.1.2",
     "typescript": "^2.9.2"
   }
 }

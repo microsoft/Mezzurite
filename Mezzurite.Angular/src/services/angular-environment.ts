@@ -9,4 +9,4 @@ const environment = {
     name: require('../package.json').name
 };
 
-export { environment }
+export { environment };

@@ -6,7 +6,7 @@ const path = require('path');
 
 export default {
     output: {
-        format: 'es',
+        format: 'cjs',
         sourcemap: true
     },
     plugins: [

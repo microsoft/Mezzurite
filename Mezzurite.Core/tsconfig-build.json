@@ -37,7 +37,7 @@
       "skipTemplateCodegen": true,
       "annotateForClosureCompiler": true,
       "strictMetadataEmit": true,
-      "flatModuleOutFile": "mezzurite-angular.js",
-      "flatModuleId": "@microsoft/mezzurite-angular"
+      "flatModuleOutFile": "mezzurite-core.js",
+      "flatModuleId": "@microsoft/mezzurite-core"
   }
 }

@@ -34,7 +34,7 @@ export class MezzuriteDirective implements OnInit {
             rootMargin: '0px'
         };
         
-        let observer = new IntersectionObserver(function(entries, observer) {
+        let intObserver = new IntersectionObserver(function(entries, observer) {
             performance.mark(that.id + MezzuriteConstants.componentMarkEnd)
             const entry = entries[0];
             if (entry.isIntersecting){
@@ -42,9 +42,8 @@ export class MezzuriteDirective implements OnInit {
                 (<any>window).mezzurite.viewportHeight = entry.rootBounds.height;
                 (<any>window).mezzurite.vltComponentLookup[that.fullName] = true;
             }
-            observer.unobserve(this.el);
-            this.el = null;
+            observer.unobserve(that.el);
         }, config);
-            observer.observe(this.el);
+            intObserver.observe(this.el);
     }
 } 
