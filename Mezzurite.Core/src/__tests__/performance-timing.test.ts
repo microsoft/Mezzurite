@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { PerformanceTimingService } from '../performance-timing.service';
-import { MezzuriteConstants } from '../performance-constants';
-import { MezzuriteObject } from '../performance-global';
+import { PerformanceTimingService } from '../services/performance-timing.service';
+import { MezzuriteConstants } from '../utils/performance-constants';
+import { MezzuriteObject } from '../utils/performance-global';
 import 'performance-polyfill';
 
 (<any>window).mezzurite = new MezzuriteObject();
@@ -49,7 +49,7 @@ describe("Mezzurite Timing Service Tests:", () => {
     (<any>window).mezzurite.startTime = 0;
     (<any>window).mezzurite.endTime = 6000;
     const vlt = PerformanceTimingService.calculateVlt();
-    expect(vlt.vlt).toBeTruthy();
+    expect(vlt !== null && vlt.vlt).toBeTruthy();
     (<any>window).mezzurite.vltComponentLookup = {};
     const newVlt = PerformanceTimingService.calculateVlt();
     expect(newVlt === null).toBeTruthy();
