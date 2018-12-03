@@ -4,6 +4,7 @@
 **For component tracking:** 
 ```
     "@microsoft/mezzurite-core": "^1.0.1",
+    "intersection-observer": "^0.5.0", // legacy browser support
     "react": "^16.4.2"
 ```
 **for full app tracking:**
