@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular)
 
 # Mezzurite-Angular
-**If migrating from rxjs 5, please install 'rxjs-compat' **
+**If migrating from rxjs 5, please install 'rxjs-compat'**
 ## Requirements:
 ```json
   "dependencies": {
