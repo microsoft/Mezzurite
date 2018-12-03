@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angularjs.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angularjs)
+
 # Mezzurite-AngularJS
 ## Requirements:
 ```json
@@ -13,6 +15,14 @@
 ```
 
 ## Onboarding
+
+### Installation
+ Install the mezzurite dependencies from npm:
+```javascript
+  npm install "@microsoft/mezzurite-core"
+  npm install "@microsoft/mezzurite-angularjs"
+```
+
 ### Basic Setup (Application Load Time)
 1. Add UMD scripts to app:
 ```html

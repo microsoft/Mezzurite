@@ -1,3 +1,7 @@
+<p align="center">
+<img src="/docs/images/Mezzurite_yellow.svg" alt="Mezzurite Logo" height="50%" width="50%">
+</p>
+
 
 # Mezzurite
 

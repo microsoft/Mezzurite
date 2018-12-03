@@ -1,5 +1,7 @@
+[![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular)
+
 # Mezzurite-Angular
-**For Angular 6, use @microsoft/mezzurite-angular@2.x**
+**If migrating from rxjs 5, please install 'rxjs-compat'**
 ## Requirements:
 ```json
   "dependencies": {
@@ -21,11 +23,19 @@
     "@angular/router": ">3.4.0",
     "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.2.2",
     "zone.js": "^0.x"
   },
 ```
 
 ## Onboarding
+
+### Installation
+Install mezzurite from npm:
+```javascript
+  npm install "@microsoft/mezzurite-angular"
+```
+
 ### Basic Setup (Application Load Time)
 1. Import the following modules in app.module:
 ```javascript

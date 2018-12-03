@@ -1,9 +1,12 @@
+[![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-react.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-react)
+
 # Mezzurite-React
 
 ## Requirements:
 **For component tracking:** 
 ```
     "@microsoft/mezzurite-core": "^1.0.1",
+    "intersection-observer": "^0.5.0", // legacy browser support
     "react": "^16.4.2"
 ```
 **for full app tracking:**
@@ -16,6 +19,15 @@
 ```
 
 ## Onboarding
+
+### Installation
+Install the mezzurite dependencies from npm:
+```javascript
+  npm install "@microsoft/mezzurite-core"
+  npm install "@microsoft/mezzurite-react"
+```
+
+
 ### Tracking Components Only
 1. In the component you want to track, add an import statement for mezzurite-react:
 ```javascript
