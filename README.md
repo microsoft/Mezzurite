@@ -1,6 +1,8 @@
 ![Mezzurite Logo](/docs/images/Mezzurite_yellow.svg)
 <!-- .element style="width: 40%; height: 40%; margin-left: 20%" -->
 
+<img src="/docs/images/Mezzurite_yellow.svg" alt="Mezzurite Logo" height="50%" width="50%">
+
 # Mezzurite
 
 The Mezzurite API standardizes the collection, logging and reporting of performance markers for Single Page Applications (SPA). Mezzurite allows you to collect Real User Monitoring (RUM) data allowing you access to real world insight on performance issues your customers might be facing.
