@@ -1,4 +1,4 @@
-<img src="/docs/images/Mezzurite_yellow.svg" alt="Mezzurite Logo" height="50%" width="50%">
+<img src="/docs/images/Mezzurite_yellow.svg" alt="Mezzurite Logo" align="center" height="50%" width="50%">
 
 # Mezzurite
 
