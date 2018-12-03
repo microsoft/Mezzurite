@@ -32,28 +32,31 @@ export class RoutingService {
 
 
         onNavStart$.subscribe((e: any) => {
-            (<any>window).mezzurite.routeUrl= e.url;
-
-            if ((<any>window).mezzurite.captureCycleStarted){
-
-                (<any>window).mezzurite.captureCycleStarted = false;
-                PerformanceTelemetryService.captureTimings(true);
-                window.performance.mark(MezzuriteConstants.vltMarkStart);
-                // starts a new capture cycle
-                PerformanceTelemetryService.startCaptureCycle();
-            } else {
-                // starts the capture cycle to transmit telemetry if current pathname is different than recentPath
-                PerformanceTelemetryService.startCaptureCycle();
-                // If first load, capture ALT
-                if (!(<any>window).mezzurite.firstViewLoaded) {
-                    window.performance.mark(MezzuriteConstants.altMarkEnd);
-                    window.performance.mark(MezzuriteConstants.vltMarkStart);
-                    const fullName = MezzuriteAngularUtils.getName(MezzuriteConstants.altName, MezzuriteAngularUtils.makeId());
-                    PerformanceTimingService.measure(fullName, 0, MezzuriteConstants.altMarkEnd);
-                } else {
-                    window.performance.mark(MezzuriteConstants.vltMarkStart);
-                }
-            }
+           this.handleRoute(e);
         });
+    }
+
+    handleRoute(e: any) {
+        (<any>window).mezzurite.routeUrl = e.url;
+        if ((<any>window).mezzurite.captureCycleStarted) {
+
+            (<any>window).mezzurite.captureCycleStarted = false;
+            PerformanceTelemetryService.captureTimings(true);
+            window.performance.mark(MezzuriteConstants.vltMarkStart);
+            // starts a new capture cycle
+            PerformanceTelemetryService.startCaptureCycle();
+        } else {
+            // starts the capture cycle to transmit telemetry if current pathname is different than recentPath
+            PerformanceTelemetryService.startCaptureCycle();
+            // If first load, capture ALT
+            if (!(<any>window).mezzurite.firstViewLoaded) {
+                window.performance.mark(MezzuriteConstants.altMarkEnd);
+                window.performance.mark(MezzuriteConstants.vltMarkStart);
+                const fullName = MezzuriteAngularUtils.getName(MezzuriteConstants.altName, MezzuriteAngularUtils.makeId());
+                PerformanceTimingService.measure(fullName, 0, MezzuriteConstants.altMarkEnd);
+            } else {
+                window.performance.mark(MezzuriteConstants.vltMarkStart);
+            }
+        }
     }
 }

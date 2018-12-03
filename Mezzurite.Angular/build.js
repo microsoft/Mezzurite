@@ -44,47 +44,47 @@ shell.echo(`Copy ES2015 for package`);
 shell.cp(`-Rf`, [`${NPM_DIR}/src/`, `${NPM_DIR}/*.js`, `${NPM_DIR}/*.js.map`], `${ESM2015_DIR}`);
 
 /* BUNDLING PACKAGE */
-// shell.echo(`Start bundling`);
-// shell.echo(`Rollup package`);
-// if (shell.exec(`rollup -c rollup.es.config.js -i ${NPM_DIR}/${PACKAGE_NAME}.js -o ${FESM2015_DIR}/${PACKAGE_NAME}.js`).code !== 0) {
-//     shell.echo(chalk.red(`Error: Rollup package failed`));
-//     shell.exit(1);
-// }
+shell.echo(`Start bundling`);
+shell.echo(`Rollup package`);
+if (shell.exec(`rollup -c rollup.es.config.js -i ${NPM_DIR}/${PACKAGE_NAME}.js -o ${FESM2015_DIR}/${PACKAGE_NAME}.js`).code !== 0) {
+    shell.echo(chalk.red(`Error: Rollup package failed`));
+    shell.exit(1);
+}
 
-// shell.echo(`Produce ESM5/FESM5 versions`);
-// shell.exec(`ngc -p ${OUT_DIR}/tsconfig-build.json --target es5 -d false --outDir ${OUT_DIR_ESM5} --sourceMap`);
-// shell.cp(`-Rf`, [`${OUT_DIR_ESM5}/src/`, `${OUT_DIR_ESM5}/*.js`, `${OUT_DIR_ESM5}/*.js.map`], `${ESM5_DIR}`);
-// if (shell.exec(`rollup -c rollup.es.config.js -i ${OUT_DIR_ESM5}/${PACKAGE_NAME}.js -o ${FESM5_DIR}/${PACKAGE_NAME}.js`).code !== 0) {
-//     shell.echo(chalk.red(`Error: FESM5 version failed`));
-//     shell.exit(1);
-// }
+shell.echo(`Produce ESM5/FESM5 versions`);
+shell.exec(`ngc -p ${OUT_DIR}/tsconfig-build.json --target es5 -d false --outDir ${OUT_DIR_ESM5} --sourceMap`);
+shell.cp(`-Rf`, [`${OUT_DIR_ESM5}/src/`, `${OUT_DIR_ESM5}/*.js`, `${OUT_DIR_ESM5}/*.js.map`], `${ESM5_DIR}`);
+if (shell.exec(`rollup -c rollup.es.config.js -i ${OUT_DIR_ESM5}/${PACKAGE_NAME}.js -o ${FESM5_DIR}/${PACKAGE_NAME}.js`).code !== 0) {
+    shell.echo(chalk.red(`Error: FESM5 version failed`));
+    shell.exit(1);
+}
 
-// shell.echo(`Run Rollup conversion on package`);
-// if (shell.exec(`rollup -c rollup.config.js -i ${FESM5_DIR}/${PACKAGE_NAME}.js -o ${BUNDLES_DIR}/${PACKAGE_NAME}.umd.js`).code !== 0) {
-//     shell.echo(chalk.red(`Error: Rollup conversion failed`));
-//     shell.exit(1);
-// }
+shell.echo(`Run Rollup conversion on package`);
+if (shell.exec(`rollup -c rollup.config.js -i ${FESM5_DIR}/${PACKAGE_NAME}.js -o ${BUNDLES_DIR}/${PACKAGE_NAME}.umd.js`).code !== 0) {
+    shell.echo(chalk.red(`Error: Rollup conversion failed`));
+    shell.exit(1);
+}
 
-// shell.echo(`Minifying`);
-// shell.cd(`${BUNDLES_DIR}`);
-// if (shell.exec(`uglifyjs ${PACKAGE_NAME}.umd.js -c --comments -o ${PACKAGE_NAME}.umd.min.js --source-map "includeSources=true,content='${PACKAGE_NAME}.umd.js.map',filename='${PACKAGE_NAME}.umd.min.js.map'"`).code !== 0) {
-//     shell.echo(chalk.red(`Error: Minifying failed`));
-//     shell.exit(1);
-// }
-// shell.cd(`..`);
-// shell.cd(`..`);
+shell.echo(`Minifying`);
+shell.cd(`${BUNDLES_DIR}`);
+if (shell.exec(`uglifyjs ${PACKAGE_NAME}.umd.js -c --comments -o ${PACKAGE_NAME}.umd.min.js --source-map "includeSources=true,content='${PACKAGE_NAME}.umd.js.map',filename='${PACKAGE_NAME}.umd.min.js.map'"`).code !== 0) {
+    shell.echo(chalk.red(`Error: Minifying failed`));
+    shell.exit(1);
+}
+shell.cd(`..`);
+shell.cd(`..`);
 
-// shell.echo(chalk.green(`Bundling completed`));
+shell.echo(chalk.green(`Bundling completed`));
 
-// shell.rm(`-Rf`, `${NPM_DIR}/package`);
-// shell.rm(`-Rf`, `${NPM_DIR}/*.js`);
-// shell.rm(`-Rf`, `${NPM_DIR}/*.js.map`);
-// shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js`);
-// shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js.map`);
-// shell.rm(`-Rf`, `${ESM2015_DIR}/src/**/*.d.ts`);
+shell.rm(`-Rf`, `${NPM_DIR}/package`);
+shell.rm(`-Rf`, `${NPM_DIR}/*.js`);
+shell.rm(`-Rf`, `${NPM_DIR}/*.js.map`);
+shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js`);
+shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js.map`);
+shell.rm(`-Rf`, `${ESM2015_DIR}/src/**/*.d.ts`);
 
-// shell.cp(`-Rf`, [`package.json`, `../LICENSE`, `README.md`], `${NPM_DIR}`);
+shell.cp(`-Rf`, [`package.json`, `../LICENSE`, `README.md`], `${NPM_DIR}`);
 
-// shell.sed('-i', `"private": true,`, `"private": false,`, `./${NPM_DIR}/package.json`);
+shell.sed('-i', `"private": true,`, `"private": false,`, `./${NPM_DIR}/package.json`);
 
-// shell.echo(chalk.green(`End building`));
+shell.echo(chalk.green(`End building`));
