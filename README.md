@@ -15,10 +15,11 @@ Mezzurite exists because traditional metrics like Page Load Time (PLT) are not r
 1. Make it easy to capture relevant performance markers for single page applications
 2. Standardize these metrics so that the performance of different sites are comparable
 
-## Frameworks Supported
-- React
-- Angular
-- AngularJS
+## Onboarding
+### Framework-Specific Documentation
+- [Mezzurite-React](./Mezzurite.React/README.md)
+- [Mezzurite-Angular](./Mezzurite.Angular/README.md)
+- [Mezzurite-AngularJS](./Mezzurite.AngularJS/README.md)
 
 ## Background
 ### What is a Single Page Application?
@@ -72,12 +73,6 @@ Using the above, we created the following metrics as relevant to the measurement
     - For each route change, the Viewport Load Times (VLT) are captured allowing for a view by view measurement of performance
     - Individual component performance
 2. Component only tracking: This is applicable when individual teams own individual components that they would like to track the performance of, but the site that the component is hosted on is owned by another team. In this case Mezzurite provides the developers with an easy way to identify the individual CLTs that they own irrespective of how well or poorly the rest of the site performs. This scenario is currently supported only for React.
-
-## Onboarding
-### Framework-Specific Documentation
-- [Mezzurite-React](./Mezzurite.React/README.md)
-- [Mezzurite-Angular](./Mezzurite.Angular/README.md)
-- [Mezzurite-AngularJS](./Mezzurite.AngularJS/README.md)
 
 ## Limitations
 - Currently do not track component loads that happen without a navigation to a new route.
