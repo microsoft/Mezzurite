@@ -4,7 +4,7 @@
 
 ## Requirements:
 **For component tracking:** 
-```
+```json
     "@microsoft/mezzurite-core": "^1.0.1",
     "intersection-observer": "^0.5.0", // legacy browser support
     "react": "^16.4.2"
@@ -21,29 +21,13 @@
 ## Onboarding
 
 ### Installation
-Install the mezzurite dependencies from npm:
+Install mezzurite from npm:
 ```javascript
-  npm install "@microsoft/mezzurite-core"
   npm install "@microsoft/mezzurite-react"
 ```
 
-
-### Tracking Components Only
-1. In the component you want to track, add an import statement for mezzurite-react:
-```javascript
-import {withMezzurite} from '@microsoft/mezzurite-react';
-```
-2. Since **withMezzurite** is a React "Higher Order Component", it will take in an existing component and return a modified version (with component performance timings). We need to modify our export statement:
-```javascript
-// old export
-export default ExampleComponent;
-
-// new export
-export default withMezzurite(ExampleComponent);
-```
-
-### Full Tracking (ALT, VLT, Components)
-****To ensure IE11 support, you must also install the 'Intersection-Observer' polyfill (listed as a Mezzurite peer dependency)****
+### Full Application Implementation (ALT, VLT, Components)
+**If you do not have access to the application's routing service, skip to next section on "Tracking Components"**
 1. Follow steps from "Tracking Components Only" section above.
 2. Inside main App module, add following import statement:
 ```javascript
@@ -70,3 +54,18 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 // new Redux export using Mezzurite
 export default compose(connect(mapStateToProps, mapDispatchToProps), withMezzuriteRouter)(App);
 ```
+
+### Tracking Components
+1. In the component you want to track, add an import statement for mezzurite-react:
+```javascript
+import {withMezzurite} from '@microsoft/mezzurite-react';
+```
+2. Since **withMezzurite** is a React "Higher Order Component", it will take in an existing component and return a modified version (with component performance timings). We need to modify our export statement:
+```javascript
+// old export
+export default ExampleComponent;
+
+// new export
+export default withMezzurite(ExampleComponent);
+```
+
