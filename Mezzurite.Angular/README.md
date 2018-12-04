@@ -48,7 +48,7 @@ Imports: [  AngularPerfModule.forRoot() ]
 3. In the constructor of AppModule, add the following:
 ```javascript
 export class AppModule {
-  constructor(@Inject(RoutingService) private router: typeof RoutingService) {
+  constructor(private router: RoutingService) {
     router.start();
   }
 }

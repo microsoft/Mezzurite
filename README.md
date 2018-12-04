@@ -73,8 +73,7 @@ Using the above, we created the following metrics as relevant to the measurement
 ## Onboarding
 ### Framework-Specific Documentation
 - [Mezzurite-React](./Mezzurite.React/README.md)
-- [Mezzurite-Angular 6](./Mezzurite.Angular/README.md)
-- [Mezzurite-Angular 2 through 5](./Mezzurite.Angular2_5/README.md)
+- [Mezzurite-Angular](./Mezzurite.Angular/README.md)
 - [Mezzurite-AngularJS](./Mezzurite.AngularJS/README.md)
 
 ## Limitations
