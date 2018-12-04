@@ -13,8 +13,7 @@ Mezzurite exists because traditional metrics like Page Load Time (PLT) are not r
 
 ## Frameworks Supported
 - React
-- Angular 6
-- Angular 2 through 5
+- Angular
 - AngularJS
 
 ## Background
