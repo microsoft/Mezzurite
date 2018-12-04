@@ -2,13 +2,6 @@
 <img src="/docs/images/Mezzurite_yellow.svg" alt="Mezzurite Logo" height="50%" width="50%">
 </p>
 
-<p>
-    <strong>mezzurite-react: </strong>
-    <a href="https://badge.fury.io/js/%40microsoft%2Fmezzurite-react">
-        <img src="https://badge.fury.io/js/%40microsoft%2Fmezzurite-react.svg" alt="mezzurite react npm" style="vertical-align: middle">
-    </a>
-    </b>
-</p>
 mezzurite-react: [![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-react.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-react) </br>
 mezzurite-angular: [![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angular) </br>
 mezzurite-angularjs: [![npm version](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angularjs.svg)](https://badge.fury.io/js/%40microsoft%2Fmezzurite-angularjs) </br>
