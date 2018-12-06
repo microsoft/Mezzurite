@@ -8,9 +8,9 @@ import 'performance-polyfill';
 
 (<any>window).mezzurite = new MezzuriteObject();
 (<any>window).mezzurite.measures = [
-  {componentLoadTime: 5765.89999999851, endTime: 5765.89999999851, name: "mz;ALT;Wmh8rB", slowestResourceEnd: -1, startTime: 0, timeToMount: 5765.89999999851},
-  {componentLoadTime: 171.00000008940697, endTime: 5948.100000154227, name: "mz;MyComponentName;KFtK8q", slowestResourceEnd: 5789.700000081211, startTime: 5777.10000006482, timeToMount: 171.00000008940697},
-  {componentLoadTime: 169.79999979957938, endTime: 5948.70000006631, name: "mz;MyFormComponent;riR8OO", startTime: 5778.900000266731, timeToMount: 169.79999979957938}
+  {componentLoadTime: 5765.89999999851, endTime: 5765.89999999851, name: "ALT", id: "Wmh8rB", slowestResourceEnd: -1, startTime: 0, timeToMount: 5765.89999999851},
+  {componentLoadTime: 171.00000008940697, endTime: 5948.100000154227, name: "MyComponentName", id: "KFtK8q", slowestResourceEnd: 5789.700000081211, startTime: 5777.10000006482, timeToMount: 171.00000008940697},
+  {componentLoadTime: 169.79999979957938, endTime: 5948.70000006631, name: "MyFormComponent", id: "riR8OO", startTime: 5778.900000266731, timeToMount: 169.79999979957938}
 ];
 (<any>window).mezzurite.vltComponentLookup = {
   "mz;MyComponentName;KFtK8q": true,
@@ -31,9 +31,13 @@ describe("Mezzurite Timing Service Tests:", () => {
   });
   
   it('Get measure by name works as expected', () => {  
-    const measure = PerformanceTimingService.getMeasureByName(MezzuriteConstants.measureNamePrefix + ";" + testTitle + ";" + testKey);
-    expect(measure).toBeTruthy();
-    expect(measure.componentLoadTime).toBeTruthy();
+    const measures: any[] | null = PerformanceTimingService.getMeasuresByName(testTitle);
+    expect(measures !== null).toBeTruthy();
+    if (measures !== null){
+      for (let i = 0; i < measures.length; i++){
+        expect(measures[i].componentLoadTime).toBeTruthy();
+      }
+    }
   });
 
   it('Get current components works as expected', () => {  

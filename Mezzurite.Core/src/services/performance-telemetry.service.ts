@@ -61,6 +61,7 @@ export class PerformanceTelemetryService {
             // vlt
             if (components.length > 0){
                 const vltResults = PerformanceTimingService.calculateVlt();
+                console.log("what are vlt results? ",vltResults);
                 if (vltResults !== null){
                     timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
                 }
@@ -87,10 +88,12 @@ export class PerformanceTelemetryService {
                     Timings: timings,
                     Framework: {
                         name: (<any>window).mezzurite.packageName,
-                        version: (<any>window).mezzurite.packageVersion
+                        version: (<any>window).mezzurite.packageVersion,
+                        coreVersion: (<any>window).mezzurite.coreVersion
                     },
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
-                    ViewportHeight: (<any>window).mezzurite.viewportHeight
+                    ViewportHeight: (<any>window).mezzurite.viewportHeight,
+                    ObjectVersion: MezzuriteConstants.mezzuriteObjectVersion
                 }
                 // log to console when developing locally
                 if ((<any>window).location.href.indexOf("localhost") > -1){

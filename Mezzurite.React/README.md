@@ -73,3 +73,12 @@ export default ExampleComponent;
 export default withMezzurite(ExampleComponent);
 ```
 
+### Unit Testing
+For Mezzurite to work correctly in Jest/Enzyme test environments (such as create-react-app), [jsdom](https://github.com/jsdom/jsdom) use is required to gain access to the window object:
+```javascript
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`...`);
+
+// then run code that would utilize Mezzurite
+```

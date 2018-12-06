@@ -5,6 +5,7 @@
  * Global Mezzurite constants
  */
 const MezzuriteConstants = {
+    mezzuriteObjectVersion: "1.0.0",
     captureCycleTimeout: 10000,
     slowestResourceTimeout: 4000,
     idLength: 6,

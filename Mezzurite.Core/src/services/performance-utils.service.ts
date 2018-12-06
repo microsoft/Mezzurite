@@ -3,6 +3,7 @@
 
 import {MezzuriteObject} from '../utils/performance-global';
 import {MezzuriteConstants} from '../utils/performance-constants';
+import {environment} from '../utils/core-environment';
 
 /**
  * Class of utility functions for Mezzurite
@@ -22,6 +23,7 @@ export class MezzuriteUtils {
                 obj[prop] = (<any>mzObj)[prop];
             }
         }
+        obj.coreVersion = environment.version;
     };
  
     /**

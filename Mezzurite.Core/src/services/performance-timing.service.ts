@@ -17,7 +17,9 @@ export class PerformanceTimingService {
     static measure(name: string, slowestResource: any = null, maxComponentEndTime: any = null): void{
         let startEntry;
         let endEntry;
+
         const componentTitle = MezzuriteUtils.getFullNamePart(name, MezzuriteConstants.fullNamePartTitle);
+ 
         const key = MezzuriteUtils.getFullNamePart(name, MezzuriteConstants.fullNamePartKey);
         if (name === undefined){
             return;
@@ -39,7 +41,6 @@ export class PerformanceTimingService {
             startEntry = performance.getEntriesByName(key + MezzuriteConstants.componentMarkStart)[0];
             endEntry = performance.getEntriesByName(key + MezzuriteConstants.componentMarkEnd)[0];
         }
-    
         // start time inside render hook
         const renderStartEntry = performance.getEntriesByName(key + MezzuriteConstants.componentMarkRenderStart)[0];
     
@@ -53,9 +54,11 @@ export class PerformanceTimingService {
     
         const mountDuration = endEntry.startTime - startTime;
         const totalDuration = endTime - startTime
+        const nameArr = name.split(';');
     
         let obj = {
-            name: name,
+            name: nameArr[1],
+            id: nameArr[2],
             startTime: startTime,
             endTime: endTime,
             timeToMount: mountDuration,
@@ -77,16 +80,52 @@ export class PerformanceTimingService {
     }
 
     /**
-     * Gets a specific measure by name
+     * Gets measures by name
      * @param name name
      */
-    static getMeasureByName(name: string){
+    static getMeasuresByName(name: string){
+        let result: any[] = [];
         if (name === undefined || name === null){
             return null;
         }
         const measures = (<any>window).mezzurite.measures;
         for (let i = 0; i < measures.length; i++){
             if (name === measures[i].name){
+                result.push(measures[i]);
+            }
+        }
+        return result;
+    }
+
+        /**
+     * Gets a specific measure by id
+     * @param id id
+     */
+    static getMeasureById(id: number){
+        if (id === undefined || id === null){
+            return null;
+        }
+        const measures = (<any>window).mezzurite.measures;
+        for (let i = 0; i < measures.length; i++){
+            if (id === measures[i].id){
+                return measures[i];
+            }
+        }
+        return null;
+    }
+
+            /**
+     * Gets a specific measure by name and id
+     * @param name name
+     * @param id id
+     */
+    static getMeasureByNameAndId(name: string, id: number){
+        if (name === undefined || name === null || id === undefined || id === null){
+            return null;
+        }
+        const measures = (<any>window).mezzurite.measures;
+        for (let i = 0; i < measures.length; i++){
+            if (name === measures[i].name && id === measures[i].id){
                 return measures[i];
             }
         }
@@ -118,8 +157,7 @@ export class PerformanceTimingService {
         )
         let obj: any = {};
         for (let i = 0; i < components.length; i++){
-            var name: string = components[i].name
-            obj[name] = components[i];
+            obj[MezzuriteConstants.measureNamePrefix + ';' + components[i].name + ';' + components[i].id] = components[i];
         }
         return obj;
     }
@@ -156,10 +194,9 @@ export class PerformanceTimingService {
             }
         }
         if (maxComponent !== null){
-            const key = MezzuriteUtils.getFullNamePart(maxComponent.name, MezzuriteConstants.fullNamePartKey);
-            const vltName = MezzuriteConstants.measureNamePrefix + ";" + MezzuriteConstants.vltName + ";" + key;
-            this.measure(vltName, null, maxComponent.endTime);
-            measure = this.getMeasureByName(vltName);
+            const fullName = MezzuriteConstants.measureNamePrefix + ';' + MezzuriteConstants.vltName + ';' + maxComponent.id;
+            this.measure(fullName, null, maxComponent.endTime);
+            measure = this.getMeasureByNameAndId(MezzuriteConstants.vltName, maxComponent.id);
             performance.clearMarks(MezzuriteConstants.vltMarkStart);
         }
         else {
