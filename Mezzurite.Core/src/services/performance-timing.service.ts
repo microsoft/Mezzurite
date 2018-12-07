@@ -3,6 +3,7 @@
 
 import { MezzuriteConstants } from '../utils/performance-constants';
 import { MezzuriteUtils } from './performance-utils.service';
+import { MezzuriteMeasure } from '../utils/performance-measure';
 
 /**
  * Class containing core timing functions
@@ -52,15 +53,14 @@ export class PerformanceTimingService {
         const totalDuration = endTime - startTime;
         const nameArr = name.split(';');
 
-        const obj = {
-            name: nameArr[1],
-            id: nameArr[2],
-            startTime: startTime % 1 !== 0 ? parseFloat(startTime.toFixed(1)) : startTime,
-            endTime: parseFloat(endTime.toFixed(1)),
-            untilMount: parseFloat(mountDuration.toFixed(1)),
-            clt: parseFloat(totalDuration.toFixed(1)),
-            slowResource: {}
-        };
+        const obj = new MezzuriteMeasure();
+        obj.name = nameArr[1];
+        obj.id = nameArr[2];
+        obj.startTime = startTime % 1 !== 0 ? parseFloat(startTime.toFixed(1)) : startTime;
+        obj.endTime = parseFloat(endTime.toFixed(1));
+        obj.untilMount = parseFloat(mountDuration.toFixed(1));
+        obj.clt = parseFloat(totalDuration.toFixed(1));
+        obj.slowResource = {};
 
         if (slowestResource && slowestResource.responseEnd >= startTime) {
             (<any>obj).slowResource['endTime'] = parseFloat(slowestResource.responseEnd.toFixed(1));
@@ -179,8 +179,8 @@ export class PerformanceTimingService {
                     if (slowestResource !== undefined && slowestResource !== null) {
                         slowestResourceEnd = slowestResource.responseEnd;
                     }
-                    const maxLast = maxComponent.componentLoadTime + maxComponent.startTime;
-                    const currLast = components[key].componentLoadTime + components[key].startTime;
+                    const maxLast = maxComponent.clt + maxComponent.startTime;
+                    const currLast = components[key].clt + components[key].startTime;
                     if (currLast > maxLast) {
                         maxComponent = components[key];
                         maxEndTime = currLast;
