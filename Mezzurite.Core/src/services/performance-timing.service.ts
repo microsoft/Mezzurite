@@ -63,10 +63,10 @@ export class PerformanceTimingService {
         };
 
         if (slowestResource && slowestResource.responseEnd >= startTime) {
-            (<any>obj).slowResource['end'] = parseFloat(slowestResource.responseEnd.toFixed(1));
+            (<any>obj).slowResource['endTime'] = parseFloat(slowestResource.responseEnd.toFixed(1));
             (<any>obj).slowResource['name'] = slowestResource.name;
         } else if (slowestResource !== null) {
-            (<any>obj).slowResource['end'] = -1;
+            (<any>obj).slowResource['endTime'] = -1;
             (<any>obj).slowResource['name'] = slowestResource.name;
         }
 
