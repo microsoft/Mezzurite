@@ -16,7 +16,7 @@ const imageName = 'https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/7375
     id: 'Wmh8rB',
     slowResource: { end: -1, name: imageName},
     startTime: 0,
-    timeToMount: 5765.899
+    untilMount: 5765.899
   },
   {
     clt: 171.000,
@@ -25,15 +25,15 @@ const imageName = 'https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/7375
     id: 'KFtK8q',
     slowResource: { end: 5789.700, name: imageName},
     startTime: 5777.100,
-    timeToMount: 171.000
+    untilMount: 171.000
   },
   {
     clt: 169.799,
     endTime: 5948.700,
-    name: 'MyFormComponent', 
+    name: 'MyFormComponent',
     id: 'riR8OO',
     startTime: 5778.900,
-    timeToMount: 169.799
+    untilMount: 169.799
   }
 ];
 (<any>window).mezzurite.vltComponentLookup = {
