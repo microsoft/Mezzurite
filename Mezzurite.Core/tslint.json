@@ -21,6 +21,7 @@
         "comment-format": [
             true, 
             "check-space"
-        ]
+        ],
+        "forin": false
     }
 }
