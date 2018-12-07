@@ -12,108 +12,112 @@ export class PerformanceTelemetryService {
     /**
      * Starts capture cycle period
      */
-    static startCaptureCycle(){  
-        if (!(<any>window).mezzurite.captureCycleStarted){
+    static startCaptureCycle() {
+        if (!(<any>window).mezzurite.captureCycleStarted) {
             (<any>window).mezzurite.startTime = window.performance.now();
             (<any>window).mezzurite.captureCycleStarted = true;
-            (<any>window).mezzurite.captureTimer = setTimeout(function(){
+            (<any>window).mezzurite.captureTimer = setTimeout(function() {
                 PerformanceTelemetryService.captureTimings();
-            },MezzuriteConstants.captureCycleTimeout)
+            }, MezzuriteConstants.captureCycleTimeout);
         }
-    };
+    }
 
     /**
      * Captures timings for the given period
      * @param isRedirect Bool dictating whether timings were captured at end of cycle or early
      */
-    static captureTimings(isRedirect = false){
+    static captureTimings(isRedirect = false) {
         clearTimeout((<any>window).mezzurite.captureTimer);
         (<any>window).mezzurite.endTime = window.performance.now();
-        if (!(<any>window).mezzurite.captureCycleStarted){
+        if (!(<any>window).mezzurite.captureCycleStarted) {
             (<any>window).mezzurite.captureCycleStarted = true;
         }
         PerformanceTelemetryService.submitTelemetry(isRedirect);
         (<any>window).mezzurite.captureCycleStarted = false;
-    };
+    }
 
     /**
      * Creates timings object to send to telemetry
      * @param isRedirect isRedirect bool
      */
     static submitTelemetry(isRedirect: boolean): void {
-        let timings: any[] = [];
+        const timings: any[] = [];
         // add redirect value
-        timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.redirect, isRedirect === false ? 0 : 1))
+        timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.redirect, isRedirect === false ? 0 : 1));
 
         // calculate component measures off slowest resource values
-        if ((<any>window).mezzurite.elementLookup !== {}){
+        if ((<any>window).mezzurite.elementLookup !== {}) {
             PerformanceTimingService.calculateSlowestResourceBatch();
         }
         // all components
-        var components = PerformanceTimingService.getCurrentComponents();
-        if ((<any>window).mezzurite.routerPerf){
+        const components = PerformanceTimingService.getCurrentComponents();
+        if ((<any>window).mezzurite.routerPerf) {
             // alt
-            if ((<any>window).mezzurite.firstViewLoaded === false){
-                const altMeasure = (<any>window).mezzurite.measures.filter((m:any) => m.name.indexOf(MezzuriteConstants.altName) > -1)[0];
-                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.altName, altMeasure.componentLoadTime));
+            if ((<any>window).mezzurite.firstViewLoaded === false) {
+                const altMeasure = (<any>window).mezzurite.measures.filter((m: any) => m.name.indexOf(MezzuriteConstants.altName) > -1)[0];
+                timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.altName, altMeasure.clt));
                 (<any>window).mezzurite.firstViewLoaded = true;
             }
             // vlt
-            if (components.length > 0){
+            if (components.length > 0) {
                 const vltResults = PerformanceTimingService.calculateVlt();
-                if (vltResults !== null){
+                if (vltResults !== null) {
                     timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
                 }
             }
-            if (components.length === 0){
+            if (components.length === 0) {
                 performance.clearMarks(MezzuriteConstants.vltMarkStart);
             }
         }
-        if (components.length > 0){
+        if (components.length > 0) {
             timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.allComponents, -1, components));
         }
         this.log(timings);
         MezzuriteUtils.testReset();
-    };
+    }
 
     /**
      * Adds remaining metadata to send to logger and dispatches event
-     * @param timings 
+     * @param timings
      */
-    static log(timings: any){
-        if ((<any>window).mezzurite){
-            if (timings.length > 1){
+    static log(timings: any) {
+        if ((<any>window).mezzurite) {
+            if (timings.length > 1) {
                 const obj = {
                     Timings: timings,
                     Framework: {
                         name: (<any>window).mezzurite.packageName,
-                        version: (<any>window).mezzurite.packageVersion
+                        version: (<any>window).mezzurite.packageVersion,
+                        coreVersion: (<any>window).mezzurite.coreVersion
                     },
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
-                    ViewportHeight: (<any>window).mezzurite.viewportHeight
-                }
+                    ViewportHeight: (<any>window).mezzurite.viewportHeight,
+                    ObjectVersion: MezzuriteConstants.mezzuriteObjectVersion
+                };
                 // log to console when developing locally
-                if ((<any>window).location.href.indexOf("localhost") > -1){
-                    console.log("to log for testing: ",obj);
+                if ((<any>window).location.href.indexOf('localhost') > -1) {
+                    console.log('to log for testing: ', obj);
                 }
-                if ((<any>window).mezzurite.EventElement)
-                {
+                if ((<any>window).mezzurite.EventElement) {
                     (<any>window).mezzurite.EventElement.dispatchEvent(new CustomEvent('Timing', {detail: obj}));
                 }
-            }
-            else {
-                console.log("nothing for Mezzurite to log.");
+            } else {
+                console.log('nothing for Mezzurite to log.');
             }
         }
-    };
+    }
 
     /**
      * Checks whether window.performance is undefined
      */
-    static compatibilityCheck(){
+    static compatibilityCheck() {
         const isCompatible = (window.performance !== undefined);
-        if (!isCompatible){
-               const timings = [MezzuriteUtils.createMetric(MezzuriteConstants.unsupportedBrowserName, -1, MezzuriteConstants.unsupportedBrowserPerf)]
+        if (!isCompatible) {
+                const timings = [
+                   MezzuriteUtils.createMetric(MezzuriteConstants.unsupportedBrowserName,
+                   -1,
+                   MezzuriteConstants.unsupportedBrowserPerf)
+                ];
             this.log(timings);
         }
         return isCompatible;

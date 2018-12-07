@@ -3,6 +3,7 @@
 
 import {MezzuriteObject} from '../utils/performance-global';
 import {MezzuriteConstants} from '../utils/performance-constants';
+import {environment} from '../utils/core-environment';
 
 /**
  * Class of utility functions for Mezzurite
@@ -16,19 +17,20 @@ export class MezzuriteUtils {
      */
     static createMezzuriteObject(obj: any): void {
         this.addCustomEventPolyfill();
-        var mzObj = new MezzuriteObject();
-        for (var prop in mzObj){
-            if (obj[prop] === undefined){
+        const mzObj = new MezzuriteObject();
+        for (const prop in mzObj) {
+            if (obj[prop] === undefined) {
                 obj[prop] = (<any>mzObj)[prop];
             }
         }
-    };
- 
+        obj.coreVersion = environment.version;
+    }
+
     /**
      * Resets certain properties in window.mezzurite after capture cycle is completed
      */
-    static testReset(): void{
-        let obj = (<any>window).mezzurite;
+    static testReset(): void {
+        const obj = (<any>window).mezzurite;
         obj.childElementNames = {};
         obj.slowestResource = {};
         obj.currentComponents = {};
@@ -41,21 +43,20 @@ export class MezzuriteUtils {
      * Creates a unique alpha-numeric key
      */
     static makeId(): string {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      
-        for (var i = 0; i < MezzuriteConstants.idLength; i++){
-            text += possible.charAt(Math.floor(Math.random() * possible.length));    
+        let text = '';
+        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        for (let i = 0; i < MezzuriteConstants.idLength; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
         return text;
-    };
+    }
 
     /**
      * Gets string name of the given function
      * @param fun function
      */
     static getFunctionName(fun: any): string {
-        var ret = fun.toString();
+        let ret = fun.toString();
         ret = ret.substr('function '.length);
         ret = ret.substr(0, ret.indexOf('('));
         return ret;
@@ -66,11 +67,11 @@ export class MezzuriteUtils {
      * @param WrappedComponent Component
      */
     static getDisplayName(WrappedComponent: any): any {
-        if (WrappedComponent.name !== undefined){
+        if (WrappedComponent.name !== undefined) {
             return WrappedComponent.name;
         }
         return MezzuriteUtils.getFunctionName(WrappedComponent);
-    };
+    }
 
     /**
      * Gets complete name consisting of prefix, component name, and unique key.
@@ -78,9 +79,9 @@ export class MezzuriteUtils {
      * @param key unique key
      * @param clarifier optional clarifier
      */
-    static getName(name: string, key: string): string{
-        return MezzuriteConstants.measureNamePrefix + ";" + name + ";" + key;
-    };
+    static getName(name: string, key: string): string {
+        return MezzuriteConstants.measureNamePrefix + ';' + name + ';' + key;
+    }
 
     /**
      * Creates metric to save to global mezzurite object
@@ -88,16 +89,16 @@ export class MezzuriteUtils {
      * @param value measured value
      * @param data json metadata
      */
-    static createMetric(metricType: string, value: number, data: any = null): any{
-        var obj: any = {
+    static createMetric(metricType: string, value: number, data: any = null): any {
+        const obj: any = {
             metricType: metricType,
-            value: value
-        }
-        if (data !== null){
-            obj.data = JSON.stringify(data)
+            value: value % 1 !== 0 ? parseFloat(value.toFixed(1)) : value
+        };
+        if (data !== null) {
+            obj.data = JSON.stringify(data);
         }
         return obj;
-    };
+    }
 
     /**
      * Walks DOM of a given element
@@ -108,20 +109,20 @@ export class MezzuriteUtils {
     static walkDOM(node: any, key: string, func: any) {
         func(node, key);
         node = node.firstChild;
-        while(node) {
+        while (node) {
             MezzuriteUtils.walkDOM(node, key, func);
             node = node.nextSibling;
         }
-    };
+    }
 
     /**
      * Gets fragment from full name
      * @param fullName full name
      * @param val value to pull
      */
-    static getFullNamePart(fullName: string, val: string){
-        const arr = fullName.split(";");
-        switch (val){
+    static getFullNamePart(fullName: string, val: string) {
+        const arr = fullName.split(';');
+        switch (val) {
             case MezzuriteConstants.fullNamePartTitle:
             return arr[1];
             case MezzuriteConstants.fullNamePartKey:
@@ -134,18 +135,19 @@ export class MezzuriteUtils {
     /**
      * Polyfill that adds CustomEvent for IE usage
      */
-    static addCustomEventPolyfill(){
-        if ( typeof (<any>window).CustomEvent === "function" ) return false;
+    static addCustomEventPolyfill() {
+        if ( typeof (<any>window).CustomEvent === 'function' ) {
+            return false;
+        }
 
         function CustomEvent ( event: string, params: any ) {
           params = params || { bubbles: false, cancelable: false, detail: undefined };
-          var evt = document.createEvent( 'CustomEvent' );
+          const evt = document.createEvent( 'CustomEvent' );
           evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
           return evt;
          }
-      
+
         CustomEvent.prototype = (<any>window).Event.prototype;
-      
         (<any>window).CustomEvent = CustomEvent;
     }
 }

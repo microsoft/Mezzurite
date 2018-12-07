@@ -3,6 +3,8 @@
 # Mezzurite-React
 
 ## Requirements:
+
+
 **For component tracking:** 
 ```json
     "@microsoft/mezzurite-core": "^1.0.1",
@@ -20,20 +22,22 @@
 
 ## Onboarding
 
+
 ### Installation
 Install mezzurite from npm:
 ```javascript
   npm install "@microsoft/mezzurite-react"
 ```
 
+** **You will be adding Mezzurite functionality through the use of Higher Order Components (HOC), which is a component structure that takes in an existing component and return a modified version** **
+
 ### Full Application Implementation (ALT, VLT, Components)
-**If you do not have access to the application's routing service, skip to next section on "Tracking Components"**
-1. Follow steps from "Tracking Components Only" section above.
-2. Inside main App module, add following import statement:
+** **If you do not have access to the application's routing service, skip to next section on "Tracking Components"** **
+1. Inside main App module, add following import statement:
 ```javascript
 import {withMezzuriteRouter} from '@microsoft/mezzurite-react';
 ```
-3. Similar to **withMezzurite**, we will create a new modified component using our **withMezzuriteRouter** HOC:
+2. Wrap your exported component in the **withMezzuriteRouter** higher order component. This will add Mezzurite functionality to your app router:
 ```javascript
 // old export
 export default App;
@@ -60,7 +64,7 @@ export default compose(connect(mapStateToProps, mapDispatchToProps), withMezzuri
 ```javascript
 import {withMezzurite} from '@microsoft/mezzurite-react';
 ```
-2. Since **withMezzurite** is a React "Higher Order Component", it will take in an existing component and return a modified version (with component performance timings). We need to modify our export statement:
+2. Wrap your exported component in the **withMezzurite** higher order component. This will add Mezzurite functionality to this specific component:
 ```javascript
 // old export
 export default ExampleComponent;
@@ -69,3 +73,12 @@ export default ExampleComponent;
 export default withMezzurite(ExampleComponent);
 ```
 
+### Unit Testing
+For Mezzurite to work correctly in Jest/Enzyme test environments (such as create-react-app), [jsdom](https://github.com/jsdom/jsdom) use is required to gain access to the window object:
+```javascript
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`...`);
+
+// then run code that would utilize Mezzurite
+```
