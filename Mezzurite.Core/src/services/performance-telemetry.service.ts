@@ -61,7 +61,6 @@ export class PerformanceTelemetryService {
             // vlt
             if (components.length > 0) {
                 const vltResults = PerformanceTimingService.calculateVlt();
-                console.log('what are vlt results? ', vltResults);
                 if (vltResults !== null) {
                     timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
                 }
