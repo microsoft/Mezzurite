@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-core",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "Core Library for use with framework-specific Mezzurite package to capture timings for single page applications.",
   "author": "Microsoft Corporation",
   "repository": {

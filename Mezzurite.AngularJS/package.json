@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-angularjs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Library for capturing SPA timings within AngularJS.",
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -12,7 +12,7 @@
   "types": "./dist/index.d.ts",
   "module": "./dist-esm/index.js",
   "scripts": {
-    "clean": "shx rm -rf browser dist dist-esm build/compiled",
+    "clean": "shx rm -rf bundles dist dist-esm build/compiled",
     "build": "npm run clean && rollup -c && npm run make-bundle && npm run post-build-cleanup",
     "post-build-cleanup": "shx rm -rf dist/src dist-esm/src",
     "post-clean": "shx rm -rf build/compiled",

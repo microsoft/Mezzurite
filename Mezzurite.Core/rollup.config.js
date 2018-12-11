@@ -8,7 +8,6 @@ const globals = {
     '@angular/core': 'ng.core',
     '@angular/common': 'ng.common',
     "@angular/router": "ng.router",
-    "@microsoft/mezzurite-core": "mezzurite-core",
     'rxjs': 'rxjs',
     'rxjs/operators': 'rxjs.operators'
 };
@@ -19,10 +18,10 @@ export default {
     onwarn: () => { return },
     output: {
         format: 'umd',
-        name: 'ng.mezzuriteAngular',
+        name: 'mezzuriteCore',
         globals: globals,
         sourcemap: true,
         exports: 'named',
-        amd: { id: '@microsoft/mezzurite-angular' }
+        amd: { id: '@microsoft/mezzurite-core' }
     }
 }
