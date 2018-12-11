@@ -87,8 +87,7 @@ export class PerformanceTelemetryService {
                     Timings: timings,
                     Framework: {
                         name: (<any>window).mezzurite.packageName,
-                        version: (<any>window).mezzurite.packageVersion,
-                        coreVersion: (<any>window).mezzurite.coreVersion
+                        version: (<any>window).mezzurite.packageVersion
                     },
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
                     ViewportHeight: (<any>window).mezzurite.viewportHeight,
