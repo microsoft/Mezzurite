@@ -27,5 +27,11 @@
     "redux-thunk": "2.3.0",
     "sanitize.css": "6.0.0",
     "serve": "9.4.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
