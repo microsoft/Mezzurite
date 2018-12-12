@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Library for capturing SPA timings within React.",
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -13,9 +13,6 @@
   ],
   "main": "./dist/bundles/mezzurite-react.umd.js",
   "module": "./esm/mezzurite-react.js",
-  "publishConfig": {
-    "access": "restricted"
-  },
   "scripts": {
     "clean": "shx rm -rf browser dist dist-esm",
     "build": "npm run clean && node build.js",
