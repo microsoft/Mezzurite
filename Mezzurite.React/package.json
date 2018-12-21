@@ -11,7 +11,7 @@
   "keywords": [
     "mezzurite-react"
   ],
-  "main": "./dist/bundles/mezzurite-react.umd.js",
+  "main": "./bundles/mezzurite-react.umd.js",
   "module": "./esm/mezzurite-react.js",
   "scripts": {
     "clean": "shx rm -rf browser dist dist-esm",
