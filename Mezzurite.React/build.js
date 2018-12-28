@@ -12,6 +12,7 @@ const FESM5_DIR = `${NPM_DIR}/fesm5`;
 const BUNDLES_DIR = `${NPM_DIR}/bundles`;
 const OUT_DIR = `${NPM_DIR}/package`;
 const OUT_DIR_ESM5 = `${NPM_DIR}/package/esm5`;
+const TYPES_DIR = `${NPM_DIR}/types`;
 
 shell.echo(`Start building...`);
 
@@ -22,9 +23,9 @@ shell.mkdir(`-p`, `./${OUT_DIR}`);
 /* TSLint with Codelyzer */
 // https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
 // https://github.com/mgechev/codelyzer
-shell.echo(`Start ESLint`);
-shell.exec(`eslint src/**/*.js`);
-shell.echo(chalk.green(`ESLint completed`));
+shell.echo(`Start TSLint`);
+shell.exec(`tslint -p tsconfig.json -t stylish src/**/*.ts`);
+shell.echo(chalk.green(`TSLint completed`));
 
 shell.cp(`-Rf`, [`src`, `*.js`, `*.json`], `${OUT_DIR}`);
 
@@ -44,7 +45,6 @@ if (shell.exec(`uglifyjs ${PACKAGE_NAME}.umd.js -c --comments -o ${PACKAGE_NAME}
 }
 shell.cd(`..`);
 shell.cd(`..`);
-
 shell.echo(chalk.green(`Bundling completed`));
 
 shell.rm(`-Rf`, `${NPM_DIR}/package`);
@@ -54,7 +54,8 @@ shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js`);
 shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js.map`);
 
 shell.cp(`-Rf`, [`package.json`, `../LICENSE`, `README.md`], `${NPM_DIR}`);
+shell.exec(`tsc --p tsconfig.json --outDir "dist/tsc" --declaration true --declarationDir "dist/typings"`);
+shell.rm(`-Rf`, `${NPM_DIR}/tsc`);
 
 shell.sed('-i', `"private": true,`, `"private": false,`, `./${NPM_DIR}/package.json`);
-
 shell.echo(chalk.green(`End building`));
