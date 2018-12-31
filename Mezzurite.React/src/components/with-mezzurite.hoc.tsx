@@ -8,8 +8,6 @@ import { MezzuriteReactUtils } from '../services/performance-utils-react.service
 import { StateProvider } from '../services/state-provider.service';
 import 'intersection-observer';
 
-declare var ModifiedComponent: any;
-
 /**
  * checks whether current component is class or stateless
  * @param {*} Component component
@@ -32,7 +30,9 @@ function routerNotImplemented(){
  * @param {*} WrappedComponent 
  */
 const withMezzurite = (WrappedComponent: React.Component) => {
-    if (!(window as any).mezzurite.isCompatible){
+    var ModifiedComponent: any;
+
+    if ((window as any).mezzurite && !(window as any).mezzurite.isCompatible){
         console.warn("compatibility warning")
         return WrappedComponent;
     }
@@ -43,8 +43,6 @@ const withMezzurite = (WrappedComponent: React.Component) => {
     else{
         ModifiedComponent = WrappedComponent;
     }
-
-
 
     return class withMezzuriteClass extends React.Component{
         key: string;

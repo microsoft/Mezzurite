@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Library for capturing SPA timings within React.",
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -47,7 +47,10 @@
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
+    "intersection-observer": "^0.5.1",
     "path": "^0.12.7",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-router": "^4.3.1",
     "rollup": "^0.65.2",
     "rollup-plugin-babel": "^4.0.3",
@@ -64,7 +67,6 @@
     "uglify-js": "^3.4.9"
   },
   "dependencies": {
-    "@microsoft/mezzurite-core": "^1.0.1",
-    "intersection-observer": "^0.5.0"
+    "@microsoft/mezzurite-core": "^1.0.13"
   }
 }
