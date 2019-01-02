@@ -29,7 +29,8 @@ Install mezzurite from npm:
   npm install "@microsoft/mezzurite-react"
 ```
 
-** **You will be adding Mezzurite functionality through the use of Higher Order Components (HOC), which is a component structure that takes in an existing component and return a modified version** **
+### What is a Higher-Order Component (HOC)?
+A higher-order component (HOC) is an advanced technique in React for reusing component logic. They are functions that take in a component and return a modified component. We use HOC's within the Mezzurite React library to add tracking functionality to user components.
 
 ### Full Application Implementation (ALT, VLT, Components)
 ** **If you do not have access to the application's routing service, skip to next section on "Tracking Components"** **
