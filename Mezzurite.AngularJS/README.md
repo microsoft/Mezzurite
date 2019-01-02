@@ -7,6 +7,7 @@
     "@microsoft/mezzurite-core": "^1.0.1",
     "@types/angular": "^1.5.6",
     "@types/node": "^10.12.2",
+    "intersection-observer": "^0.5.1",
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
@@ -59,3 +60,6 @@ function View1Ctrl($timeout, AngularJsPerfService){
     })
 }
 ```
+
+### How do I check if my timings are logging correctly?
+If running from localhost, a console.log should fire with the current timings. An alternate place to look for metrics is window.mezzurite.measures, which is where each component timing, as well as ALT and VLT, is saved.
