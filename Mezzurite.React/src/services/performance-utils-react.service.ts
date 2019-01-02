@@ -2,15 +2,15 @@
 // Licensed under the MIT License.
 
 import { MezzuriteUtils } from "@microsoft/mezzurite-core";
-import pkg from "../../package";
+import {environment} from './react-environment';
 
 /**
  * Extension of Mezzurite Utilities that gets package specific information
  */
 export class MezzuriteReactUtils extends MezzuriteUtils{
-    static createMezzuriteObject(obj){
+    static createMezzuriteObject(obj: any){
         super.createMezzuriteObject(obj);
-        window.mezzurite.packageVersion = pkg.version;
-        window.mezzurite.packageName = pkg.name;
+        (<any>window).mezzurite.packageVersion = environment.version;
+        (<any>window).mezzurite.packageName = environment.name;
     }
 }

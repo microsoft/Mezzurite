@@ -1,10 +1,11 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
+import typescriptPlugin from 'rollup-plugin-typescript2';
 
 export default [
 {
-    input: './src/mezzurite-react.js',
+    input: './src/mezzurite-react.ts',
     output: {
     dir: 'dist/esm',
     format: 'esm',
@@ -21,13 +22,14 @@ export default [
     plugins: [
         json(),
         resolve(['.js', '.json']),
+        typescriptPlugin(),
         babel({
             exclude: 'node_modules/**'
         })
     ]
 },
 {
-    input: './src/mezzurite-react.js',
+    input: './src/mezzurite-react.ts',
     output: {
     file: 'dist/bundles/mezzurite-react.umd.js',
     name: 'Mezzurite-React',
@@ -46,6 +48,7 @@ export default [
     plugins: [
         json(),
         resolve(['.js', '.json']),
+        typescriptPlugin(),
         babel({
             exclude: 'node_modules/**'
         }),
