@@ -26,7 +26,6 @@
 ### Installation
 Install mezzurite from npm:
 ```javascript
-  npm install "@microsoft/mezzurite-core"
   npm install "@microsoft/mezzurite-react"
 ```
 
