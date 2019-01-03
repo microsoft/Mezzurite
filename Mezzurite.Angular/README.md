@@ -9,7 +9,7 @@
     "@types/angular": "^1.6.51",
     "@types/jquery": "^2.0.46",
     "@types/node": "^10.12.2",
-    "intersection-observer": "^0.5.1",
+    "intersection-observer": "^0.5.1", // IE support
     "reflect-metadata": "^0.1.8"
   },
   "peerDependencies": {
@@ -64,6 +64,6 @@ Components are instrumented inside the html markup as an attribute directive:
 ...
 </div>
 ```
-
-### How do I check if my timings are logging correctly?
+## FAQ
+### 1. How do I check if my timings are logging correctly?
 If running from localhost, a console.log should fire with the current timings. An alternate place to look is window.mezzurite.measures, which is where each component timing, as well as ALT and VLT, is saved.
