@@ -81,3 +81,13 @@ Using the above, we created the following metrics as relevant to the measurement
 
 ## Contributions
 [To read about contributing to this repo, click here](CONTRIBUTING.md)
+
+## FAQ
+### 1. I just installed the mezzurite packages, but, I am not able to see them in my vs code editor's package explorer ?
+After installing the npm package, please refresh the package explorer by hitting refresh icon in vs code editor's package explorer. Mezzurite packages are installed under "rootDirectory > node_modules > @microsoft" folder.
+
+### 2. After I install the packages, do I have to explicitly add mezzurite dependencies in my application's package.json file ?
+Yes. If you are using a build process in your project which is using the package.json file to build the project, then, in that case you will need to explicitly add dependencies in package.json. It's always a good practice to have all the project dependencies mentioned in app's package.json file. 
+
+### 3. How do we decide which components to track for a given route ?
+You can track the components which are slow and known performance inefficient components, but, in that case you may miss to track the slowest component. And, as CLT contributes to the viewport load time of the page, we highly recommend tracking all the components loaded on a particular page. The more components you track leads to a complete VLT for that page.

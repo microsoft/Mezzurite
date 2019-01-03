@@ -8,13 +8,13 @@
 **For component tracking:** 
 ```json
     "@microsoft/mezzurite-core": "^1.0.1",
-    "intersection-observer": "^0.5.0", // legacy browser support
+    "intersection-observer": "^0.5.0", // IE support
     "react": "^16.4.2"
 ```
 **for full app tracking:**
 ```json
     "@microsoft/mezzurite-core": "^1.0.1",
-    "intersection-observer": "^0.5.0", // legacy browser support
+    "intersection-observer": "^0.5.0", // IE support
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1"
@@ -26,19 +26,17 @@
 ### Installation
 Install mezzurite from npm:
 ```javascript
+  npm install "@microsoft/mezzurite-core"
   npm install "@microsoft/mezzurite-react"
 ```
 
-### What is a Higher-Order Component (HOC)?
-A higher-order component (HOC) is an advanced technique in React for reusing component logic. They are functions that take in a component and return a modified component. We use HOC's within the Mezzurite React library to add tracking functionality to user components.
-
-### Full Application Implementation (ALT, VLT, Components)
+### Full Application Implementation ([ALT, VLT, Components](#faq))
 ** **If you do not have access to the application's routing service, skip to next section on "Tracking Components"** **
 1. Inside main App module, add following import statement:
 ```javascript
 import {withMezzuriteRouter} from '@microsoft/mezzurite-react';
 ```
-2. Wrap your exported component in the **withMezzuriteRouter** higher order component. This will add Mezzurite functionality to your app router:
+2. Wrap your exported component in the **withMezzuriteRouter** [higher order component](#faq). This will add Mezzurite functionality to your app router:
 ```javascript
 // old export
 export default App;
@@ -60,12 +58,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default compose(connect(mapStateToProps, mapDispatchToProps), withMezzuriteRouter)(App);
 ```
 
-### Tracking Components
+### Tracking Components([CLT and VLT](#faq))
 1. In the component you want to track, add an import statement for mezzurite-react:
 ```javascript
 import {withMezzurite} from '@microsoft/mezzurite-react';
 ```
-2. Wrap your exported component in the **withMezzurite** higher order component. This will add Mezzurite functionality to this specific component:
+2. Wrap your exported component in the **withMezzurite** [higher order component](#faq). This will add Mezzurite functionality to this specific component:
 ```javascript
 // old export
 export default ExampleComponent;
@@ -83,3 +81,13 @@ const { window } = new JSDOM(`...`);
 
 // then run code that would utilize Mezzurite
 ```
+## FAQ
+### 1. What is a Higher-Order Component (HOC)?
+A higher-order component (HOC) is an advanced technique in React for reusing component logic. They are functions that take in a component and return a modified component. We use HOC's within the Mezzurite React library to add tracking functionality to user components.
+
+### 2. What is Component Tracking vs Full App Tracking?
+Component tracking is an easy way to calaulate the Component Load Time(CLT) for a specific component irrespective of the performance of other components on the site and site itself. 
+While, full app tracking is used to track initial Application Load Time(ALT). And, also for each route change in the app, it also calculates the Viewport Load Time(VLT) and Component Load Time(CLT) for all the tracked components within that viewport.
+
+### 3. How do I check if my timings are logging correctly?
+If running from localhost, a console.log should fire with the current timings. An alternate place to look is window.mezzurite.measures, which is where each component timing, as well as ALT and VLT, is saved.
