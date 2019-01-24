@@ -91,7 +91,8 @@ export class PerformanceTelemetryService {
                     },
                     ViewportWidth: (<any>window).mezzurite.viewportWidth,
                     ViewportHeight: (<any>window).mezzurite.viewportHeight,
-                    ObjectVersion: MezzuriteConstants.mezzuriteObjectVersion
+                    ObjectVersion: MezzuriteConstants.mezzuriteObjectVersion,
+                    RouteUrl: (<any>window).mezzurite.routeUrl
                 };
                 // log to console when developing locally
                 if ((<any>window).location.href.indexOf('localhost') > -1) {
