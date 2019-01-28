@@ -5,7 +5,7 @@
  * Class for a given performance metric
  */
 export class PerfMetric {
-    metricType: string;
-    value: number;
-    data?: object;
+  metricType: string;
+  value: number;
+  data?: object;
 }

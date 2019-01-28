@@ -3,15 +3,14 @@
 
 import * as React from 'react';
 
-
 /**
  * Takes in a stateless component and returns a stateful class component
- * @param {*} Component 
+ * @param {*} Component
  */
-const StateProvider = (Component: any) => class extends React.Component {   
-    render() {
-      return Component({...this.props});
-    }
-  };
+const StateProvider = (Component: any) => class extends React.Component {
+  render () {
+    return Component({ ...this.props });
+  }
+};
 
-  export { StateProvider };
+export { StateProvider };

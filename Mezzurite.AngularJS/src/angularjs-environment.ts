@@ -6,8 +6,8 @@ import pkg from '../package.json';
  * Gets information from package.json
  */
 const environment = {
-    version: pkg.version,
-    name: pkg.name
+  version: pkg.version,
+  name: pkg.name
 };
 
-export { environment }
+export { environment };

@@ -5,11 +5,11 @@
  * Mezzurite Measure
  */
 export class MezzuriteMeasure {
-    name: string;
-    id: string;
-    startTime: number;
-    endTime: number;
-    untilMount: number;
-    clt: number;
-    slowResource: object;
+  name: string;
+  id: string;
+  startTime: number;
+  endTime: number;
+  untilMount: number;
+  clt: number;
+  slowResource: object;
 }

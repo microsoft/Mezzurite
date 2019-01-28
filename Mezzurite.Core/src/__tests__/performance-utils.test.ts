@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import {MezzuriteUtils} from '../services/performance-utils.service';
-import {MezzuriteConstants} from '../utils/performance-constants';
+import { MezzuriteUtils } from '../services/performance-utils.service';
+import { MezzuriteConstants } from '../utils/performance-constants';
 
-function myTestFunction() {
+function myTestFunction () {
   console.log('this is a test!');
 }
 
@@ -24,9 +24,3 @@ describe('Mezzurite Utils Tests:', () => {
     expect(MezzuriteUtils.getFullNamePart(fullName, 'pizza')).toBe(fullName);
   });
 });
-
-
-
-
-
-

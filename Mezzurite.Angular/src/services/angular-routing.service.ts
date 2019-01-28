@@ -4,9 +4,8 @@
 import { filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants} from '@microsoft/mezzurite-core';
+import { PerformanceTimingService, PerformanceTelemetryService, MezzuriteConstants } from '@microsoft/mezzurite-core';
 import { MezzuriteAngularUtils } from './angular-performance-utils.service';
-
 
 /**
  * RoutingService is responsible for listening to the routing events coming
@@ -14,49 +13,48 @@ import { MezzuriteAngularUtils } from './angular-performance-utils.service';
  */
 @Injectable()
 export class RoutingService {
-    endCounter = 0;
+  endCounter = 0;
 
-    constructor(private router: Router) {
-            if (!(<any>window).mezzurite) {
-                (<any>window).mezzurite = {};
-            }
-            MezzuriteAngularUtils.createMezzuriteObject((<any>window).mezzurite);
-            (<any>window).mezzurite.routerPerf = true;
-        }
+  constructor (private router: Router) {
+    if (!(window as any).mezzurite) {
+      (window as any).mezzurite = {};
+    }
+    MezzuriteAngularUtils.createMezzuriteObject((window as any).mezzurite);
+    (window as any).mezzurite.routerPerf = true;
+  }
 
     /**
      * this method begins the listening process. Must be called for code to function properly.
      */
-    start(): void {
-        const onNavStart$ = (<any>this).router.events.pipe(filter(event => event instanceof NavigationStart));
+  start (): void {
+    const onNavStart$ = this.router.events.pipe(filter(event => event instanceof NavigationStart));
 
+    onNavStart$.subscribe((e: any) => {
+      this.handleRoute(e);
+    });
+  }
 
-        onNavStart$.subscribe((e: any) => {
-           this.handleRoute(e);
-        });
-    }
+  handleRoute (e: any) {
+    (window as any).mezzurite.routeUrl = e.url;
+    if ((window as any).mezzurite.captureCycleStarted) {
 
-    handleRoute(e: any) {
-        (<any>window).mezzurite.routeUrl = e.url;
-        if ((<any>window).mezzurite.captureCycleStarted) {
-
-            (<any>window).mezzurite.captureCycleStarted = false;
-            PerformanceTelemetryService.captureTimings(true);
-            window.performance.mark(MezzuriteConstants.vltMarkStart);
+      (window as any).mezzurite.captureCycleStarted = false;
+      PerformanceTelemetryService.captureTimings(true);
+      window.performance.mark(MezzuriteConstants.vltMarkStart);
             // starts a new capture cycle
-            PerformanceTelemetryService.startCaptureCycle();
-        } else {
+      PerformanceTelemetryService.startCaptureCycle();
+    } else {
             // starts the capture cycle to transmit telemetry if current pathname is different than recentPath
-            PerformanceTelemetryService.startCaptureCycle();
+      PerformanceTelemetryService.startCaptureCycle();
             // If first load, capture ALT
-            if (!(<any>window).mezzurite.firstViewLoaded) {
-                window.performance.mark(MezzuriteConstants.altMarkEnd);
-                window.performance.mark(MezzuriteConstants.vltMarkStart);
-                const fullName = MezzuriteAngularUtils.getName(MezzuriteConstants.altName, MezzuriteAngularUtils.makeId());
-                PerformanceTimingService.measure(fullName, 0, MezzuriteConstants.altMarkEnd);
-            } else {
-                window.performance.mark(MezzuriteConstants.vltMarkStart);
-            }
-        }
+      if (!(window as any).mezzurite.firstViewLoaded) {
+        window.performance.mark(MezzuriteConstants.altMarkEnd);
+        window.performance.mark(MezzuriteConstants.vltMarkStart);
+        const fullName = MezzuriteAngularUtils.getName(MezzuriteConstants.altName, MezzuriteAngularUtils.makeId());
+        PerformanceTimingService.measure(fullName, 0, MezzuriteConstants.altMarkEnd);
+      } else {
+        window.performance.mark(MezzuriteConstants.vltMarkStart);
+      }
     }
+  }
 }

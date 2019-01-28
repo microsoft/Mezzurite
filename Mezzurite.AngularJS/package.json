@@ -14,6 +14,7 @@
   "scripts": {
     "clean": "shx rm -rf bundles dist dist-esm build/compiled",
     "build": "npm run clean && rollup -c && npm run make-bundle && npm run post-build-cleanup",
+    "lint": "tslint -p tsconfig.json -t stylish src/**/*.ts",
     "post-build-cleanup": "shx rm -rf dist/src dist-esm/src",
     "post-clean": "shx rm -rf build/compiled",
     "make-bundle": "node build/make-bundle"
@@ -42,6 +43,8 @@
     "rollup-plugin-uglify-es": "0.0.1",
     "shx": "^0.3.1",
     "tslib": "^1.9.3",
+    "tslint": "^5.12.1",
+    "tslint-config-semistandard": "^7.0.0",
     "typescript": "^2.9.2"
   }
 }
