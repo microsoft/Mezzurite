@@ -1,13 +1,3 @@
 {
-    "extends": [
-        "tslint-react"
-    ],
-    "rules": {
-        "quotemark": [true, "avoid-escape", "single", "avoid-template"],
-        "eofline": false,
-        "comment-format": [
-            true, 
-            "check-space"
-        ]
-    }
+    "extends": "tslint-config-semistandard"
 }

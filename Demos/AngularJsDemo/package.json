@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@microsoft/mezzurite-angularjs": "^1.0.5",
-    "@microsoft/mezzurite-core": "^1.0.11",
+    "@microsoft/mezzurite-core": "^1.0.14",
     "@types/node": "^10.12.2",
     "angular-cli": "^1.0.0-beta.28.3",
     "rxjs": "^6.3.3"

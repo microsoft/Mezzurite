@@ -15,8 +15,9 @@
   "module": "./esm/mezzurite-react.js",
   "typings": "./typings/mezzurite-react.d.ts",
   "scripts": {
-    "clean": "shx rm -rf browser dist dist-esm",
     "build": "npm run clean && node build.js",
+    "clean": "shx rm -rf browser dist dist-esm",
+    "lint": "tslint -p tsconfig.json -t stylish src/**/*.ts",
     "pack:lib": "npm run build && npm pack ./dist",
     "publish:lib": "npm run build && npm publish ./dist"
   },
@@ -62,6 +63,7 @@
     "rollup-plugin-uglify-es": "0.0.1",
     "shx": "^0.3.2",
     "tslint": "^5.12.0",
+    "tslint-config-semistandard": "^7.0.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.2",
     "uglify-js": "^3.4.9"

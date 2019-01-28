@@ -18,6 +18,7 @@
   "typings": "./mezzurite-angular.d.ts",
   "scripts": {
     "build": "node build.js",
+    "lint": "tslint -p tsconfig.json -t stylish src/**/*.ts",
     "pack:lib": "npm run build && npm pack ./dist",
     "publish:lib": "npm run build && npm publish ./dist",
     "publish:lib:next": "npm run build && npm publish --tag next ./dist"
@@ -57,9 +58,12 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rxjs": "^6.2.2",
+    "shelljs": "^0.8.3",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "tslint-angular": "^1.1.2",
-    "typescript": "^2.9.2"
+    "tslint-config-semistandard": "^7.0.0",
+    "typescript": "^2.9.2",
+    "uglify-js": "^3.4.9"
   }
 }

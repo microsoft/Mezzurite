@@ -96,7 +96,7 @@
     "@angular/platform-server": "^6.0.6",
     "@angular/router": "^6.0.6",
     "@microsoft/mezzurite-angular": "^2.0.18",
-    "@microsoft/mezzurite-core": "^1.0.13",
+    "@microsoft/mezzurite-core": "^1.0.14",
     "core-js": "^2.5.7",
     "http-server": "^0.11.1",
     "ie-shim": "^0.1.0",
