@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-core",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "Core Library for use with framework-specific Mezzurite package to capture timings for single page applications.",
   "author": "Microsoft Corporation",
   "repository": {
@@ -19,7 +19,7 @@
   "scripts": {
     "build": "node build.js",
     "test": "jest --verbose",
-    "tslint": "tslint -p tsconfig.json -t stylish src/**/*.ts",
+    "lint": "tslint -p tsconfig.json -t stylish src/**/*.ts",
     "pack:lib": "npm run build && npm pack ./dist",
     "publish:lib": "npm run build && npm publish ./dist",
     "publish:lib:next": "npm run build && npm publish --tag next ./dist"
@@ -48,6 +48,7 @@
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "tslint-angular": "^1.1.2",
+    "tslint-config-semistandard": "^7.0.0",
     "typescript": "^2.9.2"
   },
   "jest": {

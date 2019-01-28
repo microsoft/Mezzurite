@@ -1,27 +1,3 @@
 {
-    "extends": [
-        "tslint-angular"
-    ],
-    "rules": {
-        "quotemark": [true, "avoid-escape", "single", "avoid-template"],
-        "eofline": false,
-        "directive-selector": [
-            true,
-            "camelCase"
-        ],
-        "component-selector": [
-            true,
-            "element",
-            [
-                "cmp",
-                "cmp"
-            ],
-            "kebab-case"
-        ],
-        "comment-format": [
-            true, 
-            "check-space"
-        ],
-        "forin": false
-    }
-}
+    "extends": "tslint-config-semistandard"
+  }
