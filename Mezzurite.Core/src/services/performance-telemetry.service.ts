@@ -52,19 +52,25 @@ export class PerformanceTelemetryService {
         // all components
     const components = PerformanceTimingService.getCurrentComponents();
     if ((window as any).mezzurite.routerPerf) {
-            // alt
+      var vltResults ={} as any;
+
+            // vlt
+     if (components.length > 0) {
+        vltResults = PerformanceTimingService.calculateVlt();
+        if (vltResults !== null) {
+              timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt , vltResults.components));
+          }
+       }
+      // alt
       if ((window as any).mezzurite.firstViewLoaded === false) {
         const altMeasure = (window as any).mezzurite.measures.filter((m: any) => m.name.indexOf(MezzuriteConstants.altName) > -1)[0];
         timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.altName, altMeasure.clt));
+        if (vltResults !== null) {
+          timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.fvltName, vltResults.vlt + altMeasure.clt));
+        }
         (window as any).mezzurite.firstViewLoaded = true;
       }
-            // vlt
-      if (components.length > 0) {
-        const vltResults = PerformanceTimingService.calculateVlt();
-        if (vltResults !== null) {
-          timings.push(MezzuriteUtils.createMetric(MezzuriteConstants.vltName, vltResults.vlt, vltResults.components));
-        }
-      }
+
       if (components.length === 0) {
         performance.clearMarks(MezzuriteConstants.vltMarkStart);
       }
