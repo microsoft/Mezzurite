@@ -69,6 +69,7 @@
     "uglify-js": "^3.4.9"
   },
   "dependencies": {
+    "intersection-observer": "^0.5.1",
     "@microsoft/mezzurite-core": "^1.0.13"
   }
 }
