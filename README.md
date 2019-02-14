@@ -21,6 +21,15 @@ Mezzurite exists because traditional metrics like Page Load Time (PLT) are not r
 - [Mezzurite-Angular](./Mezzurite.Angular/README.md)
 - [Mezzurite-AngularJS](./Mezzurite.AngularJS/README.md)
 
+### Logging
+We support sending data to Azure's Applicaiton Insights using:
+- [ApplicationInsights-JS-Mezzurite](https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite)
+- [Application insights](https://github.com/Microsoft/ApplicationInsights-JS)
+
+View your data sent with Applicaiton Insights in our workbook for Single Page Applcation WebSite Insights in the Perfomrance tab of workbooks.  
+
+![Mezzurite Application Insights Workbook](https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite/blob/master/exampleReport.png?raw=true)
+
 ## Background
 ### What is a Single Page Application?
 These are web applications built using JavaScript frameworks that run as a single page. The framework takes care of dynamically pulling in the content required for the page instead of the whole page being torn down by the browser and a new page fetched. Since only specific portions of the page are updated instead of the entire page, the performance is noticeably better. The navigational experience is also smoother. There is an ongoing trend of converting static web sites to single page applications for the performance/experience benefits.
@@ -78,6 +87,14 @@ Using the above, we created the following metrics as relevant to the measurement
 - Currently do not track component loads that happen without a navigation to a new route.
 - With React, componentDidMount reflects the outer-most component, not its children. In most cases this is adequate, but for performance this means that the component can theoretically be marked complete before it's child resources have been completely downloaded. We have since added slowestResourceTiming to each component with a child resource (IMG) to better differentiate between these two values.
 - The Mezzurite SDK causes React UI unit tests to fail in headless mode (because of the unavailability of the window object). Please visit the [Mezzurite-React](./Mezzurite.React/README.md) read-me for more information.
+
+# Mezzurite Ecosystem
+| Projects | |
+| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [ApplicationInsights-JS-Mezzurite](https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite) | [Application insights](https://github.com/Microsoft/ApplicationInsights-JS) extension of Mezzurite |
+| [Mezzurite](https://github.com/Microsoft/Mezzurite) | Base SDK for Mezzurite with Angular, AngularJS and React integration |
+| [Mezzurite DevTools](https://github.com/Microsoft/Mezzurite-DevTools) | See Mezzurite metrics being captured with a browser extension |
+| [VSCode Mezzurite](https://github.com/Microsoft/vscode-mezzurite) | Check which components and modules are instrumented within VS Code |
 
 ## Contributions
 [To read about contributing to this repo, click here](CONTRIBUTING.md)
