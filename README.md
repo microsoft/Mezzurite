@@ -26,7 +26,7 @@ We support sending data to Azure's Applicaiton Insights using:
 - [ApplicationInsights-JS-Mezzurite](https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite)
 - [Application insights](https://github.com/Microsoft/ApplicationInsights-JS)
 
-View your data sent with Applicaiton Insights in our workbook for Single Page Applcation WebSite Insights in the Perfomrance tab of workbooks.  
+View your data sent with Applicaiton Insights in our workbook for Single Page Applcation WebSite Insights in the Performance tab of workbooks.  
 
 ![Mezzurite Application Insights Workbook](https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite/blob/master/exampleReport.png?raw=true)
 
