@@ -1,15 +1,5 @@
-import 'intersection-observer';
-
 function initializeMezzurite () {
-  const mezzuriteState = localStorage.getItem('mezzurite/state');
-
-  if (mezzuriteState == null) {
-    localStorage.setItem('mezzurite/state', 'active');
-
-    window.addEventListener('unload', () => {
-      localStorage.removeItem('mezzurite/state');
-    });
-  }
+  // Set up event listeners and dispatchers
 }
 
 export default initializeMezzurite;
