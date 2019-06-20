@@ -33,8 +33,11 @@
     "rollup-plugin-replace": "^2.1.1",
     "rollup-plugin-terser": "^4.0.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "redux": "^4.0.1"
+  },
   "scripts": {
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "test": "jest"
   }
 }
