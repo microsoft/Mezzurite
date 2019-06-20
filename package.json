@@ -1,0 +1,40 @@
+{
+  "name": "@microsoft/mezzurite-core",
+  "version": "2.0.0-alpha",
+  "description": "Core library for Mezzurite data and event communication",
+  "main": "./lib/mezzurite.js",
+  "unpkg": "./dist/mezzurite.js",
+  "module": "es/mezzurite.js",
+  "author": "Microsoft Corporation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/Mezzurite.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Microsoft/Mezzurite/issues"
+  },
+  "homepage": "https://github.com/Microsoft/Mezzurite#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.7.1",
+    "rollup": "^1.8.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-replace": "^2.1.1",
+    "rollup-plugin-terser": "^4.0.4"
+  },
+  "dependencies": {},
+  "scripts": {
+    "lint": "eslint ./src"
+  }
+}
