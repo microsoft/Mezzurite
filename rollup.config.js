@@ -18,9 +18,7 @@ export default [
       ...Object.keys(pkg.peerDependencies || {})
     ],
     plugins: [
-      nodeResolve({
-        jsnext: true
-      }),
+      nodeResolve(),
       babel()
     ]
   },
@@ -36,9 +34,7 @@ export default [
       ...Object.keys(pkg.peerDependencies || {})
     ],
     plugins: [
-      nodeResolve({
-        jsnext: true
-      }),
+      nodeResolve(),
       babel()
     ]
   },
@@ -50,9 +46,7 @@ export default [
       indent: false
     },
     plugins: [
-      nodeResolve({
-        jsnext: true
-      }),
+      nodeResolve(),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
@@ -75,9 +69,7 @@ export default [
       indent: false
     },
     plugins: [
-      nodeResolve({
-        jsnext: true
-      }),
+      nodeResolve(),
       babel({
         exclude: 'node_modules/**'
       }),
@@ -95,9 +87,7 @@ export default [
       indent: false
     },
     plugins: [
-      nodeResolve({
-        jsnext: true
-      }),
+      nodeResolve(),
       babel({
         exclude: 'node_modules/**'
       }),
