@@ -1,5 +1,7 @@
+import dispatchComponentsChanged from './events/dispatchComponentsChanged';
+
 function initializeMezzurite () {
-  // Set up event listeners and dispatchers
+  dispatchComponentsChanged();
 }
 
 export default initializeMezzurite;
