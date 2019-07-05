@@ -14,9 +14,23 @@ describe('onComponentEnd.js', () => {
     expect(store.dispatch).not.toHaveBeenCalled();
   });
 
+  it('should not dispatch when the event is undefined', () => {
+    onComponentEnd(undefined);
+
+    expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
   it('should not dispatch when the event detail is null', () => {
     onComponentEnd({
       detail: null
+    });
+
+    expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  it('should not dispatch when the event detail is undefined', () => {
+    onComponentEnd({
+      detail: undefined
     });
 
     expect(store.dispatch).not.toHaveBeenCalled();
