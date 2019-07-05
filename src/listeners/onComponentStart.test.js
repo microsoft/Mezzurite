@@ -14,9 +14,23 @@ describe('onComponentStart.js', () => {
     expect(store.dispatch).not.toHaveBeenCalled();
   });
 
+  it('should not dispatch when the event is undefined', () => {
+    onComponentStart(undefined);
+
+    expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
   it('should not dispatch when the event detail is null', () => {
     onComponentStart({
       detail: null
+    });
+
+    expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  it('should not dispatch when the event detail is undefined', () => {
+    onComponentStart({
+      detail: undefined
     });
 
     expect(store.dispatch).not.toHaveBeenCalled();
