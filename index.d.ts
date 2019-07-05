@@ -1,5 +1,5 @@
 /**
- * A ComponentStartData contains the information necessary
+ * The start data for a Mezzurite component contains the information necessary
  * to register a component instance with Mezzurite. This is meant
  * to be called with the 'mezzurite/componentStart' CustomEvent
  * as follows:
@@ -28,8 +28,8 @@ export interface ComponentStartData {
 };
 
 /**
- * A ComponentEndData contains the information necessary to finish
- * a component instance with Mezzurite. This is meant to be called
+ * The end data for a Mezzurite component contains the information necessary
+ * to finish a component instance with Mezzurite. This is meant to be called
  * with the 'mezzurite/componentEnd' CustomEvent as follows:
  * @example
  * window.dispatchEvent(new CustomEvent('mezzurite/componentEnd', {
@@ -47,9 +47,9 @@ export interface ComponentEndData {
 };
 
 /**
- * A MezzuriteData contains a snapshot of all the component data within
- * the Mezzurite store. These component snapshots will be of the data
- * when a component has started but not ended, or a component that
+ * The Mezzurite component data contains a snapshot of all the component
+ * data within the Mezzurite store. These component snapshots will be of
+ * the data when a component has started but not ended, or a component that
  * has both started and ended.
  * 
  * @param id A listing of all the components currently registered with
@@ -57,13 +57,14 @@ export interface ComponentEndData {
  * to a specific instance of a registered component. Different components
  * must have different ids.
  */
-export interface MezzuriteData {
+export interface ComponentData {
   [id: string]: ComponentStartSnapshot | ComponentEndSnapshot;
 };
 
 /**
- * A ComponentStartSnapshot contains a snapshot of a singular Mezzurite
- * component that has started rendering but has not finished.
+ * A snapshot of a Mezzurite component which has started contains the data
+ * of a singular Mezzurite component that has started rendering but has not
+ * finished.
  * 
  * @param name An identifier that refers to what kind of component
  * is being tracked. It is quite possible this takes the form of
@@ -84,8 +85,8 @@ interface ComponentStartSnapshot {
 };
 
 /**
- * A ComponentEndSnapshot contains a snapshot of a singular Mezzurite
- * component that has finished rendering.
+ * A snapshot of a mezzurite component which has finished contains the data
+ * of a singular Mezzurite component that has finished rendering.
  * 
  * @param endTime An end time metric contains the time stamp of
  * when the component finished rendering. In modern browsers, this is
@@ -115,7 +116,7 @@ interface ComponentEndSnapshot {
 };
 
 /**
- * Sets up Mezzurite store and corresponding event hooks
+ * Sets up the Mezzurite store and corresponding event hooks
  * for starting and stopping a component. CustomEvents
  * prefixed with 'mezzurite/' before this function is called
  * will not be handled.
