@@ -6,6 +6,13 @@
   "unpkg": "./dist/mezzurite.js",
   "module": "es/mezzurite.js",
   "author": "Microsoft Corporation",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "index.d.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Microsoft/Mezzurite.git"
