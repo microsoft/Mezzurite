@@ -14,11 +14,5 @@
 
 With Mezzurite, you can track how long your UI components are taking to render. You're free to transform, stream, read, or log the results however you'd like.
 
-## Getting Started
-Coming soon.
-
 ## v1.x (Legacy)
 For the legacy version of Mezzurite, please visit the [v1.x branch](https://github.com/microsoft/Mezzurite/tree/v1.x).
-
-## Documentation
-Coming soon.
