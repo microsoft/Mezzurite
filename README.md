@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://microsoft.github.io/mezzurite">
-		<img alt="Mezzurite Logo" src="https://raw.githubusercontent.com/microsoft/Mezzurite/v1.x/docs/images/Mezzurite_yellow.svg" width="546px">
+		<img alt="Mezzurite Logo" src="website/static/img/logo.svg" width="546px">
   </a>
 </p>
 
