@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/mezzurite-core",
-  "version": "2.0.0-alpha",
+  "version": "2.0.0-alpha-0",
   "description": "Core library for Mezzurite data and event communication",
   "main": "./lib/mezzurite.js",
   "unpkg": "./dist/mezzurite.js",
