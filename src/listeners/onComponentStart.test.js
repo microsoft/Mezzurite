@@ -2,11 +2,18 @@ import { componentStart } from '../actions/components';
 import store from '../store';
 import onComponentStart from './onComponentStart';
 
+let spyWarn = null;
+
 describe('onComponentStart.js', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     store.dispatch = jest.fn();
     store.getState = jest.fn(() => ({}));
+    spyWarn = jest.spyOn(console, 'warn');
+  });
+
+  afterEach(() => {
+    spyWarn.mockRestore();
   });
 
   describe('invalid events', () => {
@@ -48,8 +55,9 @@ describe('onComponentStart.js', () => {
           name: 'name'
         }
       });
-  
+      
       expect(store.dispatch).not.toHaveBeenCalled();
+      expect(spyWarn).toHaveBeenCalled();
     });
   
     it('should dispatch the component data to the store', () => {

@@ -13,6 +13,8 @@ function onComponentStart (event) {
         name: event.detail.name,
         startTime
       }));
+    } else {
+      console.warn(`COMPONENT_START emitted for existing component id: ${event.detail.id}`);
     }
   }
 }
