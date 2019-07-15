@@ -72,10 +72,10 @@ describe('onComponentEnd.js', () => {
       expect(spyWarn).toHaveBeenCalled();
     });
 
-    it('should dispatch the component data to the store', async () => {
+    it('should dispatch the component data to the store', () => {
       store.getState = jest.fn(() => ({ 'id': {} }));
       performance.now = jest.fn(() => 5);
-      await onComponentEnd({
+      onComponentEnd({
         detail: {
           endTime: 5,
           id: 'id'

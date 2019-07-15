@@ -1,7 +1,7 @@
 import { componentEnd } from '../actions/components';
 import store from '../store';
 
-async function onComponentEnd (event) {
+function onComponentEnd (event) {
   if (event != null && event.detail != null) {
     const state = store.getState();
 
