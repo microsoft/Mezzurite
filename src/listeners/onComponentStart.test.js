@@ -9,7 +9,7 @@ describe('onComponentStart.js', () => {
     jest.clearAllMocks();
     store.dispatch = jest.fn();
     store.getState = jest.fn(() => ({}));
-    spyWarn = jest.spyOn(console, 'warn');
+    spyWarn = jest.spyOn(console, 'warn').mockImplementation();
   });
 
   afterEach(() => {
