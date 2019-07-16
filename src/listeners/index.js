@@ -1,6 +1,6 @@
 import onComponentEnd from './onComponentEnd';
-import onComponentStart from './onComponentStart';
 import onComponentRemove from './onComponentRemove';
+import onComponentStart from './onComponentStart';
 
 function addMezzuriteEventListeners () {
   window.addEventListener('mezzurite/componentEnd', onComponentEnd);
