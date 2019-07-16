@@ -11,7 +11,10 @@ const components = (state = {}, action) => {
     }
 
     case 'COMPONENT_REMOVE': {
-      const { [action.payload.id]: _, ...newState } = state;
+      const {
+        [action.payload.id]: _,
+        ...newState
+      } = state;
       return newState;
     }
 
