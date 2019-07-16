@@ -3,6 +3,11 @@ const componentEnd = (component) => ({
   payload: component
 });
 
+const componentRemove = (component) => ({
+  type: 'COMPONENT_REMOVE',
+  payload: component
+});
+
 const componentStart = (component) => ({
   type: 'COMPONENT_START',
   payload: component
@@ -10,5 +15,6 @@ const componentStart = (component) => ({
 
 export {
   componentEnd,
+  componentRemove,
   componentStart
 };

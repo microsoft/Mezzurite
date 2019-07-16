@@ -22,6 +22,26 @@ describe('components.js', () => {
     });
   });
 
+  it('should handle an action of type COMPONENT_REMOVE', () => {
+    const state = {
+      testId: {},
+      testId2: {}
+    };
+    const action = {
+      type: 'COMPONENT_REMOVE',
+      payload: {
+        id: 'testId'
+      }
+    };
+    const transformedState = components(state, action);
+
+    const expectedState = {
+      testId2: {}
+    };
+
+    expect(transformedState).toMatchObject(expectedState);
+  });
+
   it('should handle an action of type COMPONENT_END', () => {
     expect(components(
       {

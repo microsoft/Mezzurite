@@ -10,6 +10,14 @@ const components = (state = {}, action) => {
       };
     }
 
+    case 'COMPONENT_REMOVE': {
+      const {
+        [action.payload.id]: _,
+        ...newState
+      } = state;
+      return newState;
+    }
+
     case 'COMPONENT_END': {
       return {
         ...state,
