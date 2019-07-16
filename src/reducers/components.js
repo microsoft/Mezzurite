@@ -21,6 +21,11 @@ const components = (state = {}, action) => {
       };
     }
 
+    case 'COMPONENT_REMOVE': {
+      const { [action.payload.id]: _, ...newState } = state;
+      return newState;
+    }
+
     default: {
       return state;
     }

@@ -8,7 +8,13 @@ const componentStart = (component) => ({
   payload: component
 });
 
+const componentRemove = (component) => ({
+  type: 'COMPONENT_REMOVE',
+  payload: component
+});
+
 export {
   componentEnd,
-  componentStart
+  componentStart,
+  componentRemove
 };
